@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <title>Inita</title>
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <svg
+          width="128"
+          height="48"
+          viewBox="0 0 128 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="header__logo"
+        >
+          <path
+            d="M124.011 22.2525L124.141 20.0567H127.919V35.9763H124.205L124.011 33.6514C123.581 34.5124 122.86 35.1906 121.848 35.6857C120.836 36.1809 119.835 36.4393 118.845 36.4608C116.412 36.4823 114.437 35.7557 112.919 34.2811C111.402 32.8064 110.643 30.7129 110.643 28.0003C110.643 25.3525 111.423 23.2966 112.984 21.8327C114.545 20.3688 116.531 19.6476 118.942 19.6691C120.018 19.6691 121.019 19.906 121.945 20.3796C122.87 20.8533 123.559 21.4774 124.011 22.2525ZM99.9543 15.988L103.894 15.5682V20.0889H108.286V23.4796H103.862V30.3576C103.862 31.0897 104.05 31.6493 104.427 32.0368C104.803 32.4244 105.304 32.6181 105.928 32.6181C106.553 32.6181 107.188 32.4565 107.833 32.1336L108.931 35.492C107.876 35.9226 106.789 36.1485 105.67 36.1702C103.905 36.2347 102.511 35.7665 101.488 34.7654C100.466 33.7645 99.9543 32.2952 99.9543 30.3576V23.4796H96.9835V20.0889H99.9543V15.988ZM65.919 19.992H61.9795V35.9763H65.919V19.992ZM93.9159 19.992H89.9763V35.9763H93.9159V19.992ZM85.9397 35.9763H82.0002V27.6452C82.0002 26.3966 81.6666 25.374 80.9992 24.5774C80.3319 23.7809 79.3847 23.3826 78.1575 23.3826C76.9735 23.3826 75.9993 23.8132 75.2351 24.6743C74.4709 25.5355 74.0889 26.5903 74.0889 27.839V35.9763H70.1815V20.0244H73.7013L73.9597 22.188C75.5958 20.5949 77.3394 19.7983 79.1909 19.7983C81.1284 19.7983 82.7376 20.4926 84.0185 21.8811C85.2993 23.2697 85.9397 25.1803 85.9397 27.6129V35.9763ZM119.297 23.1889C117.941 23.1889 116.816 23.6195 115.923 24.4806C115.029 25.3416 114.582 26.5149 114.582 28.0003C114.582 29.4857 115.029 30.6645 115.923 31.5364C116.816 32.4081 117.941 32.8441 119.297 32.8441C120.481 32.8441 121.477 32.5104 122.284 31.843C123.091 31.1757 123.586 30.3737 123.769 29.4373C123.952 28.5009 123.952 27.5591 123.769 26.6118C123.586 25.6646 123.091 24.8573 122.284 24.19C121.477 23.5226 120.481 23.1889 119.297 23.1889ZM65.919 11.9082H61.9795V17.0766H65.919V11.9082ZM93.9159 11.9082H89.9763V17.0766H93.9159V11.9082Z"
+            fill="white"
+          />
+          <path d="M48.0001 22H35.9185V26H48.0001V22Z" fill="white" />
+          <path
+            d="M36.6466 8.44371L30.9897 14.1006L33.8182 16.929L39.4751 11.2722L36.6466 8.44371Z"
+            fill="white"
+          />
+          <path d="M11.9184 22H0V26H11.9184V22Z" fill="white" />
+          <path
+            d="M14.0187 31.0717L8.36182 36.7285L11.1902 39.5569L16.8471 33.9001L14.0187 31.0717Z"
+            fill="white"
+          />
+          <path
+            d="M39.4747 36.7282L33.8179 31.0713L30.9894 33.8997L36.6463 39.5566L39.4747 36.7282Z"
+            fill="white"
+          />
+          <path
+            d="M16.8473 14.1002L11.1904 8.44336L8.36199 11.2718L14.0189 16.9287L16.8473 14.1002Z"
+            fill="white"
+          />
+          <path
+            d="M26.0005 48L26.0005 20H22.0005L22.0005 48H26.0005Z"
+            fill="white"
+          />
+          <path
+            d="M26.0005 14.002L26.0005 0L22.0005 0L22.0005 14.002H26.0005Z"
+            fill="white"
+          />
+        </svg>
+        <div class="header__text">Your AI business buddy</div>
+        <div class="header__btns">
+          <button class="header__btnJoin">Join waitlist</button>
+          <a href="/" class="header__btnLang">
+            <img src="./css/img/flags.png" alt="Английская версия сайта"
+          /></a>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="swiper container">
+        <div class="hand"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide clients">
+            <div class="slideHead">
+              <h2 class="title">AI Assistant at your service</h2>
+              <p class="desc">No more boring stuff. Focus on your craft</p>
+            </div>
+            <div class="slideContent">
+              <div class="slideContent__left">
+                <h3>Easy book, cancel or reschedule</h3>
+                <p>
+                  Assistant sorts every changes out in a chat with a client.
+                  Accurate, punctual, polite
+                </p>
+              </div>
+              <div class="slideContent__middle mobileContent"></div>
+              <div class="slideContent__right">
+                <h3>Surrounds with care</h3>
+                <p>
+                  Unobtrusively asks a client for a feedback and offers to make
+                  a new appointment
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide website">
+            <div class="slideHead">
+              <h2 class="title">Whoosh!... And your website is ready</h2>
+              <p class="desc">Now give this link to your followers</p>
+            </div>
+            <div class="slideContent">
+              <div class="slideContent__left">
+                <h3>Yes, it’s all set</h3>
+                <p>
+                  The design, texts, booking system, online payment system,
+                  which you can integrate into Stripe, are already there
+                </p>
+              </div>
+              <div class="slideContent__middle mobileContent"></div>
+              <div class="slideContent__right">
+                <h3>
+                  The design, texts, booking system, online payment system,
+                  which you can integrate into Stripe, are already there
+                </h3>
+                <p>
+                  Neither an editor nor a developer. All components and
+                  necessary changes run by an AI Manager
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide appointments">
+            <div class="slideHead">
+              <h2 class="title">Online appointment system run by AI</h2>
+              <p class="desc">Everything under control</p>
+            </div>
+            <div class="slideContent">
+              <div class="slideContent__left">
+                <h3>Never miss a thing</h3>
+                <p>Reminds you and your clients about an upcoming meeting</p>
+              </div>
+              <div class="slideContent__middle mobileContent"></div>
+              <div class="slideContent__right">
+                <h3>That’s a win-win</h3>
+                <p>
+                  You keep all your appointments in one app. Your clients get
+                  the easiest booking flow
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide actions">
+            <div class="slideHead">
+              <h2 class="title">Swipe out the routine</h2>
+              <p class="desc">Solve your workflow in one swift move</p>
+            </div>
+            <div class="slideContent">
+              <div class="slideContent__left">
+                <h3>Stay focused. Evolve your business</h3>
+                <p>
+                  AI Manager keeps you up to date with all processes in your
+                  business. You make timely decisions and earn even more
+                </p>
+              </div>
+              <div class="slideContent__middle mobileContent"></div>
+              <div class="slideContent__right">
+                <h3>Only solutions, no tasks</h3>
+                <p>
+                  AI doesn’t come with problems. It knows exactly how to solve
+                  them, hands down
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide socials">
+            <div class="slideHead">
+              <h2 class="title">Be visible. Stay relevant</h2>
+              <p class="desc">
+                AI will create, post and plan content for your socials
+              </p>
+            </div>
+            <div class="slideContent">
+              <div class="slideContent__left">
+                <h3>An endless number of ideas</h3>
+                <p>
+                  Your AI Assistant comes to you with new trends in your
+                  business area and relevant topics for your followers
+                </p>
+                <div class="socialsList">
+                  <a href="/">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M12.6368 1.67415C11.6878 1.6308 11.4031 1.62165 9 1.62165V1.62157C6.59693 1.62157 6.31222 1.6308 5.36325 1.67408C4.79253 1.68087 4.22723 1.78569 3.69203 1.98397C3.30389 2.13375 2.95141 2.3631 2.65724 2.65728C2.36307 2.95146 2.13373 3.30396 1.98397 3.6921C1.78569 4.22731 1.68087 4.79261 1.67408 5.36333C1.63072 6.3123 1.62157 6.597 1.62157 9.00007C1.62157 11.4031 1.6308 11.6878 1.67408 12.6368C1.68087 13.2075 1.78569 13.7728 1.98397 14.3081C2.13374 14.6962 2.36308 15.0487 2.65725 15.3428C2.95142 15.637 3.3039 15.8663 3.69203 16.0161C4.22723 16.2144 4.79253 16.3192 5.36325 16.326C6.31215 16.3694 6.5967 16.3785 9 16.3785C11.4033 16.3785 11.6879 16.3693 12.6368 16.326C13.2075 16.3192 13.7728 16.2144 14.308 16.0161C14.6961 15.8663 15.0486 15.637 15.3428 15.3428C15.6369 15.0487 15.8663 14.6962 16.016 14.3081C16.2143 13.7728 16.3191 13.2075 16.3259 12.6368C16.3693 11.6878 16.3784 11.4031 16.3784 9.00007C16.3784 6.597 16.3692 6.3123 16.3259 5.36333C16.3191 4.79261 16.2143 4.22731 16.016 3.6921C15.8663 3.30398 15.6369 2.95149 15.3428 2.65732C15.0486 2.36316 14.6961 2.13381 14.308 1.98405C13.7728 1.78577 13.2075 1.68094 12.6368 1.67415ZM5.2893 0.0541499C6.24922 0.0103499 6.55575 0 9 0C11.4443 0 11.7508 0.01035 12.7103 0.054525C13.457 0.0694788 14.1957 0.210934 14.895 0.472875C15.4929 0.704069 16.0359 1.05763 16.4893 1.51089C16.9426 1.96415 17.2962 2.50712 17.5275 3.105C17.7894 3.80422 17.9309 4.54279 17.9459 5.2893C17.9896 6.24922 18 6.55575 18 9C18 11.4443 17.9897 11.7508 17.9462 12.7103C17.9313 13.457 17.7898 14.1957 17.5279 14.895C17.2966 15.493 16.943 16.036 16.4897 16.4893C16.0364 16.9426 15.4933 17.2963 14.8954 17.5275C14.196 17.7894 13.4573 17.9309 12.7107 17.9459C11.7508 17.9896 11.4443 18 9 18C6.55575 18 6.24923 17.9897 5.28968 17.9462C4.54304 17.9313 3.80434 17.7898 3.105 17.5279C2.50705 17.2966 1.96401 16.943 1.51068 16.4897C1.05735 16.0364 0.703735 15.4933 0.4725 14.8954C0.210559 14.196 0.0691036 13.4573 0.0541499 12.7107C0.0103499 11.7508 0 11.4443 0 9C0 6.55575 0.0103499 6.24923 0.0541499 5.28968C0.0690949 4.54304 0.210551 3.80434 0.4725 3.105C0.703735 2.50705 1.05735 1.96401 1.51068 1.51068C1.96401 1.05735 2.50705 0.703735 3.105 0.4725C3.80422 0.210592 4.54279 0.0691372 5.2893 0.0541499ZM13.8042 5.27572C14.4006 5.27572 14.8842 4.79219 14.8842 4.19572C14.8842 3.59926 14.4006 3.11572 13.8042 3.11572C13.2077 3.11572 12.7242 3.59926 12.7242 4.19572C12.7242 4.79219 13.2077 5.27572 13.8042 5.27572ZM8.99998 4.37842C8.0859 4.37842 7.19235 4.64947 6.43233 5.15731C5.6723 5.66514 5.07993 6.38694 4.73013 7.23144C4.38033 8.07594 4.28881 9.00519 4.46713 9.90171C4.64546 10.7982 5.08563 11.6217 5.73198 12.2681C6.37833 12.9144 7.20183 13.3546 8.09834 13.5329C8.99485 13.7112 9.92411 13.6197 10.7686 13.2699C11.6131 12.9201 12.3349 12.3277 12.8427 11.5677C13.3506 10.8077 13.6216 9.91414 13.6216 9.00007C13.6216 7.77433 13.1347 6.5988 12.268 5.73207C11.4013 4.86534 10.2257 4.37842 8.99998 4.37842ZM8.99998 12.0001C8.40663 12.0001 7.82662 11.8241 7.33327 11.4945C6.83992 11.1648 6.4554 10.6963 6.22834 10.1481C6.00128 9.59994 5.94187 8.99674 6.05762 8.4148C6.17338 7.83285 6.4591 7.29831 6.87866 6.87875C7.29822 6.45919 7.83276 6.17347 8.41471 6.05771C8.99665 5.94196 9.59985 6.00137 10.148 6.22843C10.6962 6.45549 11.1647 6.84001 11.4944 7.33336C11.824 7.82671 12 8.40672 12 9.00007C12 9.79572 11.6839 10.5588 11.1213 11.1214C10.5587 11.684 9.79563 12.0001 8.99998 12.0001Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </a>
+                  <a href="/">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M20.0025 3H3.9975C3.73355 3.00196 3.48097 3.10769 3.29433 3.29433C3.10769 3.48097 3.00196 3.73355 3 3.9975V20.0025C3.00196 20.2664 3.10769 20.519 3.29433 20.7057C3.48097 20.8923 3.73355 20.998 3.9975 21H12.615V14.04H10.275V11.3175H12.615V9.315C12.615 6.99 14.0325 5.7225 16.1175 5.7225C16.815 5.7225 17.5125 5.7225 18.21 5.8275V8.25H16.7775C15.645 8.25 15.4275 8.79 15.4275 9.5775V11.31H18.1275L17.775 14.0325H15.4275V21H20.0025C20.2664 20.998 20.519 20.8923 20.7057 20.7057C20.8923 20.519 20.998 20.2664 21 20.0025V3.9975C20.998 3.73355 20.8923 3.48097 20.7057 3.29433C20.519 3.10769 20.2664 3.00196 20.0025 3Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </a>
+                  <a href="/">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M19.6575 3.00002H4.3425C3.99354 2.99793 3.65764 3.13255 3.40671 3.37506C3.15579 3.61757 3.0098 3.9487 3 4.29752V19.65C3.00788 19.9995 3.15327 20.3317 3.40461 20.5747C3.65596 20.8176 3.99297 20.9516 4.3425 20.9475H19.6575C20.007 20.9516 20.344 20.8176 20.5954 20.5747C20.8467 20.3317 20.9921 19.9995 21 19.65V4.29752C20.9902 3.9487 20.8442 3.61757 20.5933 3.37506C20.3424 3.13255 20.0065 2.99793 19.6575 3.00002ZM8.3325 18.3075H5.6925V9.75002H8.3325V18.3075ZM7.0425 8.55752C6.63717 8.55764 6.24786 8.39923 5.95777 8.11615C5.66767 7.83306 5.49979 7.44774 5.49 7.04252C5.48266 6.83667 5.5178 6.63151 5.59322 6.43983C5.66864 6.24815 5.78273 6.07406 5.92839 5.92841C6.07404 5.78276 6.24813 5.66867 6.43981 5.59324C6.63149 5.51782 6.83665 5.48268 7.0425 5.49002C7.43463 5.51733 7.80181 5.69236 8.06993 5.9798C8.33805 6.26725 8.48716 6.64569 8.48716 7.03877C8.48716 7.43186 8.33805 7.8103 8.06993 8.09774C7.80181 8.38519 7.43463 8.56022 7.0425 8.58752V8.55752ZM18.36 18.255H15.75V14.07C15.75 13.0725 15.75 11.775 14.355 11.775C12.96 11.775 12.75 12.87 12.75 13.9725V18.21H10.08V9.75002H12.57V10.875H12.6225C12.8777 10.4318 13.2499 10.0672 13.6983 9.82122C14.1467 9.5752 14.6541 9.45717 15.165 9.48002C17.8575 9.48002 18.36 11.28 18.36 13.5675V18.255Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="slideContent__middle mobileContent"></div>
+              <div class="slideContent__right">
+                <h3>Content for month ahead</h3>
+                <p>
+                  AI generates a monthly plan and every single post, and
+                  publishes it in socials as often as you want
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="join container">
+        <span>Join waitlist</span>
+        <form>
+          <input type="email" name="email" id="email" class="join__input" />
+          <button class="join__btn">
+            Join &nbsp;
+            <svg
+              width="15"
+              height="13"
+              viewBox="0 0 15 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.4239 1C10.7728 0.999694 11.1182 1.07207 11.4399 1.21287C11.7616 1.35368 12.0532 1.56009 12.2975 1.82C12.8008 2.35319 13.0829 3.07158 13.0829 3.82C13.0829 4.56842 12.8008 5.28681 12.2975 5.82L7.33328 11.065L2.36912 5.82C1.86579 5.28681 1.58366 4.56842 1.58366 3.82C1.58366 3.07158 1.86579 2.35319 2.36912 1.82C2.61354 1.56028 2.9051 1.35398 3.22679 1.21315C3.54847 1.07232 3.89382 0.999787 4.24266 0.999787C4.59151 0.999787 4.93685 1.07232 5.25854 1.21315C5.58022 1.35398 5.87178 1.56028 6.1162 1.82L7.33328 3.12L8.54558 1.83C8.78911 1.56699 9.08097 1.35793 9.40371 1.21532C9.72644 1.07271 10.0734 0.999476 10.4239 1V1ZM10.4239 1.34143e-06C9.94744 -0.000420019 9.47568 0.098429 9.0363 0.290752C8.59692 0.483076 8.19875 0.765002 7.86516 1.12L7.33328 1.68L6.80141 1.12C6.46741 0.765643 6.06915 0.484206 5.62984 0.292097C5.19054 0.0999872 4.71898 0.00104871 4.24266 0.00104871C3.76634 0.00104871 3.29478 0.0999872 2.85548 0.292097C2.41618 0.484206 2.01791 0.765643 1.68391 1.12C1.00439 1.84181 0.623657 2.81318 0.623657 3.825C0.623657 4.83682 1.00439 5.80819 1.68391 6.53L7.33328 12.5L12.9827 6.53C13.6622 5.80819 14.0429 4.83682 14.0429 3.825C14.0429 2.81318 13.6622 1.84181 12.9827 1.12C12.6487 0.765453 12.2505 0.483823 11.8112 0.291532C11.3719 0.0992411 10.9003 0.000138049 10.4239 1.34143e-06V1.34143e-06Z"
+                fill="#B0B2C2"
+              /></svg>&nbsp;1,7k
+          </button>
+        </form>
+      </div>
+    </main>
+    <footer class="footer container">
+      <svg
+        width="35"
+        height="35"
+        viewBox="0 0 35 35"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="footer__icon"
+      >
+        <path
+          d="M34.7897 15.9453H26.0332V18.8445H34.7897V15.9453Z"
+          fill="#565974"
+        />
+        <path
+          d="M26.5604 6.11976L22.4604 10.2197L24.5104 12.2697L28.6104 8.16975L26.5604 6.11976Z"
+          fill="#565974"
+        />
+        <path d="M8.63821 15.9453H0V18.8445H8.63821V15.9453Z" fill="#565974" />
+        <path
+          d="M10.1605 22.5202L6.06055 26.6201L8.11055 28.6701L12.2105 24.5701L10.1605 22.5202Z"
+          fill="#565974"
+        />
+        <path
+          d="M28.6107 26.6205L24.5107 22.5205L22.4608 24.5705L26.5607 28.6705L28.6107 26.6205Z"
+          fill="#565974"
+        />
+        <path
+          d="M12.2108 10.2201L8.11084 6.12012L6.06086 8.1701L10.1608 12.2701L12.2108 10.2201Z"
+          fill="#565974"
+        />
+        <path
+          d="M18.8442 34.789V14.4951L15.9451 14.4951L15.9451 34.789H18.8442Z"
+          fill="#565974"
+        />
+        <path
+          d="M18.8442 10.1483V0L15.9451 0V10.1483L18.8442 10.1483Z"
+          fill="#565974"
+        />
+      </svg>
+      <p class="footer__text">
+        We believe that solopreneurs should be able to focus on what they do
+        best - running their businesses. Our mission is to provide innovative
+        tools and solutions that simplify routine tasks.
+      </p>
+      <p class="footer__copyright">© Inita AG 2023</p>
+    </footer>
+    <link rel="stylesheet" href="./css/swiper.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <!-- <script src="./js/gsap.js"></script> -->
+    <script src="./js/script.js"></script>
+  </body>
+</html>

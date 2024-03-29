@@ -1,0 +1,274 @@
+$light: #b0b2c2;
+$white: #fff;
+$dark: #070920;
+$green: #30c085;
+$gradient: linear-gradient(35deg, #ff8933, #9747ff);
+@mixin flex($jc: center) {
+    display: flex;
+    align-items: center;
+    justify-content: $jc;
+}
+
+@font-face {
+    font-family: "Vela Sans";
+    src:
+        local("VelaSans-Regular"),
+        url("./fonts/VelaSans-Regular.woff") format("woff2"),
+        url("./fonts/VelaSans-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Vela Sans";
+    src:
+        local("VelaSans-SemiBold"),
+        url("./fonts/VelaSans-SemiBold.woff2") format("woff2"),
+        url("./fonts/VelaSans-SemiBold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Vela Sans";
+    src:
+        local("VelaSans-Medium"),
+        url("./fonts/VelaSans-Medium.woff2") format("woff2"),
+        url("./fonts/VelaSans-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Vela Sans";
+    src:
+        local("VelaSans-Bold"),
+        url("./fonts/VelaSans-Bold.woff2") format("woff2"),
+        url("./fonts/VelaSans-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    background: $dark;
+    color: $light;
+    font-family: "Vela Sans", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    font-weight: 500;
+}
+
+li {
+    list-style: none;
+}
+
+:active,
+:hover,
+:focus {
+    outline: 0;
+    outline-offset: 0;
+    box-shadow: none;
+}
+
+.container {
+    position: relative;
+    max-width: 1366px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header {
+    & .container {
+        padding: 15px;
+        @include flex(space-between);
+    }
+    &__text {
+        position: relative;
+        width: 233px;
+        height: 28px;
+        @include flex;
+        margin-left: 80px;
+        border-radius: 48px;
+        background-color: $dark;
+        color: $white;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 133%;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        &::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            bottom: -2px;
+            left: -2px;
+            right: -2px;
+            background: $gradient;
+            border-radius: 48px;
+            z-index: -1;
+        }
+    }
+    &__btns {
+        display: flex;
+        gap: 12px;
+    }
+    &__btnJoin {
+        width: 147px;
+        height: 48px;
+        @include flex;
+        border: 1px solid $green;
+        border-radius: 8px;
+        background: transparent;
+        color: $green;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 125%;
+        text-align: center;
+        transition: 0.4s;
+        cursor: pointer;
+        &:hover {
+            background: rgb(48, 192, 133, 0.6);
+        }
+    }
+    &__btnLang {
+        width: 52px;
+        height: 48px;
+        @include flex;
+        border: 1px solid #383a52;
+        border-radius: 12px;
+    }
+}
+
+.main {
+    margin-top: 40px;
+}
+
+.title {
+    color: $white;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 116%;
+    text-align: center;
+}
+
+.desc {
+    margin-top: 13px;
+    font-size: 20px;
+    letter-spacing: 0.01em;
+    text-align: center;
+}
+
+.swiper.container {
+    padding-bottom: 150px;
+}
+
+.slideContent {
+    margin-top: 200px;
+}
+
+.swiper-pagination {
+    width: 100%;
+    top: 155px;
+    margin: 0 auto;
+    @include flex;
+    gap: 16px;
+    &-bullet {
+        width: 146px;
+        height: 40px;
+        @include flex;
+        padding: 2px;
+        border-radius: 20px;
+        background: $dark;
+        border: 1px solid #565974;
+        color: $white;
+        transition: 0.4s;
+        cursor: pointer;
+        &-active {
+            position: relative;
+            background: $gradient;
+            box-shadow: 0 0 24px -10px #fff;
+            border: 1px solid transparent;
+            & p {
+                width: 100%;
+                height: 100%;
+                @include flex;
+                background-color: $dark;
+                border-radius: 20px;
+            }
+            & span {
+                background-image: $gradient;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+}
+
+.slideContent {
+    position: relative;
+    width: 77%;
+    margin: 310px auto 0;
+    display: flex;
+    justify-content: space-between;
+    & h3 {
+        margin-bottom: 10px;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 133%;
+        color: $white;
+    }
+    &__left {
+        width: 240px;
+    }
+    &__right {
+        width: 240px;
+        margin: 139px -7px 0 0;
+    }
+}
+
+.hand {
+    position: absolute;
+    bottom: -24%;
+    left: 34.5%;
+    width: 37vw;
+    height: 100%;
+    background: url(./img/hand.png) no-repeat;
+    background-size: contain;
+}
+
+.join {
+    position: relative;
+    @include flex;
+    & span {
+        color: $white;
+    }
+    &__input {
+        width: 303px;
+        height: 56px;
+        border: 1px solid #383a52;
+        border-radius: 40px;
+        padding: 12px 14px 12px 20px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 40px 0 rgba(255, 255, 255, 0.25);
+        background: rgba(7, 9, 33, 0.56);
+    }
+    &__btn {
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -35px;
+        z-index: 1;
+        width: 100%;
+        height: 500px;
+        background: linear-gradient(183deg, rgba(7, 9, 32, 0) 0, $dark 150%);
+    }
+}
