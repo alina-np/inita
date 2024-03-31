@@ -208,6 +208,28 @@ li {
   }
 }
 
+.line {
+  position: absolute;
+  top: 210px;
+  left: 350px;
+  transition: 0.4s;
+  &-1 {
+    left: 350px;
+  }
+  &-2 {
+    left: 513px;
+  }
+  &-3 {
+    left: 678px;
+  }
+  &-4 {
+    left: 840px;
+  }
+  &-5 {
+    left: 1000px
+  }
+}
+
 .slideContent {
   position: relative;
   width: 77%;

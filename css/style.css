@@ -197,6 +197,28 @@ li {
   -webkit-text-fill-color: transparent;
 }
 
+.line {
+  position: absolute;
+  top: 210px;
+  left: 350px;
+  transition: 0.4s;
+}
+.line-1 {
+  left: 350px;
+}
+.line-2 {
+  left: 513px;
+}
+.line-3 {
+  left: 678px;
+}
+.line-4 {
+  left: 840px;
+}
+.line-5 {
+  left: 1000px;
+}
+
 .slideContent {
   position: relative;
   width: 77%;
