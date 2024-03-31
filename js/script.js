@@ -2,6 +2,15 @@
 const tabName = ['Clients', 'Website', 'Appointments', 'Actions', 'Socials']
 
 const swiper = new Swiper(".swiper", {
+  effect: 'creative',
+  creativeEffect: {
+    prev: {
+      opacity: 0
+    },
+    next: {
+      opacity: 0
+    },
+  },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
