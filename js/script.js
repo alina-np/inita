@@ -67,4 +67,15 @@ swiper.on("slideChange", function (e) {
 //   duration: 0.3,
 //   ease: "power1.inOut",
 // });
+// gsap.from(galleryTitle.chars, {
+//   scrollTrigger: {
+//     trigger: "#about",
+//     start: "center center",
+//     // markers: true,
+//   },
+//   opacity: 0,
+//   y: -200,
+//   delay: 0.5,
+//   stagger: 0.1,
+// });
 // })
