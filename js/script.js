@@ -3,6 +3,7 @@ const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"];
 
 const swiper = new Swiper(".swiper", {
   effect: "creative",
+  grabCursor: false,
   creativeEffect: {
     prev: {
       opacity: 0,
@@ -32,6 +33,22 @@ swiper.on("slideChange", function (e) {
   line.classList.add(`line-${swiper.realIndex + 1}`);
   hand.classList = "hand";
   hand.classList.add(`hand-${swiper.realIndex + 1}`);
+});
+
+// Слайдер actions
+const swiperCard = new Swiper(".swiper2", {
+  effect: "cards",
+  grabCursor: true,
+  speed: 500,
+  loop: true,
+  rotate: true,
+  mousewheel: {
+  invert: false,
+},
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
 });
 
 

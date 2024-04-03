@@ -208,7 +208,7 @@ li {
   left: 678px;
 }
 .line-4 {
-  left: 840px;
+  left: 837px;
 }
 .line-5 {
   left: 1003px;
@@ -716,7 +716,7 @@ li {
 .card-grey {
   border: 1px solid #e6e9f0;
   border-radius: 16px;
-  padding: 16px;
+  padding: 19px 10px;
   background: #f6f8fc;
 }
 .card__info {
@@ -734,29 +734,31 @@ li {
   color: #a6a7be;
 }
 .card__borderText {
-  width: 90%;
+  width: -moz-min-content;
+  width: min-content;
+  display: flex;
   border-radius: 20px;
   background: linear-gradient(35deg, #ff8933, #9747ff);
-  border-style: dashed;
   border-color: linear-gradient(35deg, #ff8933, #9747ff);
   font-size: 10px;
   line-height: 140%;
   color: #262a5c;
+  text-wrap: nowrap;
 }
-.card__borderText > p {
-  width: 99%;
+.card__borderText > div {
+  width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 10px 15px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   gap: 10px;
   margin: 1px;
   background: #fff;
   border-radius: 20px;
 }
 .card__borderText-right {
-  justify-content: end;
+  float: right;
 }
 .card__send {
   display: flex;
@@ -764,7 +766,7 @@ li {
   justify-content: space-between;
 }
 .card__send p {
-  width: 90%;
+  width: 86%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -776,6 +778,9 @@ li {
   color: #a6a7be;
 }
 
+.card-1 .card__info {
+  margin-bottom: 150px;
+}
 .card-1 .card__info > div {
   display: flex;
   align-items: center;
@@ -797,7 +802,120 @@ li {
   text-align: center;
 }
 .card-1__mess {
-  margin-top: 160px;
+  margin-bottom: 10px;
+}
+
+.card-2 {
+  padding: 10px 10px 20px;
+}
+.card-2__info {
+  margin: 10px 0 10px;
+  padding: 0;
+  border: 1px solid #e6e9f0;
+  border-radius: 12px;
+  background: #f6f8fc;
+  overflow: hidden;
+}
+.card-2__info img {
+  width: 100%;
+  height: 190px;
+  border-radius: 12px 12px 0 0;
+}
+.card-2__info p {
+  padding: 0 10px;
+  font-size: 8px;
+  line-height: 125%;
+  letter-spacing: 0.01em;
+  color: #262a5c;
+}
+.card-2__icons {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-2__icons > div {
+  display: flex;
+}
+.card-2__icons > div svg {
+  margin-right: 5px;
+}
+.card-2 .card__borderText {
+  margin-bottom: 10px;
+}
+
+.card-3 img {
+  margin-top: 8px;
+}
+.card-3 .card__info {
+  margin-top: 5px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  line-height: 160%;
+  color: #262a5c;
+}
+.card-3 .card__info-red {
+  color: #db434b;
+}
+.card-3 .card__info-green {
+  color: #30c085;
+}
+.card-3__how {
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  color: #262a5c;
+}
+.card-3__arrow {
+  margin-left: 49%;
+}
+.card-3 .card__borderText-right {
+  margin: 35px 0 10px;
+}
+.card-3 .card__send {
+  margin-top: 5px;
+}
+
+.card-4 .card__info {
+  margin: 8px 0 58px;
+  padding: 19px 15px;
+  font-size: 13px;
+  line-height: 185%;
+  color: #262a5c;
+}
+.card-4__rate {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.card-4__rate-mr {
+  margin-right: 12px;
+}
+.card-4__author {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 12px;
+}
+.card-4 .card__borderText-width {
+  width: 100%;
+  text-wrap: wrap;
+  font-size: 11px;
+  line-height: 155%;
+}
+.card-4__iconsMess {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column;
 }
 
 .socials__inst {
