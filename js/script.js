@@ -35,47 +35,15 @@ swiper.on("slideChange", function (e) {
 });
 
 
-// swiper.on("slideChange", function (e) {
-// gsap.from(".clients .slideHead", {
-//   opacity: 0,
-//   y: -150,
-//   duration: 0.3,
-//   ease: "power1.inOut",
-// });
+// swiper.on("slideChange", (e) => startAnimation())
 
-// gsap.from(".website .slideHead", {
-//   y: 150,
-//   duration: 0.3,
-//   ease: "power1.inOut",
-// });
+// function startAnimation() {
+// //   gsap.from(".clients .slideHead", {
+// //     opacity: 0,
+// //     y: 50,
+// //     scale: 0.9,
+// //     duration: 0.7,
+// //   });
+// }
 
-// gsap.from(".appointments .slideHead", {
-//   opacity: 0,
-//   scale: 1.5,
-//   duration: 0.3,
-//   ease: "power1.inOut",
-// });
 
-// gsap.from(".actions .slideHead", {
-//   scale: 0,
-//   duration: 0.3,
-//   ease: "power1.inOut",
-// });
-
-// gsap.from(".socials .slideHead", {
-//   opacity: 0,
-//   duration: 0.3,
-//   ease: "power1.inOut",
-// });
-// gsap.from(galleryTitle.chars, {
-//   scrollTrigger: {
-//     trigger: "#about",
-//     start: "center center",
-//     // markers: true,
-//   },
-//   opacity: 0,
-//   y: -200,
-//   delay: 0.5,
-//   stagger: 0.1,
-// });
-// })

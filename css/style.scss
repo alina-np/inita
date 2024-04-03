@@ -174,6 +174,7 @@ li {
     @include flex;
     gap: 16px;
     &-bullet {
+        min-width: 146px;
         width: 146px;
         height: 40px;
         @include flex;
@@ -258,7 +259,7 @@ li {
     margin: 147px auto 0;
     display: flex;
     justify-content: space-between;
-    & h3 {
+    & .slideContent__animText h3 {
         margin-bottom: 10px;
         font-weight: 700;
         font-size: 24px;
@@ -485,56 +486,88 @@ li {
     }
 }
 
-.socials {
-    &__inst {
-        margin: -5px 0 20px;
-        padding: 0 16px 0 6px;
-        @include flex(space-between);
-        & svg {
-            width: 16px;
-            height: 16px;
+.clients {
+    &__mess {
+        margin: 0 32px 8px 43px;
+        padding: 10px 20px;
+        border: 1px solid #e6e9f0;
+        border-radius: 24px;
+        font-size: 14px;
+        line-height: 143%;
+        letter-spacing: 0.02em;
+        color: $purple;
+        &-border {
+            position: relative;
+            background: #fff;
+            border: 1px solid transparent;
+            background-clip: padding-box;
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: -1;
+                margin: -1px;
+                border-radius: 24px;
+                background: $gradient;
+            }
         }
-        & > p {
-            padding: 0px 11px;
-            border: 0.71px solid #cacad9;
-            border-radius: 71px;
+        &-left {
+            margin-left: 30px;
+        }
+        &-top {
+            margin-top: 97px;
+        }
+        &-topSmall {
+            margin-top: 35px;
+        }
+        &-topHalf {
+            margin-top: 55px;
+        }
+        &-grey {
+            margin: 1px 33px 8px 39px;
+            background: #e9e9f5;
+            font-size: 10px;
+            line-height: 140%;
+            color: #646685;
+        }
+        &-bigText {
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 143%;
+            letter-spacing: 0.02em;
             color: $purple;
-            font-size: 11px;
         }
     }
-    &__gallery {
-        margin-bottom: 20px;
-        padding: 0 5px;
-        display: flex;
-        gap: 2px;
-        flex-wrap: wrap;
-        & img {
-            width: 82px;
-            height: 82px;
-            border-radius: 6px;
-        }
+    &__book {
+        width: 79px;
+        height: 22px;
+        border: 1px solid #cacad9;
+        border-radius: 8px;
+        padding: 4px 8px;
+        font-size: 10px;
+        line-height: 140%;
+        color: #262a5c;
+    }
+    &__ai {
+        margin: -12px 10px 20px;
+        @include flex(end);
+        align-items: end;
+        gap: 10px;
+        color: $dark;
+        font-size: 12px;
     }
     &__info {
-        margin-bottom: 24px;
-        padding: 0 15px;
+        margin: -10px 20px;
         @include flex(space-between);
-        font-weight: 400;
-        font-size: 8px;
-        line-height: 133%;
+        gap: 10px;
+        font-size: 12px;
+        line-height: 167%;
+        letter-spacing: 0.02em;
+        text-align: right;
         color: $light-purple;
-        & p:first-of-type {
-            font-weight: 500;
-            font-size: 11px;
-            line-height: 150%;
-            color: $purple;
-        }
-        & > div {
-            width: 82%;
-        }
-        & svg {
-            width: 13px;
-            height: 13px;
-        }
     }
 }
 
@@ -637,6 +670,172 @@ li {
         font-size: 10px;
         line-height: 133%;
         color: $white;
+    }
+}
+
+.actions {
+    & .mobileContent {
+        background: transparent;
+    }
+    & .mobuleBar {
+        color: $white;
+    }
+    & .iconMenu {
+        backdrop-filter: blur(5px);
+        background: rgba(255, 255, 255, 0.24);
+        & path {
+            fill: $white;
+        }
+        & .actionsIcon:before {
+            background: $white;
+        }
+    }
+}
+
+.card {
+    margin: 20px 10px 10px 10px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px;
+    &__title {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 160%;
+        text-align: center;
+        color: $purple;
+    }
+    &-grey {
+        border: 1px solid #e6e9f0;
+        border-radius: 16px;
+        padding: 16px;
+        background: #f6f8fc;
+    }
+    &__info {
+        font-size: 14px;
+        line-height: 150%;
+        color: $purple;
+        &-black {
+            font-size: 10px;
+            line-height: 160%;
+        }
+        &-grey {
+            font-size: 10px;
+            line-height: 160%;
+            color: #a6a7be;
+        }
+    }
+    &__borderText {
+        width: 90%;
+        border-radius: 20px;
+        background: $gradient;
+        border-style: dashed;
+        border-color: $gradient;
+        font-size: 10px;
+        line-height: 140%;
+        color: $purple;
+        & > p {
+            width: 99%;
+            height: 100%;
+            padding: 20px;
+            @include flex(space-between);
+            gap: 10px;
+            margin: 1px;
+            background: $white;
+        border-radius: 20px;
+        }
+        &-right {
+            justify-content: end;
+        }
+    }
+    &__send {
+        @include flex(space-between);
+        & p {
+            width: 90%;
+            @include flex(space-between);
+            border: 1px solid #cacad9;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-size: 11px;
+            line-height: 155%;
+            color: #a6a7be;
+        }
+    }
+}
+
+.card-1 {
+    & .card__info {
+        & > div {
+            @include flex(start);
+            gap: 10px;
+        }
+        &-circle {
+            width: 30px;
+            height: 30px;
+            @include flex;
+            background-color: #e9e9f5;
+            border-radius: 50%;
+            color: $purple;
+            font-weight: 600;
+            font-size: 10px;
+            line-height: 160%;
+            text-align: center;
+        }
+    }
+    &__mess {
+        margin-top: 160px;
+    }
+}
+
+.socials {
+    &__inst {
+        margin: -5px 0 20px;
+        padding: 0 16px 0 6px;
+        @include flex(space-between);
+        & svg {
+            width: 16px;
+            height: 16px;
+        }
+        & > p {
+            padding: 0px 11px;
+            border: 0.71px solid #cacad9;
+            border-radius: 71px;
+            color: $purple;
+            font-size: 11px;
+        }
+    }
+    &__gallery {
+        margin-bottom: 20px;
+        padding: 0 5px;
+        display: flex;
+        gap: 2px;
+        flex-wrap: wrap;
+        & img {
+            width: 82px;
+            height: 82px;
+            border-radius: 6px;
+        }
+    }
+    &__info {
+        margin-bottom: 24px;
+        padding: 0 15px;
+        @include flex(space-between);
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 133%;
+        color: $light-purple;
+        & p:first-of-type {
+            font-weight: 500;
+            font-size: 11px;
+            line-height: 150%;
+            color: $purple;
+        }
+        & > div {
+            width: 82%;
+        }
+        & svg {
+            width: 13px;
+            height: 13px;
+        }
     }
 }
 
