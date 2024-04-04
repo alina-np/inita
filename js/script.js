@@ -1,6 +1,9 @@
 // Слайдер
-const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"];
+const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
+  line = document.querySelector(".line"),
+  hand = document.querySelector(".hand");
 
+// Слайдер
 const swiper = new Swiper(".swiper", {
   effect: "creative",
   grabCursor: false,
@@ -23,44 +26,118 @@ const swiper = new Swiper(".swiper", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  breakpoints: {
+    768: {
+      navigation: false,
+    },
+  }
 });
-
-const line = document.querySelector(".line"),
-  hand = document.querySelector(".hand");
 
 swiper.on("slideChange", function (e) {
+  if (swiper.realIndex === 0) startAnimationClients();
+  if (swiper.realIndex === 3) startAnimationActions();
+  changeStyleSwiper(swiper.realIndex);
+});
+
+// Изменения цвета вокруг телефона и движение селектора под кнопками
+function changeStyleSwiper(num) {
   line.classList = "line";
-  line.classList.add(`line-${swiper.realIndex + 1}`);
+  line.classList.add(`line-${num + 1}`);
   hand.classList = "hand";
-  hand.classList.add(`hand-${swiper.realIndex + 1}`);
-});
+  hand.classList.add(`hand-${num + 1}`);
+}
 
-// Слайдер actions
-const swiperCard = new Swiper(".swiper2", {
-  effect: "cards",
-  grabCursor: true,
-  speed: 500,
-  loop: true,
-  rotate: true,
-  mousewheel: {
-  invert: false,
-},
-  autoplay: {
-    delay: 1000,
-    disableOnInteraction: false,
-  },
-});
+// Анимация в слайдере
+function startAnimationActions() {
+  const tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.7 });
+  tlAction
+    .to(".card-1", {
+      transformOrigin: "center",
+      x: -300,
+      y: 30,
+      rotate: -10,
+      duration: 0.2,
+      delay: 4,
+    })
+    .to(".card-1 .card-bg", {
+      opacity: 1,
+      duration: 0.4,
+    })
+    .fromTo(
+      ".card-2",
+      { scale: 0.85, y: -45, delay: 3 },
+      {
+        scale: 1,
+        y: 0,
+        duration: 0.1,
+      }
+    )
+    .to(".card-2 .card-bg", {
+      opacity: 1,
+      duration: 0.5,
+      delay: 1,
+    })
+    .to(".card-2", {
+      transformOrigin: "center",
+      x: 300,
+      y: 30,
+      rotate: 10,
+      duration: 0.2,
+      delay: 4,
+    })
+    .fromTo(
+      ".card-3",
+      { scale: 0.85, y: -45 },
+      {
+        scale: 1,
+        y: 0,
+        duration: 0.1,
+        delay: 0.5,
+      }
+    )
+    .to(".card-3 .card-bg", {
+      opacity: 1,
+      duration: 0.5,
+      delay: 1,
+    })
+    .to(".card-3", {
+      transformOrigin: "center",
+      x: 300,
+      y: 30,
+      rotate: 10,
+      duration: 0.2,
+      delay: 4,
+    })
+    .fromTo(
+      ".card-4",
+      { scale: 0.85, y: -45, delay: 3 },
+      {
+        scale: 1,
+        y: 0,
+        duration: 0.1,
+        delay: 0.5,
+      }
+    )
+    .to(".card-4 .card-bg", {
+      opacity: 1,
+      duration: 0.5,
+      delay: 1,
+    })
+    .to(".card-4", {
+      transformOrigin: "center",
+      x: 300,
+      y: 30,
+      rotate: 10,
+      duration: 0.2,
+      delay: 4,
+    })
+    .to(".card-5", {
+      scale: 1,
+      y: 0,
+    });
+}
 
+function startAnimationClients() {
+  const tlClients = gsap.timeline({ repeat: -1, repeatDelay: 0.7 });
 
-// swiper.on("slideChange", (e) => startAnimation())
-
-// function startAnimation() {
-// //   gsap.from(".clients .slideHead", {
-// //     opacity: 0,
-// //     y: 50,
-// //     scale: 0.9,
-// //     duration: 0.7,
-// //   });
-// }
-
-
+}

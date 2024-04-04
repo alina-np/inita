@@ -317,9 +317,6 @@ li {
   gap: 13px;
   margin-left: 25px;
 }
-.join span {
-  color: #fff;
-}
 .join form {
   position: relative;
 }
@@ -351,7 +348,7 @@ li {
   color: #30c085;
   cursor: pointer;
 }
-.join__btn span {
+.join__btn-greyText {
   color: #b0b2c2;
 }
 
@@ -363,6 +360,8 @@ li {
 
 .input {
   -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   font-family: "Vela Sans", sans-serif;
   font-size: 16px;
   line-height: 150%;
@@ -701,10 +700,18 @@ li {
 }
 
 .card {
+  position: absolute;
+  width: 250px;
+  height: 455px;
   margin: 20px 10px 10px 10px;
   padding: 20px;
   background: #fff;
   border-radius: 20px;
+  transition: 0.5s;
+}
+.card-bg {
+  background: #fff;
+  opacity: 0;
 }
 .card__title {
   font-weight: 600;
@@ -734,8 +741,8 @@ li {
   color: #a6a7be;
 }
 .card__borderText {
-  width: -moz-min-content;
-  width: min-content;
+  width: 100%;
+  max-width: 160px;
   display: flex;
   border-radius: 20px;
   background: linear-gradient(35deg, #ff8933, #9747ff);
@@ -743,7 +750,6 @@ li {
   font-size: 10px;
   line-height: 140%;
   color: #262a5c;
-  text-wrap: nowrap;
 }
 .card__borderText > div {
   width: 100%;
@@ -778,8 +784,11 @@ li {
   color: #a6a7be;
 }
 
+.card-1 {
+  z-index: 1;
+}
 .card-1 .card__info {
-  margin-bottom: 150px;
+  margin-bottom: 135px;
 }
 .card-1 .card__info > div {
   display: flex;
@@ -804,12 +813,16 @@ li {
 .card-1__mess {
   margin-bottom: 10px;
 }
+.card-1 .card-bg {
+  opacity: 1;
+}
 
 .card-2 {
+  z-index: -1;
   padding: 10px 10px 20px;
 }
 .card-2__info {
-  margin: 10px 0 10px;
+  margin: 10px 0 15px;
   padding: 0;
   border: 1px solid #e6e9f0;
   border-radius: 12px;
@@ -844,8 +857,11 @@ li {
   margin-bottom: 10px;
 }
 
+.card-3 {
+  z-index: -2;
+}
 .card-3 img {
-  margin-top: 8px;
+  width: 100%;
 }
 .card-3 .card__info {
   margin-top: 5px;
@@ -874,14 +890,17 @@ li {
   margin-left: 49%;
 }
 .card-3 .card__borderText-right {
-  margin: 35px 0 10px;
+  margin: 25px 0 10px;
 }
 .card-3 .card__send {
-  margin-top: 5px;
+  margin-top: 8px;
 }
 
+.card-4 {
+  z-index: -3;
+}
 .card-4 .card__info {
-  margin: 8px 0 58px;
+  margin: 8px 0 30px;
   padding: 19px 15px;
   font-size: 13px;
   line-height: 185%;
@@ -904,7 +923,7 @@ li {
   gap: 12px;
 }
 .card-4 .card__borderText-width {
-  width: 100%;
+  min-width: 100%;
   text-wrap: wrap;
   font-size: 11px;
   line-height: 155%;
@@ -916,6 +935,14 @@ li {
   justify-content: center;
   gap: 20px;
   flex-direction: column;
+}
+.card-4 .card__send {
+  margin-top: 18px;
+}
+
+.card-5 {
+  transform: scale(0.85) translateY(-45px);
+  z-index: -5;
 }
 
 .socials__inst {
@@ -1114,21 +1141,42 @@ li {
   transition: 0.7s;
 }
 
-@media (min-width: 768px) and (max-width: 1368px) {
+@media (max-width: 1368px) {
   .container {
     padding: 0 20px;
   }
+  .swiper {
+    overflow: visible;
+  }
   .swiper.container {
     max-width: 766px;
+    padding-bottom: 125px;
+  }
+  .slideContent {
+    width: 100%;
+    display: grid;
+    grid-template-areas: "middle middle" "left right";
+  }
+  .slideContent__left {
+    grid-area: left;
+    margin: 180px 0 0;
+  }
+  .slideContent__middle {
+    grid-area: middle;
+    margin: 0 auto;
+  }
+  .slideContent__right {
+    grid-area: right;
+    margin: 180px 0 0;
   }
   .line {
-    left: 62px;
+    left: 75px;
   }
   .line-1 {
-    left: 62px;
+    left: 75px;
   }
   .line-2 {
-    left: 219px;
+    left: 227px;
   }
   .line-3 {
     left: 375px;
@@ -1137,6 +1185,154 @@ li {
     left: 530px;
   }
   .line-5 {
-    left: 690px;
+    left: 679px;
+  }
+  .slideHead .title {
+    font-size: 36px;
+  }
+  .slideHead .desc {
+    margin-top: 10px;
+    font-size: 19px;
+  }
+  .hand {
+    left: 22.9%;
+    bottom: -19.5%;
+  }
+  .hand::before {
+    width: 50vw;
+    top: -13%;
+    left: -17%;
+  }
+  .gradient {
+    bottom: 25%;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: var(--swiper-navigation-top-offset, 40%);
+  }
+  .swiper-pagination {
+    left: 0px;
+  }
+  .swiper-pagination-bullet {
+    min-width: 135px;
+    width: 135px;
+  }
+  .join {
+    margin: 0;
+  }
+  .footer {
+    margin: 10px auto 100px;
+  }
+}
+@media (max-width: 767px) {
+  .swiper.container {
+    padding-bottom: 80px;
+  }
+  .hand {
+    background: none;
+  }
+  .hand:before {
+    width: 100vw;
+    height: 75vh;
+    top: -5%;
+    left: -15%;
+  }
+  .line,
+  .header__btnJoin {
+    display: none;
+  }
+  .header__text {
+    width: 178px;
+    height: 24px;
+    position: absolute;
+    top: 83px;
+    left: 31px;
+    font-size: 10px;
+    line-height: 120%;
+  }
+  .header__btnLang {
+    width: 36px;
+    height: 36px;
+  }
+  .header__logo {
+    transform: scale(0.75);
+  }
+  .slideContent {
+    margin: 160px auto 0;
+    grid-template-areas: "middle" "left" "right";
+    justify-content: center;
+  }
+  .slideContent::before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 12px;
+    left: 23px;
+    background: url(./img/hand-mobile.png) no-repeat;
+  }
+  .slideContent__left,
+  .slideContent__right {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 157%;
+    letter-spacing: 0.01em;
+  }
+  .slideContent__left {
+    margin: 48px 0;
+  }
+  .slideHead .title {
+    font-size: 25px;
+  }
+  .slideHead .desc {
+    font-size: 14px;
+  }
+  .swiper-pagination {
+    top: 190px;
+  }
+  .swiper-pagination-bullet {
+    width: 144px;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+  .join {
+    flex-direction: column;
+  }
+  .join > span {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 117%;
+    text-align: center;
+    color: #fff;
+  }
+  .join__input {
+    width: 335px;
+    height: 48px;
+  }
+  .join__btn {
+    position: static;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px auto;
+  }
+  .join__btn-green {
+    display: inline-block;
+    height: 40px;
+    padding: 9px 32px;
+    border-radius: 100px;
+    background: rgba(48, 192, 133, 0.2);
+    font-size: 14px;
+    line-height: 157%;
+  }
+  .join__btn-greyText {
+    text-wrap: nowrap;
   }
 }/*# sourceMappingURL=style.css.map */
