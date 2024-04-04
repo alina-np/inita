@@ -463,6 +463,7 @@ li {
   align-items: center;
   justify-content: space-between;
   padding: 0 15px;
+  border-radius: 0 0 30px 30px;
 }
 .iconMenu .active {
   position: relative;
@@ -711,7 +712,6 @@ li {
 }
 .card-bg {
   background: #fff;
-  opacity: 0;
 }
 .card__title {
   font-weight: 600;
@@ -746,7 +746,8 @@ li {
   display: flex;
   border-radius: 20px;
   background: linear-gradient(35deg, #ff8933, #9747ff);
-  border-color: linear-gradient(35deg, #ff8933, #9747ff);
+  border: 2px dotted #fff;
+  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(35deg, #ff8933, #9747ff) border-box;
   font-size: 10px;
   line-height: 140%;
   color: #262a5c;
@@ -784,9 +785,6 @@ li {
   color: #a6a7be;
 }
 
-.card-1 {
-  z-index: 1;
-}
 .card-1 .card__info {
   margin-bottom: 135px;
 }
@@ -812,9 +810,6 @@ li {
 }
 .card-1__mess {
   margin-bottom: 10px;
-}
-.card-1 .card-bg {
-  opacity: 1;
 }
 
 .card-2 {
@@ -938,11 +933,6 @@ li {
 }
 .card-4 .card__send {
   margin-top: 18px;
-}
-
-.card-5 {
-  transform: scale(0.85) translateY(-45px);
-  z-index: -5;
 }
 
 .socials__inst {
@@ -1230,12 +1220,13 @@ li {
   }
   .hand {
     background: none;
+    left: 0;
   }
   .hand:before {
     width: 100vw;
     height: 75vh;
     top: -5%;
-    left: -15%;
+    left: 0;
   }
   .line,
   .header__btnJoin {
@@ -1246,7 +1237,7 @@ li {
     height: 24px;
     position: absolute;
     top: 83px;
-    left: 31px;
+    left: calc(50vw - 178px);
     font-size: 10px;
     line-height: 120%;
   }
@@ -1262,16 +1253,6 @@ li {
     grid-template-areas: "middle" "left" "right";
     justify-content: center;
   }
-  .slideContent::before {
-    content: "";
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    bottom: 12px;
-    left: 23px;
-    background: url(./img/hand-mobile.png) no-repeat;
-  }
   .slideContent__left,
   .slideContent__right {
     width: 100%;
@@ -1280,6 +1261,19 @@ li {
     font-size: 14px;
     line-height: 157%;
     letter-spacing: 0.01em;
+  }
+  .mobileContent {
+    overflow: visible;
+  }
+  .mobileContent::before {
+    content: "";
+    display: inline-block;
+    width: 290px;
+    height: 600px;
+    position: absolute;
+    bottom: -14px;
+    left: -11px;
+    background: url(./img/hand-mobile.png) no-repeat;
   }
   .slideContent__left {
     margin: 48px 0;
@@ -1299,6 +1293,14 @@ li {
   .swiper-button-next,
   .swiper-button-prev {
     display: none;
+  }
+  .socialsList {
+    justify-content: center;
+  }
+  .appointments__infografika svg {
+    width: 100%;
+    left: 0;
+    top: 130px;
   }
   .join {
     flex-direction: column;
