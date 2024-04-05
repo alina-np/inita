@@ -50,127 +50,127 @@ function changeStyleSwiper(num) {
 // Анимация в слайдере
 function startAnimationActions() {
   const tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.7 });
-  // tlAction
-  //   .fromTo(
-  //     ".card-1",
-  //     { scale: 0.85, y: -45 },
-  //     {
-  //       scale: 1,
-  //       y: 0,
-  //       duration: 0.1,
-  //     }
-  //   )
-  //   .to(".card-1 .card-bg", {
-  //     opacity: 1,
-  //     duration: 0.4,
-  //     delay: 0.5,
-  //   })
-  //   .to(".card-1", {
-  //     opacity: 0,
-  //     transformOrigin: "center",
-  //     x: -1300,
-  //     y: 30,
-  //     rotate: -40,
-  //     duration: 0.3,
-  //     delay: 3,
-  //   })
-  //   .to(".card-1", {
-  //     scale: 0.85,
-  //     y: -45,
-  //     x: 0,
-  //     rotate: 0,
-  //     zIndex: -13,
-  //   })
-  //   .fromTo(
-  //     ".card-2",
-  //     { scale: 0.85, y: -45 },
-  //     {
-  //       scale: 1,
-  //       y: 0,
-  //       duration: 0.1,
-  //     }
-  //   )
-  //   .to(".card-2 .card-bg", {
-  //     opacity: 1,
-  //     duration: 0.5,
-  //     delay: 1,
-  //   })
-  //   .to(".card-2", {
-  //     opacity: 0,
-  //     transformOrigin: "center",
-  //     x: 1300,
-  //     y: 30,
-  //     rotate: 40,
-  //     duration: 0.3,
-  //     delay: 3,
-  //   })
-  //   .to(".card-2", {
-  //     scale: 0.85,
-  //     y: -45,
-  //     x: 0,
-  //     rotate: 0,
-  //     zIndex: -13,
-  //   })
-  //   .fromTo(
-  //     ".card-3",
-  //     { scale: 0.85, y: -45 },
-  //     {
-  //       scale: 1,
-  //       y: 0,
-  //       duration: 0.1,
-  //     }
-  //   )
-  //   .to(".card-3 .card-bg", {
-  //     opacity: 1,
-  //     duration: 0.5,
-  //     delay: 1,
-  //   })
-  //   .to(".card-3", {
-  //     opacity: 0,
-  //     transformOrigin: "center",
-  //     x: 1300,
-  //     y: 30,
-  //     rotate: 40,
-  //     duration: 0.3,
-  //     delay: 3,
-  //   })
-  //   .to(".card-3", {
-  //     scale: 0.85,
-  //     y: -45,
-  //     x: 0,
-  //     rotate: 0,
-  //     zIndex: -13,
-  //   })
-  //   .fromTo(
-  //     ".card-4",
-  //     { scale: 0.85, y: -45 },
-  //     {
-  //       scale: 1,
-  //       y: 0,
-  //       duration: 0.1,
-  //     }
-  //   )
-  //   .to(".card-4 .card-bg", {
-  //     opacity: 1,
-  //     duration: 0.5,
-  //     delay: 1,
-  //   })
-  //   .to(".card-4", {
-  //     opacity: 0,
-  //     transformOrigin: "center",
-  //     x: 1300,
-  //     y: 30,
-  //     rotate: 40,
-  //     duration: 0.3,
-  //     delay: 3,
-  //   })
-  //   .to(".card-4", {
-  //     scale: 0.85,
-  //     y: -45,
-  //     x: 0,
-  //     rotate: 0,
-  //     zIndex: -13,
-  //   });
+  tlAction
+    .fromTo(
+      ".actioncard-1",
+      { scale: 0.85, y: -45 },
+      {
+        scale: 1,
+        y: 0,
+        duration: 0.1,
+      }
+    )
+    .to(".actioncard-1 .actioncard-bg", {
+      opacity: 1,
+      duration: 0.4,
+      delay: 0.5,
+    })
+    .to(".actioncard-1", {
+      opacity: 0,
+      transformOrigin: "center",
+      x: -1300,
+      y: 30,
+      rotate: -40,
+      duration: 0.3,
+      delay: 3,
+    })
+    .to(".actioncard-1", {
+      scale: 0.85,
+      y: -45,
+      x: 0,
+      rotate: 0,
+      zIndex: -13,
+    })
+    .fromTo(
+      ".actioncard-2",
+      { scale: 0.85, y: -45 },
+      {
+        scale: 1,
+        y: 0,
+        duration: 0.1,
+      }
+    )
+    .to(".actioncard-2 .actioncard-bg", {
+      opacity: 1,
+      duration: 0.5,
+      delay: 1,
+    })
+    .to(".actioncard-2", {
+      opacity: 0,
+      transformOrigin: "center",
+      x: 1300,
+      y: 30,
+      rotate: 40,
+      duration: 0.3,
+      delay: 3,
+    })
+    .to(".actioncard-2", {
+      scale: 0.85,
+      y: -45,
+      x: 0,
+      rotate: 0,
+      zIndex: -13,
+    })
+    .fromTo(
+      ".actioncard-3",
+      { scale: 0.85, y: -45 },
+      {
+        scale: 1,
+        y: 0,
+        duration: 0.1,
+      }
+    )
+    .to(".actioncard-3 .actioncard-bg", {
+      opacity: 1,
+      duration: 0.5,
+      delay: 1,
+    })
+    .to(".actioncard-3", {
+      opacity: 0,
+      transformOrigin: "center",
+      x: 1300,
+      y: 30,
+      rotate: 40,
+      duration: 0.3,
+      delay: 3,
+    })
+    .to(".actioncard-3", {
+      scale: 0.85,
+      y: -45,
+      x: 0,
+      rotate: 0,
+      zIndex: -13,
+    })
+    .fromTo(
+      ".actioncard-4",
+      { scale: 0.85, y: -45 },
+      {
+        scale: 1,
+        y: 0,
+        duration: 0.1,
+      }
+    )
+    .to(".actioncard-4 .actioncard-bg", {
+      opacity: 1,
+      duration: 0.5,
+      delay: 1,
+    })
+    .to(".actioncard-4", {
+      opacity: 0,
+      transformOrigin: "center",
+      x: 1300,
+      y: 30,
+      rotate: 40,
+      duration: 0.3,
+      delay: 3,
+    })
+    .to(".actioncard-4", {
+      scale: 0.85,
+      y: -45,
+      x: 0,
+      rotate: 0,
+      zIndex: -13,
+    });
 }
 
 function startAnimationClients() {
