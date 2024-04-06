@@ -1,10 +1,9 @@
-// Слайдер
+// Слайдеры
 const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   line = document.querySelector(".line"),
   hand = document.querySelector(".hand");
 
-// Слайдер
-const swiper = new Swiper(".swiper", {
+const swiper = new Swiper(".swiperMain", {
   effect: "creative",
   grabCursor: false,
   creativeEffect: {
@@ -35,8 +34,33 @@ const swiper = new Swiper(".swiper", {
 
 swiper.on("slideChange", function (e) {
   if (swiper.realIndex === 0) startAnimationClients();
+  if (swiper.realIndex === 2) startAnimationAppointments();
   if (swiper.realIndex === 3) startAnimationActions();
   changeStyleSwiper(swiper.realIndex);
+});
+
+const cardBg = document.querySelector(".website__cards");
+
+const swiper2 = new Swiper(".swiperWebsite", {
+  pagination: {
+    el: ".website__pagination",
+    clickable: false,
+  },
+  loop: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  on: {
+    init: function () {
+      cardBg.classList.remove("websitex__cards-bg");
+    },
+  },
+});
+
+swiper2.on("slideChange", function (e) {
+  if (swiper2.realIndex !== 0) cardBg.classList.add("website__cards-bg");
+  else cardBg.classList.remove("website__cards-bg");
 });
 
 // Изменения цвета вокруг телефона и движение селектора под кнопками
@@ -48,8 +72,71 @@ function changeStyleSwiper(num) {
 }
 
 // Анимация в слайдере
+function startAnimationAppointments() {
+  const tlAppointments = gsap.timeline({ repeat: 0 });
+  tlAppointments
+    .fromTo(
+      ".appointments__icons div",
+      {
+        y: 30,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+      }
+    )
+    .fromTo(
+      ".appointments__cliensList",
+      {
+        y: -30,
+      },
+      {
+        opacity: 1,
+        y: 0,
+      }
+    )
+    .to(".appointments__infografika-border", {
+      opacity: 1,
+    })
+    .to(".appointments__infografika svg", {
+      opacity: 1,
+    })
+    .fromTo(
+      ".appointments__infografika-big",
+      {
+        x: 30,
+      },
+      {
+        opacity: 1,
+        x: 0,
+      }
+    )
+    .fromTo(
+      ".appointments__infografika-small",
+      {
+        x: -30,
+      },
+      {
+        opacity: 1,
+        x: 0,
+      }
+    )
+    .fromTo(
+      ".appointments__bookings",
+      {
+        y: 30,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+      }
+    );
+}
+
 function startAnimationActions() {
-  const tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.7 });
+  const tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.1 });
   tlAction
     .fromTo(
       ".actioncard-1",

@@ -146,7 +146,7 @@ li {
   padding-bottom: 192px;
 }
 
-.swiper-pagination {
+.swiperMain__pagination.swiper-pagination {
   width: 100%;
   top: 196px;
   margin: 0 auto;
@@ -155,7 +155,7 @@ li {
   justify-content: center;
   gap: 16px;
 }
-.swiper-pagination-bullet {
+.swiperMain__pagination.swiper-pagination .swiper-pagination-bullet {
   min-width: 146px;
   width: 146px;
   height: 40px;
@@ -170,13 +170,13 @@ li {
   transition: 0.4s;
   cursor: pointer;
 }
-.swiper-pagination-bullet-active {
+.swiperMain__pagination.swiper-pagination .swiper-pagination-bullet-active {
   position: relative;
   background: linear-gradient(35deg, #ff8933, #9747ff);
   box-shadow: 0 0 24px -10px #fff;
   border: 1px solid transparent;
 }
-.swiper-pagination-bullet-active p {
+.swiperMain__pagination.swiper-pagination .swiper-pagination-bullet-active p {
   width: 100%;
   height: 100%;
   display: flex;
@@ -185,7 +185,7 @@ li {
   background-color: #070920;
   border-radius: 20px;
 }
-.swiper-pagination-bullet-active span {
+.swiperMain__pagination.swiper-pagination .swiper-pagination-bullet-active span {
   background-image: linear-gradient(35deg, #ff8933, #9747ff);
   background-clip: text;
   -webkit-background-clip: text;
@@ -202,7 +202,7 @@ li {
   left: 350px;
 }
 .line-2 {
-  left: 513px;
+  left: 519px;
 }
 .line-3 {
   left: 678px;
@@ -266,7 +266,7 @@ li {
 
 .appointments .desc,
 .website .desc {
-  margin: 0;
+  margin: -6px;
 }
 
 .hand {
@@ -459,6 +459,7 @@ li {
   width: 100%;
   position: absolute;
   bottom: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -592,17 +593,20 @@ li {
   letter-spacing: -0.02em;
   color: #fff;
 }
+.website .iconMenu__href > div svg {
+  margin-right: 5px;
+}
 .website .iconMenu__btns {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 0px 7px;
+  padding: 5px 0px 15px;
 }
 .website .mobuleBar {
   width: 100%;
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   color: #fff;
 }
 .website .mobuleBar path {
@@ -624,12 +628,50 @@ li {
   width: 100%;
   background: url(./img/website-bg.jpg);
 }
+.website__cards-bg {
+  position: absolute;
+}
+.website__cards-bg::before {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 30px 30px 0 0;
+}
+.website__pagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+  position: absolute;
+  top: 32px;
+  left: 20px;
+}
+.website__pagination span {
+  display: inline-block;
+  width: 43px;
+  height: 3px;
+  background: #fff;
+  opacity: 0.25;
+  transition: 0.5s;
+}
+.website__pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+}
 
 .websitecard {
   position: relative;
   z-index: 0;
   padding: 60px 13px 0;
   color: #fff;
+  transition: 0.7s;
 }
 .websitecard__title {
   font-weight: 600;
@@ -654,6 +696,7 @@ li {
   position: absolute;
   left: 0;
   top: 0;
+  border-radius: 30px 30px 0 0;
 }
 .websitecard__list {
   margin-top: 15px;
@@ -676,7 +719,6 @@ li {
 }
 
 .websitecard-1__info {
-  margin-top: 60px;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -808,9 +850,11 @@ li {
   opacity: 0.5;
 }
 
-.websitecard-5 {
-  height: 480px;
-  overflow-y: scroll;
+.websitecard-5.swiper-slide-active {
+  transform: translateY(-360px);
+  transition: 0.5s;
+  transition-delay: 1s;
+  transition-duration: 1s;
 }
 .websitecard-5 img {
   margin-top: 18px;
@@ -819,7 +863,7 @@ li {
 .websitecard-5__adress {
   margin-bottom: 20px;
   font-size: 12px;
-  line-height: 150%;
+  line-height: 175%;
 }
 .websitecard-5__title {
   font-weight: 600;
@@ -850,6 +894,7 @@ li {
   border: 0;
   font-size: 12px;
   line-height: 133%;
+  resize: none;
 }
 .websitecard-5 button {
   width: 100%;
@@ -977,6 +1022,10 @@ li {
   font-size: 10px;
   line-height: 133%;
   color: #fff;
+}
+
+.appointments__cliensList, .appointments__infografika > p, .appointments__infografika > svg, .appointments__icons div, .appointments__bookings {
+  opacity: 0;
 }
 
 .actions .mobileContent {
@@ -1231,6 +1280,11 @@ li {
 }
 .actioncard-4 .actioncard__send {
   margin-top: 18px;
+}
+
+.actioncard-5 {
+  transform: scale(0.85) translateY(-45px);
+  z-index: -10;
 }
 
 .socials__inst {
@@ -1498,10 +1552,10 @@ li {
   .swiper-button-prev {
     top: var(--swiper-navigation-top-offset, 40%);
   }
-  .swiper-pagination {
+  .swiperMain__pagination {
     left: 0px;
   }
-  .swiper-pagination-bullet {
+  .swiperMain__pagination span {
     min-width: 135px;
     width: 135px;
   }
@@ -1527,8 +1581,12 @@ li {
     left: 0;
   }
   .line,
-  .header__btnJoin {
+  .header__btnJoin,
+  .gradient {
     display: none;
+  }
+  .header {
+    position: absolute;
   }
   .header__text {
     width: 178px;
@@ -1573,6 +1631,11 @@ li {
     left: -11px;
     background: url(./img/hand-mobile.png) no-repeat;
   }
+  .mobileContent-overflow {
+    position: relative;
+    height: 575px;
+    overflow: hidden;
+  }
   .slideContent__left {
     margin: 48px 0;
   }
@@ -1582,10 +1645,10 @@ li {
   .slideHead .desc {
     font-size: 14px;
   }
-  .swiper-pagination {
+  .swiperMain__pagination {
     top: 190px;
   }
-  .swiper-pagination-bullet {
+  .swiperMain__pagination-bullet {
     width: 144px;
   }
   .swiper-button-next,
