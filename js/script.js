@@ -30,10 +30,12 @@ const swiper = new Swiper(".swiperMain", {
       navigation: false,
     },
   },
+  on: {
+    init: startAnimationClients(),
+  },
 });
 
 swiper.on("slideChange", function (e) {
-  if (swiper.realIndex === 0) startAnimationClients();
   if (swiper.realIndex === 2) startAnimationAppointments();
   if (swiper.realIndex === 3) startAnimationActions();
   changeStyleSwiper(swiper.realIndex);
@@ -261,5 +263,112 @@ function startAnimationActions() {
 }
 
 function startAnimationClients() {
-  const tlClients = gsap.timeline({ repeat: -1, repeatDelay: 0.7 });
+  const tlClients = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+  tlClients
+    .fromTo(
+      ".clients__oneMess",
+      {
+        y: 320,
+      },
+      {
+        y: 305,
+        opacity: 1,
+        delay: 0.5,
+      }
+    )
+    .to(".clients__oneMess", {
+      y: 120,
+      delay: 1,
+    })
+    .fromTo(
+      ".clients__twoMess",
+      {
+        y: 125,
+      },
+      {
+        y: 120,
+        opacity: 1,
+      }
+    )
+    .to(".clients__oneMess", {
+      y: 20,
+      delay: 1,
+    })
+    .to(".clients__twoMess p", {
+      y: -115,
+      background: "white",
+      delay: -0.5,
+    })
+    .fromTo(
+      ".clients__threeMess",
+      {
+        y: -40,
+      },
+      {
+        y: -35,
+        opacity: 1,
+      }
+    )
+    .to(".clients__oneMess", {
+      y: 320,
+      opacity: 0,
+      delay: 1,
+    })
+    .to(".clients__threeMess", {
+      y: 100,
+      opacity: 0,
+      delay: -0.5,
+    })
+    .to(".clients__twoMess p", {
+      y: -5,
+      opacity: 0,
+      delay: -0.5,
+    })
+    .fromTo(
+      ".clients__fourMess",
+      {
+        y: -257,
+      },
+      {
+        y: -257,
+        opacity: 1,
+      }
+    )
+    .to(".clients__fourMess", {
+      y: -350,
+      background: "white",
+      delay: 1,
+    })
+    .fromTo(
+      ".clients__fiveMess",
+      {
+        y: -350,
+      },
+      {
+        y: -345,
+        opacity: 1,
+      }
+    )
+    .to(".clients__fourMess", {
+      y: -470,
+      delay: 1,
+    })
+    .to(".clients__fiveMess", {
+      y: -480,
+      delay: -0.5,
+    })
+    .to(".clients__ai", {
+      y: -140,
+      delay: -0.5,
+    })
+    .fromTo(
+      ".clients__lastMess",
+      {
+        y: -455,
+      },
+      {
+        y: -450,
+        opacity: 1,
+      }
+    );
 }
