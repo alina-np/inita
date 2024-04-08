@@ -32,32 +32,34 @@ const swiper = new Swiper(".swiperMain", {
 });
 
 swiper.on("slideChange", function (e) {
+  if (swiper.realIndex === 1) starWebsiteSlider();
   if (swiper.realIndex === 2) startAnimationAppointments();
   if (swiper.realIndex === 3) startAnimationActions();
   changeStyleSwiper(swiper.realIndex);
 });
 
-const swiper2 = new Swiper(".swiperWebsite", {
-  pagination: {
-    el: ".website__pagination",
-    clickable: false,
-  },
-  loop: true,
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  on: {
-    init: function () {
-      cardBg.classList.remove("websitex__cards-bg");
+function starWebsiteSlider() {
+  const swiper2 = new Swiper(".swiperWebsite", {
+    pagination: {
+      el: ".website__pagination",
+      clickable: true,
     },
-  },
-});
-
-swiper2.on("slideChange", function (e) {
-  if (swiper2.realIndex !== 0) cardBg.classList.add("website__cards-bg");
-  else cardBg.classList.remove("website__cards-bg");
-});
+    loop: true,
+    // autoplay: {
+    //   delay: 3000,
+    //   disableOnInteraction: false,
+    // },
+    on: {
+      init: function () {
+        cardBg.classList.remove("website__cards-bg");
+      },
+    },
+  });
+  swiper2.on("slideChange", function (e) {
+    if (swiper2.realIndex !== 0) cardBg.classList.add("website__cards-bg");
+    else cardBg.classList.remove("website__cards-bg");
+  });
+}
 
 // Изменения цвета вокруг телефона и движение селектора под кнопками
 function changeStyleSwiper(num) {
