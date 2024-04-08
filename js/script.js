@@ -1,7 +1,8 @@
 // Слайдеры
 const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   line = document.querySelector(".line"),
-  hand = document.querySelector(".hand");
+  hand = document.querySelector(".hand"),
+  cardBg = document.querySelector(".website__cards");
 
 const swiper = new Swiper(".swiperMain", {
   effect: "creative",
@@ -25,11 +26,6 @@ const swiper = new Swiper(".swiperMain", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-  breakpoints: {
-    768: {
-      navigation: false,
-    },
-  },
   on: {
     init: startAnimationClients(),
   },
@@ -40,8 +36,6 @@ swiper.on("slideChange", function (e) {
   if (swiper.realIndex === 3) startAnimationActions();
   changeStyleSwiper(swiper.realIndex);
 });
-
-const cardBg = document.querySelector(".website__cards");
 
 const swiper2 = new Swiper(".swiperWebsite", {
   pagination: {
@@ -100,9 +94,11 @@ function startAnimationAppointments() {
     )
     .to(".appointments__infografika-border", {
       opacity: 1,
+      delay: -0.2,
     })
     .to(".appointments__infografika svg", {
       opacity: 1,
+      delay: -0.2,
     })
     .fromTo(
       ".appointments__infografika-big",
@@ -112,6 +108,7 @@ function startAnimationAppointments() {
       {
         opacity: 1,
         x: 0,
+        delay: -0.2,
       }
     )
     .fromTo(
@@ -122,6 +119,7 @@ function startAnimationAppointments() {
       {
         opacity: 1,
         x: 0,
+        delay: -0.2,
       }
     )
     .fromTo(
@@ -133,6 +131,7 @@ function startAnimationAppointments() {
         opacity: 1,
         y: 0,
         stagger: 0.1,
+        delay: -0.2,
       }
     );
 }
@@ -263,7 +262,7 @@ function startAnimationActions() {
 }
 
 function startAnimationClients() {
-  const tlClients = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+  const tlClients = gsap.timeline({ repeat: -1, repeatDelay: 4 });
   tlClients
     .fromTo(
       ".clients__oneMess",
@@ -350,7 +349,7 @@ function startAnimationClients() {
       }
     )
     .to(".clients__fourMess", {
-      y: -470,
+      y: -480,
       delay: 1,
     })
     .to(".clients__fiveMess", {
@@ -371,4 +370,24 @@ function startAnimationClients() {
         opacity: 1,
       }
     );
+}
+
+// Перетаскивание кнопок
+if (innerWidth < 768) changePositionBtns();
+
+function changePositionBtns() {
+  const pagBlock = document.querySelector(".swiperMain__pagination");
+  let startX = 0;
+  let currentX = 0;
+
+  pagBlock.addEventListener("touchstart", function (event) {
+    startX = event.touches[0].clientX - currentX;
+  });
+
+  pagBlock.addEventListener("touchmove", function (event) {
+    currentX = event.touches[0].clientX - startX;
+    if (currentX > 325) currentX = 325;
+    if (currentX < -335) currentX = -335;
+    pagBlock.style.left = currentX + "px";
+  });
 }

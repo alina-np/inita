@@ -194,15 +194,15 @@ li {
 
 .line {
   position: absolute;
-  top: 250px;
-  left: 350px;
+  top: 245px;
+  left: 355px;
   transition: 0.4s;
 }
 .line-1 {
-  left: 350px;
+  left: 355px;
 }
 .line-2 {
-  left: 519px;
+  left: 514px;
 }
 .line-3 {
   left: 678px;
@@ -257,7 +257,7 @@ li {
 }
 .slideContent__right {
   width: 240px;
-  margin: 295px -7px 0 0;
+  margin: 281px -7px 0 0;
 }
 
 .socials .slideContent__left {
@@ -285,8 +285,8 @@ li {
   top: -15%;
   left: -17%;
   z-index: -1;
-  width: 40vw;
-  height: 40vw;
+  width: 605px;
+  height: 605px;
   background: #131f33;
   filter: blur(125px);
   transition: 0.4s;
@@ -315,7 +315,6 @@ li {
   align-items: center;
   justify-content: center;
   gap: 13px;
-  margin-left: 25px;
 }
 .join form {
   position: relative;
@@ -412,7 +411,7 @@ li {
 }
 
 .footer {
-  margin: 30px auto 250px;
+  margin: 25px auto 250px;
   padding-left: 15px;
   font-weight: 400;
   font-size: 14px;
@@ -568,7 +567,12 @@ li {
   color: #646685;
 }
 
-.clients__oneMess, .clients__twoMess, .clients__threeMess, .clients__fourMess, .clients__fiveMess, .clients__lastMess {
+.clients__oneMess,
+.clients__twoMess,
+.clients__threeMess,
+.clients__fourMess,
+.clients__fiveMess,
+.clients__lastMess {
   opacity: 0;
 }
 
@@ -883,18 +887,22 @@ li {
           backdrop-filter: blur(13px);
   background: rgba(0, 0, 0, 0.5);
   border: 0;
+  color: #fff;
+  font-family: "Vela Sans", sans-serif;
   font-size: 12px;
   line-height: 133%;
 }
 .websitecard-5 textarea {
   width: 100%;
   height: 100px;
-  border-radius: 33px;
+  border-radius: 24px;
   padding: 10px 10px 10px 16px;
   -webkit-backdrop-filter: blur(13px);
           backdrop-filter: blur(13px);
   background: rgba(0, 0, 0, 0.5);
   border: 0;
+  color: #fff;
+  font-family: "Vela Sans", sans-serif;
   font-size: 12px;
   line-height: 133%;
   resize: none;
@@ -1027,10 +1035,23 @@ li {
   color: #fff;
 }
 
-.appointments__cliensList, .appointments__infografika > p, .appointments__infografika > svg, .appointments__icons div, .appointments__bookings {
+.appointments__cliensList,
+.appointments__infografika > p,
+.appointments__infografika > svg,
+.appointments__icons div,
+.appointments__bookings {
   opacity: 0;
 }
 
+.actions .slideContent__right {
+  margin-top: 320px;
+}
+.actions .slideContent__left {
+  width: 241px;
+}
+.actions .slideContent__left h3 {
+  text-wrap: nowrap;
+}
 .actions .mobileContent {
   background: transparent;
 }
@@ -1118,7 +1139,6 @@ li {
   align-items: center;
   justify-content: start;
   gap: 10px;
-  margin: 1px;
   background: #fff;
   border-radius: 20px;
 }
@@ -1496,72 +1516,80 @@ li {
 
 @media (max-width: 1368px) {
   .container {
-    padding: 0 20px;
+    max-width: 928px;
+  }
+  .header__text {
+    margin-left: 100px;
   }
   .swiper {
     overflow: visible;
   }
   .swiper.container {
-    max-width: 766px;
-    padding-bottom: 125px;
+    max-width: 764px;
+    padding-bottom: 175px;
   }
   .slideContent {
     width: 100%;
     display: grid;
-    grid-template-areas: "middle middle" "left right";
+    grid-template-areas: "left middle" "right middle";
   }
   .slideContent__left {
     grid-area: left;
-    margin: 180px 0 0;
+    margin: 97px 0 0;
   }
   .slideContent__middle {
     grid-area: middle;
     margin: 0 auto;
+    left: -75px;
   }
   .slideContent__right {
     grid-area: right;
-    margin: 180px 0 0;
+    margin: -80px 0 0;
+  }
+  .actions .slideContent__right,
+  .socials .slideContent__right {
+    margin: -80px 0 0;
   }
   .line {
-    left: 75px;
+    left: 51px;
+    top: 250px;
   }
   .line-1 {
-    left: 75px;
+    left: 51px;
   }
   .line-2 {
-    left: 227px;
+    left: 215px;
   }
   .line-3 {
     left: 375px;
   }
   .line-4 {
-    left: 530px;
+    left: 535px;
   }
   .line-5 {
-    left: 679px;
+    left: 702px;
   }
   .slideHead .title {
-    font-size: 36px;
+    font-size: 50px;
   }
   .slideHead .desc {
-    margin-top: 10px;
-    font-size: 19px;
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  .appointments .desc,
+  .website .desc {
+    margin: 0px;
   }
   .hand {
-    left: 22.9%;
-    bottom: -19.5%;
-  }
-  .hand::before {
-    width: 50vw;
-    top: -13%;
-    left: -17%;
+    left: 45.1%;
+    bottom: -25.5%;
   }
   .gradient {
-    bottom: 25%;
+    bottom: 2%;
   }
   .swiper-button-next,
   .swiper-button-prev {
-    top: var(--swiper-navigation-top-offset, 40%);
+    display: none;
   }
   .swiperMain__pagination {
     left: 0px;
@@ -1570,16 +1598,13 @@ li {
     min-width: 135px;
     width: 135px;
   }
-  .join {
-    margin: 0;
-  }
   .footer {
-    margin: 10px auto 100px;
+    margin: 27px auto 100px;
   }
 }
 @media (max-width: 767px) {
   .swiper.container {
-    padding-bottom: 80px;
+    padding-bottom: 0;
   }
   .hand {
     background: none;
@@ -1615,6 +1640,11 @@ li {
   .header__logo {
     transform: scale(0.75);
   }
+  .swiperMain__pagination.swiper-pagination {
+    top: 190px;
+    left: 335px;
+    transition: 0.7s;
+  }
   .slideContent {
     margin: 160px auto 0;
     grid-template-areas: "middle" "left" "right";
@@ -1624,12 +1654,25 @@ li {
   .slideContent__right {
     width: 100%;
     margin: 0;
+    padding: 0 15px;
     text-align: center;
     font-size: 14px;
     line-height: 157%;
     letter-spacing: 0.01em;
   }
+  .slideContent__left,
+  .socials .slideContent__left {
+    margin: 48px 0 76px;
+  }
+  .actions .slideContent__left {
+    width: 100%;
+  }
+  .actions .slideContent__right,
+  .socials .slideContent__right {
+    margin: 0 0 70px;
+  }
   .mobileContent {
+    left: 0;
     overflow: visible;
   }
   .mobileContent::before {
@@ -1638,6 +1681,7 @@ li {
     width: 290px;
     height: 600px;
     position: absolute;
+    z-index: 1;
     bottom: -14px;
     left: -11px;
     background: url(./img/hand-mobile.png) no-repeat;
@@ -1647,8 +1691,8 @@ li {
     height: 575px;
     overflow: hidden;
   }
-  .slideContent__left {
-    margin: 48px 0;
+  .website .iconMenu {
+    bottom: -4px;
   }
   .slideHead .title {
     font-size: 25px;
@@ -1662,10 +1706,6 @@ li {
   .swiperMain__pagination-bullet {
     width: 144px;
   }
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none;
-  }
   .socialsList {
     justify-content: center;
   }
@@ -1674,7 +1714,11 @@ li {
     left: 0;
     top: 130px;
   }
+  .website__cards {
+    overflow: hidden;
+  }
   .join {
+    margin: 65px 0 -8px;
     flex-direction: column;
   }
   .join > span {
