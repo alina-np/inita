@@ -27,14 +27,14 @@ const swiper = new Swiper(".swiperMain", {
     prevEl: ".swiper-button-prev",
   },
   on: {
-    init: startAnimationClients(),
+    // init: startAnimationClients(),
   },
 });
 
 swiper.on("slideChange", function (e) {
-  if (swiper.realIndex === 1) starWebsiteSlider();
-  if (swiper.realIndex === 2) startAnimationAppointments();
-  if (swiper.realIndex === 3) startAnimationActions();
+  // if (swiper.realIndex === 1) starWebsiteSlider();
+  // if (swiper.realIndex === 2) startAnimationAppointments();
+  // if (swiper.realIndex === 3) startAnimationActions();
   changeStyleSwiper(swiper.realIndex);
 });
 
@@ -45,10 +45,10 @@ function starWebsiteSlider() {
       clickable: true,
     },
     loop: true,
-    // autoplay: {
-    //   delay: 3000,
-    //   disableOnInteraction: false,
-    // },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
     on: {
       init: function () {
         cardBg.classList.remove("website__cards-bg");
@@ -393,3 +393,17 @@ function changePositionBtns() {
     pagBlock.style.left = currentX + "px";
   });
 }
+
+// Прилипание пагинации
+let header = document.querySelector(".swiperMain__pagination");
+window.addEventListener("scroll", function () {
+  if (window.pageYOffset > 260) {
+    header.classList.add("swiperMain__pagination-fixed");
+    header.style.position = "fixed";
+    header.style.top = "-47px";
+  } else {
+    header.classList.remove("swiperMain__pagination-fixed");
+    header.style.position = "absolute";
+    header.style.top = "140px";
+  }
+});

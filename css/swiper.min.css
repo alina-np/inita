@@ -30,7 +30,6 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  overflow: hidden;
   list-style: none;
   padding: 0;
   z-index: 1;
@@ -92,9 +91,6 @@
 }
 .swiper-3d .swiper-wrapper {
   transform-style: preserve-3d;
-}
-.swiper-3d {
-  perspective: 1200px;
 }
 .swiper-3d .swiper-cube-shadow,
 .swiper-3d .swiper-slide {
@@ -337,7 +333,7 @@
   position: absolute;
   text-align: center;
   transition: 0.3s opacity;
-  transform: translate3d(0, 0, 0);
+  /* transform: translate3d(0, 0, 0); */
   z-index: 10;
 }
 .swiper-pagination.swiper-pagination-hidden {
