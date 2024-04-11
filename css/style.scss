@@ -13,7 +13,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-Regular"),
+  src:
+    local("VelaSans-Regular"),
     url("./fonts/VelaSans-Regular.woff") format("woff2"),
     url("./fonts/VelaSans-Regular.woff") format("woff");
   font-weight: normal;
@@ -22,7 +23,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-SemiBold"),
+  src:
+    local("VelaSans-SemiBold"),
     url("./fonts/VelaSans-SemiBold.woff2") format("woff2"),
     url("./fonts/VelaSans-SemiBold.woff") format("woff");
   font-weight: 600;
@@ -31,7 +33,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-Medium"),
+  src:
+    local("VelaSans-Medium"),
     url("./fonts/VelaSans-Medium.woff2") format("woff2"),
     url("./fonts/VelaSans-Medium.woff") format("woff");
   font-weight: 500;
@@ -40,7 +43,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-Bold"),
+  src:
+    local("VelaSans-Bold"),
     url("./fonts/VelaSans-Bold.woff2") format("woff2"),
     url("./fonts/VelaSans-Bold.woff") format("woff");
   font-weight: bold;
@@ -84,6 +88,8 @@ li {
 
 .header {
   width: 100%;
+  position: relative;
+  z-index: 2;
   & .container {
     padding: 15px;
     @include flex(space-between);
@@ -355,11 +361,7 @@ li {
   width: 100%;
   position: absolute;
   bottom: 3%;
-  fill: radial-gradient(
-    100% 100% at 50.74% 0%,
-    rgb(7, 9, 32) 49.5%,
-    rgb(7, 9, 32) 100%
-  );
+  fill: radial-gradient(100% 100% at 50.74% 0%, rgb(7, 9, 32) 49.5%, rgb(7, 9, 32) 100%);
 }
 
 .input {
@@ -787,7 +789,8 @@ li {
     font-size: 10px;
     line-height: 140%;
     & > div {
-      box-shadow: 1px -1px 24px 0 rgba(38, 42, 92, 0.15),
+      box-shadow:
+        1px -1px 24px 0 rgba(38, 42, 92, 0.15),
         0 0 4px 0 rgba(38, 42, 92, 0.06);
       background: rgba(0, 0, 0, 0.5);
       border-radius: 8px;
@@ -1095,7 +1098,9 @@ li {
     display: flex;
     border-radius: 20px;
     border: 2px dashed $white;
-    background: linear-gradient(#fff, #fff) padding-box, $gradient border-box;
+    background:
+      linear-gradient(#fff, #fff) padding-box,
+      $gradient border-box;
     font-size: 10px;
     line-height: 140%;
     color: $purple;
@@ -1439,7 +1444,7 @@ li {
     bottom: -25.5%;
   }
   .noise {
-    width: auto;
+    width: 100vw;
   }
   .gradient {
     width: auto;
@@ -1462,6 +1467,7 @@ li {
     padding-bottom: 0;
   }
   .hand {
+    width: 100vw;
     background: none;
     left: 0;
     &:before {
@@ -1473,7 +1479,9 @@ li {
   }
   .line,
   .header__btnJoin,
-  .gradient {
+  .gradient,
+  .swiper-button-next,
+  .swiper-button-prev {
     display: none;
   }
   .header {
@@ -1505,9 +1513,6 @@ li {
       font-size: 14px;
     }
   }
-  .swiper-wrapper {
-    overflow: hidden;
-  }
   .swiperMain__pagination.swiper-pagination {
     height: 135px;
     top: 140px;
@@ -1519,14 +1524,11 @@ li {
     width: 100%;
     height: 120px;
     position: fixed;
-    background: linear-gradient(
-      180deg,
-      rgb(7, 9, 32, 1) 0%,
-      rgba(7, 9, 32, 0) 100%
-    );
+    background: linear-gradient(180deg, rgb(7, 9, 32, 1) 0%, rgba(7, 9, 32, 0) 100%);
     z-index: -1;
     left: 0;
   }
+
   .slideContent {
     margin: 160px auto 0;
     grid-template-areas:

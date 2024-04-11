@@ -27,14 +27,14 @@ const swiper = new Swiper(".swiperMain", {
     prevEl: ".swiper-button-prev",
   },
   on: {
-    // init: startAnimationClients(),
+    init: startAnimationClients(),
   },
 });
 
 swiper.on("slideChange", function (e) {
-  // if (swiper.realIndex === 1) starWebsiteSlider();
-  // if (swiper.realIndex === 2) startAnimationAppointments();
-  // if (swiper.realIndex === 3) startAnimationActions();
+  if (swiper.realIndex === 1) starWebsiteSlider();
+  if (swiper.realIndex === 2) startAnimationAppointments();
+  if (swiper.realIndex === 3) startAnimationActions();
   changeStyleSwiper(swiper.realIndex);
 });
 
@@ -375,35 +375,50 @@ function startAnimationClients() {
 }
 
 // Перетаскивание кнопок
-if (innerWidth < 768) changePositionBtns();
+if (innerWidth < 768) {
+  stickyPag();
+  changePositionBtns();
+}
 
 function changePositionBtns() {
-  const pagBlock = document.querySelector(".swiperMain__pagination");
-  let startX = 0;
-  let currentX = 0;
+  const pagBlock = document.querySelector(".swiperMain__pagination"),
+    btns = document.querySelectorAll(".swiper-pagination-bullet");
+  let startX = 0,
+    currentX = 0;
 
-  pagBlock.addEventListener("touchstart", function (event) {
-    startX = event.touches[0].clientX - currentX;
+  pagBlock.addEventListener("touchstart", function (e) {
+    startX = e.touches[0].clientX - currentX;
   });
 
-  pagBlock.addEventListener("touchmove", function (event) {
-    currentX = event.touches[0].clientX - startX;
+  pagBlock.addEventListener("touchmove", function (e) {
+    currentX = e.touches[0].clientX - startX;
     if (currentX > 325) currentX = 325;
-    if (currentX < -335) currentX = -335;
+    if (currentX < -335) currentX = -325;
+    pagBlock.style.left = currentX + "px";
+  });
+  pagBlock.addEventListener("click", function (e) {
+    let btn = e.target.closest("button");
+    if (btn == btns[0]) currentX = 325;
+    if (btn == btns[1]) currentX = 165;
+    if (btn == btns[2]) currentX = 0;
+    if (btn == btns[3]) currentX = -165;
+    if (btn == btns[4]) currentX = -325;
     pagBlock.style.left = currentX + "px";
   });
 }
 
 // Прилипание пагинации
-let header = document.querySelector(".swiperMain__pagination");
-window.addEventListener("scroll", function () {
-  if (window.pageYOffset > 260) {
-    header.classList.add("swiperMain__pagination-fixed");
-    header.style.position = "fixed";
-    header.style.top = "-47px";
-  } else {
-    header.classList.remove("swiperMain__pagination-fixed");
-    header.style.position = "absolute";
-    header.style.top = "140px";
-  }
-});
+function stickyPag() {
+  let header = document.querySelector(".swiperMain__pagination");
+  window.addEventListener("scroll", function () {
+    if (window.pageYOffset > 260) {
+      header.classList.add("swiperMain__pagination-fixed");
+      header.style.position = "fixed";
+      header.style.top = "-47px";
+    } else {
+      header.classList.remove("swiperMain__pagination-fixed");
+      header.style.position = "absolute";
+      header.style.top = "140px";
+    }
+  });
+}

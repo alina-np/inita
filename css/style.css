@@ -59,6 +59,8 @@ li {
 
 .header {
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 .header .container {
   padding: 15px;
@@ -1476,7 +1478,7 @@ li {
     bottom: -25.5%;
   }
   .noise {
-    width: auto;
+    width: 100vw;
   }
   .gradient {
     width: auto;
@@ -1498,6 +1500,7 @@ li {
     padding-bottom: 0;
   }
   .hand {
+    width: 100vw;
     background: none;
     left: 0;
   }
@@ -1509,7 +1512,9 @@ li {
   }
   .line,
   .header__btnJoin,
-  .gradient {
+  .gradient,
+  .swiper-button-next,
+  .swiper-button-prev {
     display: none;
   }
   .header__text {
@@ -1538,9 +1543,6 @@ li {
   .slideHead .desc {
     margin-top: 5px;
     font-size: 14px;
-  }
-  .swiper-wrapper {
-    overflow: hidden;
   }
   .swiperMain__pagination.swiper-pagination {
     height: 135px;
