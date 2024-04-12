@@ -88,8 +88,6 @@ li {
 
 .header {
   width: 100%;
-  position: relative;
-  z-index: 2;
   & .container {
     padding: 15px;
     @include flex(space-between);
@@ -203,10 +201,10 @@ li {
 .line {
   position: absolute;
   top: 245px;
-  left: 355px;
+  left: 350px;
   transition: 0.4s;
   &-1 {
-    left: 355px;
+    left: 350px;
   }
   &-2 {
     left: 514px;
@@ -308,9 +306,7 @@ li {
 }
 
 .join {
-  position: relative;
   bottom: 72px;
-  z-index: 1;
   @include flex;
   gap: 13px;
   & form {
@@ -1463,14 +1459,11 @@ li {
 }
 
 @media (max-width: 767px) {
-  .main {
-    overflow-x: hidden;
-  }
   .swiper.container {
     padding-bottom: 0;
   }
   .hand {
-    width: 100vw;
+    width: 90vw;
     background: none;
     left: 0;
     &:before {
