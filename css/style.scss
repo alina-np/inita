@@ -307,6 +307,7 @@ li {
 
 .join {
   bottom: 72px;
+  z-index: 1;
   @include flex;
   gap: 13px;
   & form {
@@ -1463,7 +1464,7 @@ li {
     padding-bottom: 0;
   }
   .hand {
-    width: 90vw;
+    width: 100vw;
     background: none;
     left: 0;
     &:before {
