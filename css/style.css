@@ -1492,6 +1492,16 @@ li {
     margin-top: 27px;
   }
 }
+@media (max-width: 1025px) {
+  .footer {
+    margin-bottom: 530px;
+  }
+}
+@media (max-width: 850px) {
+  .footer {
+    margin-bottom: 250px;
+  }
+}
 @media (max-width: 767px) {
   .swiper.container {
     padding-bottom: 0;
