@@ -1492,10 +1492,13 @@ li {
     width: 135px;
   }
   .footer {
-    margin: 27px auto 100px;
+    margin-top: 27px;
   }
 }
 @media (max-width: 767px) {
+  .main {
+    overflow-x: hidden;
+  }
   .swiper.container {
     padding-bottom: 0;
   }
@@ -1660,5 +1663,8 @@ li {
   }
   .join__btn-greyText {
     text-wrap: nowrap;
+  }
+  .footer {
+    margin-bottom: 100px;
   }
 }/*# sourceMappingURL=style.css.map */
