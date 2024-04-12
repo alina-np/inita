@@ -2,7 +2,8 @@
 const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   line = document.querySelector(".line"),
   hand = document.querySelector(".hand"),
-  cardBg = document.querySelector(".website__cards");
+  cardBg = document.querySelector(".website__cards"),
+  tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.1 });
 
 const swiper = new Swiper(".swiperMain", {
   effect: "creative",
@@ -34,7 +35,7 @@ const swiper = new Swiper(".swiperMain", {
 swiper.on("slideChange", function (e) {
   if (swiper.realIndex === 1) starWebsiteSlider();
   if (swiper.realIndex === 2) startAnimationAppointments();
-  if (swiper.realIndex === 3) startAnimationActions();
+  swiper.realIndex === 3 ? tlAction.play() : tlAction.pause();
   changeStyleSwiper(swiper.realIndex);
 });
 
@@ -77,6 +78,7 @@ function startAnimationAppointments() {
       ".appointments__icons div",
       {
         y: 30,
+        opacity: 0,
       },
       {
         opacity: 1,
@@ -87,6 +89,7 @@ function startAnimationAppointments() {
     .fromTo(
       ".appointments__cliensList",
       {
+        opacity: 0,
         y: -30,
       },
       {
@@ -94,17 +97,30 @@ function startAnimationAppointments() {
         y: 0,
       }
     )
-    .to(".appointments__infografika-border", {
-      opacity: 1,
-      delay: -0.2,
-    })
-    .to(".appointments__infografika svg", {
-      opacity: 1,
-      delay: -0.2,
-    })
+    .fromTo(
+      ".appointments__infografika-border",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        delay: -0.2,
+      }
+    )
+    .fromTo(
+      ".appointments__infografika svg",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        delay: -0.2,
+      }
+    )
     .fromTo(
       ".appointments__infografika-big",
       {
+        opacity: 0,
         x: 30,
       },
       {
@@ -116,6 +132,7 @@ function startAnimationAppointments() {
     .fromTo(
       ".appointments__infografika-small",
       {
+        opacity: 0,
         x: -30,
       },
       {
@@ -127,6 +144,7 @@ function startAnimationAppointments() {
     .fromTo(
       ".appointments__bookings",
       {
+        opacity: 0,
         y: 30,
       },
       {
@@ -137,131 +155,128 @@ function startAnimationAppointments() {
       }
     );
 }
-
-function startAnimationActions() {
-  const tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.1 });
-  tlAction
-    .fromTo(
-      ".actioncard-1",
-      { scale: 0.85, y: -45 },
-      {
-        scale: 1,
-        y: 0,
-        duration: 0.1,
-      }
-    )
-    .to(".actioncard-1 .actioncard-bg", {
-      opacity: 1,
-      duration: 0.4,
-      delay: 0.5,
-    })
-    .to(".actioncard-1", {
-      opacity: 0,
-      transformOrigin: "center",
-      x: -1300,
-      y: 30,
-      rotate: -40,
-      duration: 0.3,
-      delay: 3,
-    })
-    .to(".actioncard-1", {
-      scale: 0.85,
-      y: -45,
-      x: 0,
-      rotate: 0,
-      zIndex: -13,
-    })
-    .fromTo(
-      ".actioncard-2",
-      { scale: 0.85, y: -45 },
-      {
-        scale: 1,
-        y: 0,
-        duration: 0.1,
-      }
-    )
-    .to(".actioncard-2 .actioncard-bg", {
-      opacity: 1,
-      duration: 0.5,
-      delay: 1,
-    })
-    .to(".actioncard-2", {
-      opacity: 0,
-      transformOrigin: "center",
-      x: 1300,
-      y: 30,
-      rotate: 40,
-      duration: 0.3,
-      delay: 3,
-    })
-    .to(".actioncard-2", {
-      scale: 0.85,
-      y: -45,
-      x: 0,
-      rotate: 0,
-      zIndex: -13,
-    })
-    .fromTo(
-      ".actioncard-3",
-      { scale: 0.85, y: -45 },
-      {
-        scale: 1,
-        y: 0,
-        duration: 0.1,
-      }
-    )
-    .to(".actioncard-3 .actioncard-bg", {
-      opacity: 1,
-      duration: 0.5,
-      delay: 1,
-    })
-    .to(".actioncard-3", {
-      opacity: 0,
-      transformOrigin: "center",
-      x: 1300,
-      y: 30,
-      rotate: 40,
-      duration: 0.3,
-      delay: 3,
-    })
-    .to(".actioncard-3", {
-      scale: 0.85,
-      y: -45,
-      x: 0,
-      rotate: 0,
-      zIndex: -13,
-    })
-    .fromTo(
-      ".actioncard-4",
-      { scale: 0.85, y: -45 },
-      {
-        scale: 1,
-        y: 0,
-        duration: 0.1,
-      }
-    )
-    .to(".actioncard-4 .actioncard-bg", {
-      opacity: 1,
-      duration: 0.5,
-      delay: 1,
-    })
-    .to(".actioncard-4", {
-      opacity: 0,
-      transformOrigin: "center",
-      x: 1300,
-      y: 30,
-      rotate: 40,
-      duration: 0.3,
-      delay: 3,
-    })
-    .to(".actioncard-4", {
-      scale: 0.85,
-      y: -45,
-      x: 0,
-      rotate: 0,
-      zIndex: -13,
-    });
-}
+  
+tlAction
+  .fromTo(
+    ".actioncard-1",
+    { scale: 0.85, y: -45 },
+    {
+      scale: 1,
+      y: 0,
+      duration: 0.1,
+    }
+  )
+  .to(".actioncard-1 .actioncard-bg", {
+    opacity: 1,
+    duration: 0.4,
+    delay: 0.5,
+  })
+  .to(".actioncard-1", {
+    opacity: 0,
+    transformOrigin: "center",
+    x: -1300,
+    y: 30,
+    rotate: -40,
+    duration: 0.3,
+    delay: 3,
+  })
+  .to(".actioncard-1", {
+    scale: 0.85,
+    y: -45,
+    x: 0,
+    rotate: 0,
+    zIndex: -13,
+  })
+  .fromTo(
+    ".actioncard-2",
+    { scale: 0.85, y: -45 },
+    {
+      scale: 1,
+      y: 0,
+      duration: 0.1,
+    }
+  )
+  .to(".actioncard-2 .actioncard-bg", {
+    opacity: 1,
+    duration: 0.5,
+    delay: 1,
+  })
+  .to(".actioncard-2", {
+    opacity: 0,
+    transformOrigin: "center",
+    x: 1300,
+    y: 30,
+    rotate: 40,
+    duration: 0.3,
+    delay: 3,
+  })
+  .to(".actioncard-2", {
+    scale: 0.85,
+    y: -45,
+    x: 0,
+    rotate: 0,
+    zIndex: -13,
+  })
+  .fromTo(
+    ".actioncard-3",
+    { scale: 0.85, y: -45 },
+    {
+      scale: 1,
+      y: 0,
+      duration: 0.1,
+    }
+  )
+  .to(".actioncard-3 .actioncard-bg", {
+    opacity: 1,
+    duration: 0.5,
+    delay: 1,
+  })
+  .to(".actioncard-3", {
+    opacity: 0,
+    transformOrigin: "center",
+    x: 1300,
+    y: 30,
+    rotate: 40,
+    duration: 0.3,
+    delay: 3,
+  })
+  .to(".actioncard-3", {
+    scale: 0.85,
+    y: -45,
+    x: 0,
+    rotate: 0,
+    zIndex: -13,
+  })
+  .fromTo(
+    ".actioncard-4",
+    { scale: 0.85, y: -45 },
+    {
+      scale: 1,
+      y: 0,
+      duration: 0.1,
+    }
+  )
+  .to(".actioncard-4 .actioncard-bg", {
+    opacity: 1,
+    duration: 0.5,
+    delay: 1,
+  })
+  .to(".actioncard-4", {
+    opacity: 0,
+    transformOrigin: "center",
+    x: 1300,
+    y: 30,
+    rotate: 40,
+    duration: 0.3,
+    delay: 3,
+  })
+  .to(".actioncard-4", {
+    scale: 0.85,
+    y: -45,
+    x: 0,
+    rotate: 0,
+    zIndex: -13,
+  });
 
 function startAnimationClients() {
   const tlClients = gsap.timeline({ repeat: -1, repeatDelay: 4 });
