@@ -27,14 +27,15 @@ const swiper = new Swiper(".swiperMain", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  allowTouchMove: false,
   on: {
     init: startAnimationClients(),
   },
 });
 
 swiper.on("slideChange", function (e) {
-  if (swiper.realIndex === 1) starWebsiteSlider();
-  if (swiper.realIndex === 2) startAnimationAppointments();
+  // if (swiper.realIndex === 1) starWebsiteSlider();
+  // if (swiper.realIndex === 2) startAnimationAppointments();
   swiper.realIndex === 3 ? tlAction.play() : tlAction.pause();
   changeStyleSwiper(swiper.realIndex);
 });
@@ -46,9 +47,13 @@ function starWebsiteSlider() {
       clickable: true,
     },
     loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
+    // autoplay: {
+    //   delay: 3000,
+    //   disableOnInteraction: false,
+    // },
+    navigation: {
+      nextEl: ".swiperWebsite-button-next",
+      prevEl: ".swiperWebsite-button-prev",
     },
     on: {
       init: function () {
@@ -155,7 +160,7 @@ function startAnimationAppointments() {
       }
     );
 }
-  
+
 tlAction
   .fromTo(
     ".actioncard-1",
@@ -388,6 +393,84 @@ function startAnimationClients() {
       }
     );
 }
+
+function startAnimationSocials() {
+  const tlSocials = gsap.timeline({});
+  tlSocials
+    .from(".socials__about", {
+      opacity: 0,
+      stagger: 0.2,
+    })
+    .to(".socials__about-bg", {
+      x: 0,
+    })
+    .to(".socials__about-bg", {
+      x: 10,
+      opacity: 0,
+    })
+    .from(".socials__about:not(:nth-of-type(3))", {
+      opacity: 0,
+      delay: -0.1,
+      duration: 0.5,
+    })
+    .to(".socials__about:nth-of-type(3)", {
+      y: -120,
+    })
+    .to(".socials__create", {
+      opacity: 0,
+      y: -300,
+      delay: 0.3,
+    })
+    .to(".socials__about:nth-of-type(3)", {
+      opacity: 0,
+      y: -300,
+      delay: -0.5,
+    })
+    .to(".socials__icon-plus", {
+      opacity: 0,
+      delay: -0.1,
+    })
+    .to(".socials__icon-back", {
+      opacity: 1,
+      delay: -0.1,
+    })
+    .to(".socials__list", {
+      opacity: 0,
+    })
+    .to(".post > *", {
+      opacity: 0,
+      delay: -0.1,
+    })
+    .fromTo(
+      ".post",
+      {
+        y: -600,
+        opacity: 0,
+        delay: -0.5,
+      },
+      {
+        y: -600,
+        opacity: 1,
+      }
+    )
+    .to(".post__top", {
+      opacity: 1,
+    })
+    .to(".post__photo", {
+      opacity: 1,
+    })
+    .to(".post__text", {
+      opacity: 1,
+    })
+    .to(".post__btn-color", {
+      opacity: 1,
+    })
+    .to(".post__btn-black", {
+      opacity: 1,
+    });
+}
+
+startAnimationSocials();
 
 // Перетаскивание кнопок
 if (innerWidth < 768) {

@@ -89,6 +89,7 @@ li {
 .header {
   width: 100%;
   & .container {
+    z-index: 5;
     padding: 15px;
     @include flex(space-between);
   }
@@ -128,7 +129,7 @@ li {
     @include flex;
     border: 1px solid $green;
     border-radius: 8px;
-    background: rgb(48, 192, 133, 0.6);
+    background: #070920;
     color: $green;
     font-weight: 600;
     font-size: 16px;
@@ -174,6 +175,10 @@ li {
     background: transparent;
     border: 1px solid #565974;
     color: $white;
+    -ms-user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    user-select: text;
     transition: 0.4s;
     cursor: pointer;
     &-active {
@@ -646,7 +651,7 @@ li {
     gap: 5px;
     position: absolute;
     top: 32px;
-    left: 20px;
+    left: 15px;
     & span {
       display: inline-block;
       width: 43px;
@@ -659,6 +664,20 @@ li {
       opacity: 1;
     }
   }
+}
+
+.swiperWebsite-button-next,
+.swiperWebsite-button-prev {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  height: 100%;
+  width: 30px;
+}
+
+.swiperWebsite-button-next {
+  left: unset;
+  right: 0;
 }
 
 .websitecard {
@@ -717,10 +736,16 @@ li {
     font-weight: 600;
     font-size: 10px;
     line-height: 140%;
-    color: #d7d8e4;
+    & p {
+      color: #d7d8e4;
+    }
+    & img {
+      border-radius: 10px;
+      border: 2px solid;
+    }
   }
   & h2 {
-    margin-top: 273px;
+    margin-top: 260px;
     font-weight: 700;
     font-size: 24px;
     line-height: 117%;
@@ -783,21 +808,24 @@ li {
   &__info {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
     font-size: 10px;
     line-height: 140%;
     & > div {
+      width: 48%;
+      height: min-content;
       box-shadow:
         1px -1px 24px 0 rgba(38, 42, 92, 0.15),
         0 0 4px 0 rgba(38, 42, 92, 0.06);
       background: rgba(0, 0, 0, 0.5);
       border-radius: 8px;
       & img {
-        width: 118px;
+        width: 100%;
         height: 110px;
         border-radius: 8px 8px 0 0;
       }
       & p {
-        padding: 1px 8px;
+        padding: 1px 8px 6px;
       }
     }
   }
@@ -904,7 +932,7 @@ li {
 
 .appointments {
   &__cliensList {
-    margin: 10px 0 30px;
+    margin: 10px 0 20px;
     padding: 0 10px;
     @include flex(space-between);
     gap: 5px;
@@ -923,17 +951,23 @@ li {
       border: 1px solid #cacad9;
       border-radius: 100px;
       color: $purple;
+      font-size: 12px;
     }
     &-big {
-      margin: 40px 0 20px;
+      margin: 25px 0 10px;
       font-weight: 300;
-      font-size: 48px;
+      font-size: 36px;
       color: $purple;
+    }
+    &-small {
+      font-size: 10px;
     }
     & svg {
       position: absolute;
-      left: -100px;
-      top: 180px;
+      transform: scale(0.75);
+      left: -60px;
+      top: 140px;
+      z-index: -1;
     }
   }
   &__icons {
@@ -962,12 +996,13 @@ li {
     }
   }
   &__bookings {
-    padding: 0 10px;
+    margin: 0 5px;
+    padding: 10px;
     @include flex(space-between);
+    border-radius: 10px;
     color: $purple;
     font-size: 11px;
     line-height: 150%;
-    color: $purple;
     &-grey {
       color: $light-purple;
       font-size: 10px;
@@ -982,10 +1017,21 @@ li {
       background: #f6f8fc;
     }
     &-orange {
-      margin-top: 15px;
       align-items: start;
       backdrop-filter: blur(16px);
       background: #fef8f4;
+    }
+    &-cancelled {
+      flex-direction: column;
+      align-items: start;
+      color: #a6a7be;
+      & .appointments__bookings-grey {
+        width: 100%;
+      }
+      & span {
+        float: right;
+        color: #a6a7be;
+      }
     }
     &:first-of-type {
       margin-bottom: 10px;
@@ -1004,13 +1050,13 @@ li {
   }
 }
 
-.appointments__cliensList,
-.appointments__infografika > p,
-.appointments__infografika > svg,
-.appointments__icons div,
-.appointments__bookings {
-  opacity: 0;
-}
+// .appointments__cliensList,
+// .appointments__infografika > p,
+// .appointments__infografika > svg,
+// .appointments__icons div,
+// .appointments__bookings {
+//   opacity: 0;
+// }
 
 .actions {
   & .slideContent__right {
@@ -1273,64 +1319,141 @@ li {
 }
 
 .socials {
-  &__inst {
-    margin: -5px 0 20px;
-    padding: 0 16px 0 6px;
-    @include flex(space-between);
-    & svg {
-      width: 16px;
-      height: 16px;
-    }
-    & > p {
-      padding: 0px 11px;
-      border: 0.71px solid #cacad9;
-      border-radius: 71px;
-      color: $purple;
-      font-size: 11px;
+  &__list {
+    height: 100%;
+    position: relative;
+    padding: 0 13px;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 24%;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 252px;
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 100%);
     }
   }
-  &__gallery {
-    margin-bottom: 20px;
-    padding: 0 5px;
-    display: flex;
-    gap: 2px;
-    flex-wrap: wrap;
+  &__top {
+    @include flex(space-between);
+    padding: 0 13px;
+  }
+  &__icon-back {
+    position: absolute;
+    opacity: 0;
+  }
+  &__borderText {
+    @include flex;
+    padding: 0 10px;
+    border-radius: 20px;
+    border: 1px solid $light;
+    color: $purple;
+    font-size: 10px;
+  }
+  &__create {
+    margin: 20px 0 13px;
+  }
+  &__about {
+    position: relative;
+    @include flex(space-between);
+    margin-bottom: 10px;
+    padding: 7px 0;
+    line-height: 120%;
+    font-size: 14px;
+    color: $purple;
+    & p {
+      width: 70%;
+    }
+  }
+  &__about .socials__about-bg {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(38, 42, 92, 0.3) 50%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    transform: translateX(-100%);
+  }
+}
+
+.post {
+  padding: 0 10px;
+  &__top {
+    @include flex(space-between);
+    margin: 10px 0 0;
+    color: #070711;
+    font-size: 10px;
+    line-height: normal;
     & img {
-      width: 82px;
-      height: 82px;
-      border-radius: 6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
     }
-    // & > * {
-    //     opacity: 0.5;
-    // }
-  }
-  // &__addPost {
-  //     width: 83px;
-  //     height: 83px;
-  //     @include flex;
-  //     border: 0.71px solid #a6a7be;
-  //     border-radius: 4px;
-  // }
-  &__info {
-    margin-bottom: 24px;
-    padding: 0 15px;
-    @include flex(space-between);
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 133%;
-    color: $light-purple;
-    & p:first-of-type {
-      font-weight: 500;
-      font-size: 11px;
-      line-height: 150%;
-      color: $purple;
+    &-smallText {
+      font-size: 8px;
+    }
+    &-bold {
+      font-weight: 700;
+      font-size: 16px;
     }
     & > div {
-      width: 82%;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
-    & svg {
-      width: 13px;
-      height: 13px;
+  }
+  &__photo {
+    width: 100%;
+    height: 254px;
+    margin-top: 5px;
+    object-fit: cover;
+    border: 1px solid $light;
+  }
+  &__text {
+    color: #070711;
+    font-size: 9px;
+    line-height: 140%;
+    & span {
+      font-weight: 700;
+    }
+    &-grey {
+      color: $light-purple;
+      font-weight: 400;
+    }
+  }
+  &__btn {
+    height: 30px;
+    margin: 8px 0;
+    @include flex;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    &-black {
+      border: 1px solid #070711;
+    }
+    &-color {
+      background: linear-gradient(35deg, #ff8933, #9747ff);
+      border: 0px solid transparent;
+      & p {
+        width: 100%;
+        height: 95%;
+        margin: 1px;
+        background-color: $white;
+        border-radius: 5px;
+      }
+      & span {
+        height: 100%;
+        @include flex;
+        background-image: linear-gradient(35deg, #ff8933, #9747ff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
     }
   }
 }
@@ -1460,16 +1583,16 @@ li {
 }
 
 @media (max-width: 1025px) {
-.footer {
-  margin-bottom: 530px;
-}
+  .footer {
+    margin-bottom: 530px;
+  }
 }
 
 @media (max-width: 850px) {
   .footer {
     margin-bottom: 250px;
   }
-  }
+}
 
 @media (max-width: 767px) {
   .swiper.container {
