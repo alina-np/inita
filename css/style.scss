@@ -464,6 +464,7 @@ li {
   justify-content: space-between;
   padding: 0 15px;
   border-radius: 0 0 30px 30px;
+  background: $white;
   & .active {
     position: relative;
     opacity: 0.5;
@@ -482,96 +483,147 @@ li {
 }
 
 .clients {
-  &__mess {
-    margin: 0 32px 8px 43px;
-    padding: 10px 20px;
-    border: 1px solid #e6e9f0;
-    border-radius: 24px;
-    font-size: 14px;
-    line-height: 143%;
-    letter-spacing: 0.02em;
+  & .mobileContent > *:not(.mobuleBar):not(.iconMenu):not(.clients__time) {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  & .mobileContent {
     color: $purple;
-    &-border {
-      position: relative;
-      z-index: 1;
-      background: $gradient;
-      &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: 1px;
-        background: $white;
-        border-radius: 22px;
-        z-index: -1;
-      }
-    }
-    &-left {
-      margin-left: 30px;
-    }
-    &-top {
-      margin-top: 97px;
-    }
-    &-topSmall {
-      margin-top: 35px;
-    }
-    &-topHalf {
-      margin-top: 55px;
+    font-size: 14px;
+    line-height: 130%;
+  }
+  &__time {
+    width: 97px;
+    height: 24px;
+    margin: 0 auto 20px;
+    @include flex;
+    border-radius: 16px;
+    border: 1px solid #e6e9f0;
+    font-size: 12px;
+    font-weight: 600px;
+  }
+  &__mess {
+    width: 78%;
+    padding: 12px 20px;
+    border-radius: 16px;
+    border: 1px solid #e6e9f0;
+    &-purple {
+      background: #e9e9f5;
     }
     &-grey {
-      margin: 1px 33px 8px 39px;
-      background: #e9e9f5;
-      font-size: 10px;
-      line-height: 140%;
-      color: $light-purple;
+      background: #f6f8fc;
     }
-    &-bigText {
-      margin: 5px 0;
-      font-size: 14px;
-      line-height: 143%;
-      letter-spacing: 0.02em;
-      color: $purple;
+    &-orange {
+      background: #ffe8d9;
+    }
+    &-green {
+      background: #dbf4e6;
+    }
+    &-small {
+      font-size: 10px;
+    }
+    &-thin {
+      color: $light-purple;
+      font-size: 10px;
+    }
+    &-bold {
+      color: #a6a7be;
+      font-weight: 600px;
+    }
+    &-right {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+    }
+  }
+  &__wa {
+    margin-top: 5px;
+    @include flex(start);
+    gap: 5px;
+    font-size: 12px;
+  }
+  &__ai {
+    @include flex(start);
+    gap: 5px;
+    font-size: 12px;
+    & svg {
+      width: 20px;
+      height: 20px;
+      padding: 4px;
+      @include flex;
+      background: #ff7613;
+      border-radius: 50%;
     }
   }
   &__book {
-    width: 79px;
+    width: 80px;
     height: 22px;
-    border: 1px solid #cacad9;
-    border-radius: 8px;
-    padding: 4px 8px;
-    font-size: 10px;
-    line-height: 140%;
-    color: $purple;
-  }
-  &__ai {
-    margin: -12px 10px 20px;
-    @include flex(end);
-    align-items: end;
-    gap: 10px;
-    color: $dark;
-    font-size: 12px;
-  }
-  &__info {
-    margin: -10px 20px;
     @include flex(space-between);
-    gap: 10px;
-    font-size: 12px;
-    line-height: 167%;
-    letter-spacing: 0.02em;
-    text-align: right;
-    color: $light-purple;
+    gap: 5px;
+    padding: 4px 8px;
+    border: 1px solid $light-purple;
+    border-radius: 8px;
+    font-size: 10px;
   }
-}
-
-.clients__oneMess,
-.clients__twoMess,
-.clients__threeMess,
-.clients__fourMess,
-.clients__fiveMess,
-.clients__lastMess {
-  opacity: 0;
+  &__onemess {
+    & img {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+    & p {
+      margin-left: 12px;
+    }
+  }
+  &__twomess {
+    margin: 22px 0;
+    & .clients__mess {
+      margin: 0 12px 5px 0;
+    }
+  }
+  &__threemess {
+    & .clients__mess {
+      margin-right: 8px;
+      margin-bottom: 4px;
+    }
+    & .clients__mess:first-of-type {
+      @include flex(space-between);
+      margin-bottom: 2px;
+    }
+    & img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+    }
+  }
+  &__fourmess {
+    margin: 22px 0;
+    & img {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+    & p {
+      margin-left: 12px;
+    }
+  }
+  &__fivemess {
+    margin: 22px 0;
+    line-height: 150%;
+    & p:first-of-type {
+      margin-bottom: 10px;
+    }
+  }
+  &__sixmess {
+    & img {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+    & p {
+      margin-left: 12px;
+    }
+  }
 }
 
 .website {
@@ -1147,17 +1199,21 @@ li {
     font-size: 10px;
     line-height: 140%;
     color: $purple;
-    & > div {
+    &__container {
       width: 100%;
       height: 100%;
       padding: 10px 15px;
       @include flex(start);
       gap: 10px;
       background: $white;
-      border-radius: 20px;
+      border-radius: 17px;
+      z-index: 1;
     }
     &-right {
       float: right;
+      & > div {
+        justify-content: end;
+      }
     }
   }
   &__send {
@@ -1172,6 +1228,20 @@ li {
       line-height: 155%;
       color: #a6a7be;
     }
+  }
+}
+
+.activemess {
+  position: relative;
+  &-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 17px;
+    left: 0;
+    bottom: 0;
+    background: $gradient !important;
+    transform: scaleX(0);
   }
 }
 
@@ -1435,6 +1505,7 @@ li {
     font-weight: 600;
     &-black {
       border: 1px solid #070711;
+      color: #070711;
     }
     &-color {
       background: linear-gradient(35deg, #ff8933, #9747ff);
