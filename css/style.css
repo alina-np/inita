@@ -487,7 +487,6 @@ li {
 .clients .mobileContent {
   color: #262a5c;
   font-size: 14px;
-  line-height: 130%;
 }
 .clients__time {
   width: 97px;
@@ -502,7 +501,9 @@ li {
   font-weight: 600px;
 }
 .clients__mess {
+  max-width: 78%;
   width: 78%;
+  min-width: 100px;
   padding: 12px 20px;
   border-radius: 16px;
   border: 1px solid #e6e9f0;
@@ -521,14 +522,27 @@ li {
 }
 .clients__mess-small {
   font-size: 10px;
-}
-.clients__mess-thin {
   color: #646685;
-  font-size: 10px;
 }
 .clients__mess-bold {
   color: #a6a7be;
   font-weight: 600px;
+}
+.clients__mess-line {
+  line-height: 130%;
+}
+.clients__mess-thin {
+  width: -moz-min-content;
+  width: min-content;
+  white-space: nowrap;
+}
+.clients__mess-left img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.clients__mess-left p {
+  margin-left: 12px;
 }
 .clients__mess-right {
   display: flex;
@@ -572,14 +586,6 @@ li {
   border-radius: 8px;
   font-size: 10px;
 }
-.clients__onemess img {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-.clients__onemess p {
-  margin-left: 12px;
-}
 .clients__twomess {
   margin: 22px 0;
 }
@@ -604,28 +610,68 @@ li {
 .clients__fourmess {
   margin: 22px 0;
 }
-.clients__fourmess img {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-.clients__fourmess p {
-  margin-left: 12px;
-}
 .clients__fivemess {
   margin: 22px 0;
-  line-height: 150%;
+}
+.clients__fivemess .clients__mess {
+  margin: 0 12px 5px 0;
 }
 .clients__fivemess p:first-of-type {
   margin-bottom: 10px;
 }
-.clients__sixmess img {
+.clients__sevenmess {
+  margin: 22px 0;
+}
+.clients__sevenmess .clients__mess {
+  margin-right: 12px;
+}
+.clients__sevenmess img {
+  margin: 5px 12px 5px 0;
+}
+.clients__eightmess {
+  margin: 22px 0;
+}
+.clients__eightmess .clients__mess {
+  margin-right: 12px;
+}
+.clients__eightmess .clients__mess-grey {
+  margin: 5px 12px 5px 0;
+}
+.clients__eightmess .clients__mess-grey p:first-of-type {
+  margin-bottom: 10px;
+}
+.clients__tenmess {
+  margin: 22px 0;
+}
+.clients__tenmess .clients__mess {
+  margin-right: 12px;
+  margin-bottom: 5px;
+}
+.clients__elevenmess {
+  margin: 22px 0;
+}
+.clients__elevenmess img {
   width: 20px;
   height: 20px;
   border-radius: 50%;
 }
-.clients__sixmess p {
+.clients__elevenmess p {
   margin-left: 12px;
+}
+.clients__twelvemess {
+  margin: 22px 0;
+}
+.clients__twelvemess .clients__mess-grey {
+  margin-right: 12px;
+}
+.clients__twelvemess .clients__mess-green {
+  margin: 5px 12px 5px 0;
+}
+.clients__thirteenmess {
+  margin: 22px 0;
+}
+.clients__thirteenmess .clients__mess {
+  margin: 0 12px 5px 0;
 }
 
 .website .iconMenu {
@@ -850,6 +896,7 @@ li {
   font-weight: 500;
   font-size: 10px;
   line-height: 140%;
+  cursor: grab;
 }
 .websitecard-2__info {
   margin-top: 7px;
@@ -874,6 +921,9 @@ li {
   margin-top: 10px;
 }
 
+.websitecard-3 {
+  cursor: grab;
+}
 .websitecard-3__info {
   display: flex;
   gap: 8px;
@@ -1010,6 +1060,7 @@ li {
   height: 43px;
 }
 .appointments__infografika {
+  position: relative;
   font-size: 14px;
   line-height: 143%;
   text-align: center;
@@ -1036,7 +1087,7 @@ li {
   position: absolute;
   transform: scale(0.75);
   left: -60px;
-  top: 140px;
+  top: 30px;
   z-index: -1;
 }
 .appointments__icons {
@@ -1128,6 +1179,11 @@ li {
   font-size: 10px;
   line-height: 133%;
   color: #fff;
+}
+
+.appointmentsMain {
+  position: relative;
+  cursor: grab;
 }
 
 .actions .slideContent__right {

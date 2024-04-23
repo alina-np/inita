@@ -13,8 +13,7 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src:
-    local("VelaSans-Regular"),
+  src: local("VelaSans-Regular"),
     url("./fonts/VelaSans-Regular.woff") format("woff2"),
     url("./fonts/VelaSans-Regular.woff") format("woff");
   font-weight: normal;
@@ -23,8 +22,7 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src:
-    local("VelaSans-SemiBold"),
+  src: local("VelaSans-SemiBold"),
     url("./fonts/VelaSans-SemiBold.woff2") format("woff2"),
     url("./fonts/VelaSans-SemiBold.woff") format("woff");
   font-weight: 600;
@@ -33,8 +31,7 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src:
-    local("VelaSans-Medium"),
+  src: local("VelaSans-Medium"),
     url("./fonts/VelaSans-Medium.woff2") format("woff2"),
     url("./fonts/VelaSans-Medium.woff") format("woff");
   font-weight: 500;
@@ -43,8 +40,7 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src:
-    local("VelaSans-Bold"),
+  src: local("VelaSans-Bold"),
     url("./fonts/VelaSans-Bold.woff2") format("woff2"),
     url("./fonts/VelaSans-Bold.woff") format("woff");
   font-weight: bold;
@@ -363,7 +359,11 @@ li {
   width: 100%;
   position: absolute;
   bottom: 3%;
-  fill: radial-gradient(100% 100% at 50.74% 0%, rgb(7, 9, 32) 49.5%, rgb(7, 9, 32) 100%);
+  fill: radial-gradient(
+    100% 100% at 50.74% 0%,
+    rgb(7, 9, 32) 49.5%,
+    rgb(7, 9, 32) 100%
+  );
 }
 
 .input {
@@ -490,7 +490,6 @@ li {
   & .mobileContent {
     color: $purple;
     font-size: 14px;
-    line-height: 130%;
   }
   &__time {
     width: 97px;
@@ -503,7 +502,9 @@ li {
     font-weight: 600px;
   }
   &__mess {
+    max-width: 78%;
     width: 78%;
+    min-width: 100px;
     padding: 12px 20px;
     border-radius: 16px;
     border: 1px solid #e6e9f0;
@@ -521,14 +522,28 @@ li {
     }
     &-small {
       font-size: 10px;
-    }
-    &-thin {
       color: $light-purple;
-      font-size: 10px;
     }
     &-bold {
       color: #a6a7be;
       font-weight: 600px;
+    }
+    &-line {
+      line-height: 130%;
+    }
+    &-thin {
+      width: min-content;
+      white-space: nowrap;
+    }
+    &-left {
+      & img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+      & p {
+        margin-left: 12px;
+      }
     }
     &-right {
       display: flex;
@@ -565,16 +580,6 @@ li {
     border-radius: 8px;
     font-size: 10px;
   }
-  &__onemess {
-    & img {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-    }
-    & p {
-      margin-left: 12px;
-    }
-  }
   &__twomess {
     margin: 22px 0;
     & .clients__mess {
@@ -598,23 +603,46 @@ li {
   }
   &__fourmess {
     margin: 22px 0;
-    & img {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-    }
-    & p {
-      margin-left: 12px;
-    }
   }
   &__fivemess {
     margin: 22px 0;
-    line-height: 150%;
+    & .clients__mess {
+      margin: 0 12px 5px 0;
+    }
     & p:first-of-type {
       margin-bottom: 10px;
     }
   }
-  &__sixmess {
+  &__sevenmess {
+    margin: 22px 0;
+    & .clients__mess {
+      margin-right: 12px;
+    }
+    & img {
+      margin: 5px 12px 5px 0;
+    }
+  }
+  &__eightmess {
+    margin: 22px 0;
+    & .clients__mess {
+      margin-right: 12px;
+      &-grey {
+        margin: 5px 12px 5px 0;
+        & p:first-of-type {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  &__tenmess {
+    margin: 22px 0;
+    & .clients__mess {
+      margin-right: 12px;
+      margin-bottom: 5px;
+    }
+  }
+  &__elevenmess {
+    margin: 22px 0;
     & img {
       width: 20px;
       height: 20px;
@@ -622,6 +650,21 @@ li {
     }
     & p {
       margin-left: 12px;
+    }
+  }
+  &__twelvemess {
+    margin: 22px 0;
+    & .clients__mess-grey {
+      margin-right: 12px;
+    }
+    & .clients__mess-green {
+      margin: 5px 12px 5px 0;
+    }
+  }
+  &__thirteenmess {
+    margin: 22px 0;
+    & .clients__mess {
+      margin: 0 12px 5px 0;
     }
   }
 }
@@ -835,6 +878,7 @@ li {
   font-weight: 500;
   font-size: 10px;
   line-height: 140%;
+  cursor: grab;
   &__info {
     margin-top: 7px;
     & > div {
@@ -857,6 +901,7 @@ li {
 }
 
 .websitecard-3 {
+  cursor: grab;
   &__info {
     display: flex;
     gap: 8px;
@@ -866,8 +911,7 @@ li {
     & > div {
       width: 48%;
       height: min-content;
-      box-shadow:
-        1px -1px 24px 0 rgba(38, 42, 92, 0.15),
+      box-shadow: 1px -1px 24px 0 rgba(38, 42, 92, 0.15),
         0 0 4px 0 rgba(38, 42, 92, 0.06);
       background: rgba(0, 0, 0, 0.5);
       border-radius: 8px;
@@ -993,6 +1037,7 @@ li {
     }
   }
   &__infografika {
+    position: relative;
     font-size: 14px;
     line-height: 143%;
     text-align: center;
@@ -1018,7 +1063,7 @@ li {
       position: absolute;
       transform: scale(0.75);
       left: -60px;
-      top: 140px;
+      top: 30px;
       z-index: -1;
     }
   }
@@ -1100,6 +1145,11 @@ li {
     line-height: 133%;
     color: $white;
   }
+}
+
+.appointmentsMain {
+  position: relative;
+  cursor: grab;
 }
 
 // .appointments__cliensList,
@@ -1193,9 +1243,7 @@ li {
     display: flex;
     border-radius: 20px;
     border: 2px dashed $white;
-    background:
-      linear-gradient(#fff, #fff) padding-box,
-      $gradient border-box;
+    background: linear-gradient(#fff, #fff) padding-box, $gradient border-box;
     font-size: 10px;
     line-height: 140%;
     color: $purple;
@@ -1402,7 +1450,11 @@ li {
       display: block;
       width: 100%;
       height: 252px;
-      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 100%);
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        #fff 100%
+      );
     }
   }
   &__top {
@@ -1727,7 +1779,11 @@ li {
     width: 100%;
     height: 120px;
     position: fixed;
-    background: linear-gradient(180deg, rgb(7, 9, 32, 1) 0%, rgba(7, 9, 32, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgb(7, 9, 32, 1) 0%,
+      rgba(7, 9, 32, 0) 100%
+    );
     z-index: -1;
     left: 0;
   }

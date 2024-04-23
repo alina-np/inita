@@ -35,8 +35,8 @@ const swiper = new Swiper(".swiperMain", {
 });
 
 swiper.on("slideChange", function (e) {
-  // if (swiper.realIndex === 1) starWebsiteSlider();
-  // if (swiper.realIndex === 2) startAnimationAppointments();
+  if (swiper.realIndex === 1) starWebsiteSlider();
+  if (swiper.realIndex === 2) startAnimationAppointments();
   swiper.realIndex === 3 ? tlAction.play() : tlAction.pause();
   swiper.realIndex === 4 ? tlSocials.play() : tlSocials.pause();
   changeStyleSwiper(swiper.realIndex);
@@ -487,7 +487,7 @@ tlAction
     rotate: 0,
     zIndex: -13,
   });
-  
+
 // Блок Socials
 tlSocials.pause();
 tlSocials
@@ -557,6 +557,37 @@ tlSocials
     delay: 0.7,
     duration: 1,
   });
+
+// Движение контента в телефоне
+changePosition(".appointmentsMain", -360);
+changePosition(".websitecard-2", -190);
+changePosition(".websitecard-3", -980);
+
+function changePosition(block, value) {
+  const pagBlock = document.querySelector(block);
+  let startY = 0,
+    currentY = 0;
+
+  pagBlock.addEventListener("mousedown", function (e) {
+    startY = e.clientY - currentY;
+    document.addEventListener("mousemove", dragBlock);
+    document.addEventListener("mouseup", stopDragBlock);
+  });
+
+  function dragBlock(e) {
+    currentY = e.clientY - startY;
+    console.log(currentY);
+    if (currentY < value) currentY = value;
+    if (currentY > 0) currentY = 0;
+
+    pagBlock.style.top = currentY + "px";
+  }
+
+  function stopDragBlock() {
+    document.removeEventListener("mousemove", dragBlock);
+    document.removeEventListener("mouseup", stopDragBlock);
+  }
+}
 
 // Перетаскивание кнопок
 if (innerWidth < 768) {
