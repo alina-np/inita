@@ -55,6 +55,7 @@ swiper.on("slideChange", function (e) {
     tlClientsChat.play();
   }
   swiper.realIndex === 1 ? swiper2.autoplay.start() : swiper2.autoplay.pause();
+  swiper.realIndex === 2 && startAnimationAppointments();
   swiper.realIndex === 3 ? tlAction.play() : tlAction.pause();
   swiper.realIndex === 4 ? tlSocials.play() : tlSocials.pause();
   changeStyleSwiper(swiper.realIndex);
