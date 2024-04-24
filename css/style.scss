@@ -14,8 +14,7 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src:
-    local("VelaSans-Regular"),
+  src: local("VelaSans-Regular"),
     url("./fonts/VelaSans-Regular.woff") format("woff2"),
     url("./fonts/VelaSans-Regular.woff") format("woff");
   font-weight: normal;
@@ -24,8 +23,7 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src:
-    local("VelaSans-SemiBold"),
+  src: local("VelaSans-SemiBold"),
     url("./fonts/VelaSans-SemiBold.woff2") format("woff2"),
     url("./fonts/VelaSans-SemiBold.woff") format("woff");
   font-weight: 600;
@@ -34,8 +32,7 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src:
-    local("VelaSans-Medium"),
+  src: local("VelaSans-Medium"),
     url("./fonts/VelaSans-Medium.woff2") format("woff2"),
     url("./fonts/VelaSans-Medium.woff") format("woff");
   font-weight: 500;
@@ -44,8 +41,7 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src:
-    local("VelaSans-Bold"),
+  src: local("VelaSans-Bold"),
     url("./fonts/VelaSans-Bold.woff2") format("woff2"),
     url("./fonts/VelaSans-Bold.woff") format("woff");
   font-weight: bold;
@@ -364,7 +360,11 @@ li {
   width: 100%;
   position: absolute;
   bottom: 3%;
-  fill: radial-gradient(100% 100% at 50.74% 0%, rgb(7, 9, 32) 49.5%, rgb(7, 9, 32) 100%);
+  fill: radial-gradient(
+    100% 100% at 50.74% 0%,
+    rgb(7, 9, 32) 49.5%,
+    rgb(7, 9, 32) 100%
+  );
 }
 
 .input {
@@ -622,8 +622,16 @@ li {
   }
   &__two {
     position: relative;
+    & .clientsTimelineHistory-ml {
+      height: 0;
+      opacity: 0;
+      transform: translateY(20px);
+    }
     & .clientsTimelineDo > svg {
       background: #30c085;
+    }
+    & .clientsTimelineDo {
+      margin-bottom: 15px;
     }
     &:after {
       content: "";
@@ -636,17 +644,43 @@ li {
     }
   }
   &__three {
-    & svg {
+    position: relative;
+    margin: 44px 0;
+    & .clientsTimelineDo > svg {
       background: #ff7613;
+    }
+    & .clientsTimelineHistory {
+      margin-top: 10px;
+    }
+    &:after {
+      content: "";
+      height: 100%;
+      width: 1px;
+      position: absolute;
+      left: 20px;
+      bottom: -43px;
+      background: #cacad9;
     }
   }
   &__four {
-    & svg {
-      background: $white;
+    position: relative;
+    & .clientsTimelineDo > svg {
       border: 1px solid #ff7613;
       & path {
         fill: #ff7613;
       }
+    }
+    & .clientsTimelineHistory {
+      margin-top: 10px;
+    }
+    &:after {
+      content: "";
+      height: 23px;
+      width: 1px;
+      position: absolute;
+      left: 21px;
+      bottom: 18px;
+      background: #cacad9;
     }
   }
 }
@@ -673,6 +707,11 @@ li {
   }
 }
 
+.timeline {
+  position: relative;
+  top: 345px;
+}
+
 .clientsTimelineHistory {
   @include flex(start);
   gap: 8px;
@@ -683,7 +722,7 @@ li {
   &-ml {
     margin-left: 61px;
   }
-  & > div {
+  &__text {
     padding: 8px;
     border: 1px solid $light;
     border-radius: 8px;
@@ -691,10 +730,25 @@ li {
   &__date {
     font-size: 8px;
     & span {
-      color: #3D88FF;
+      color: #3d88ff;
     }
     &-orange span {
-      color: #FF7613;
+      color: #ff7613;
+    }
+  }
+  & .svgContainer {
+    position: relative;
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 20px;
+      position: absolute;
+      left: -100%;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23CACAD9' d='M8 7.5A7.5 7.5 0 0 1 .5 0M8 7.5h8'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
   & svg {
@@ -1160,8 +1214,7 @@ img.clients__mess.clients__mess-anim {
     & > div {
       width: 48%;
       height: min-content;
-      box-shadow:
-        1px -1px 24px 0 rgba(38, 42, 92, 0.15),
+      box-shadow: 1px -1px 24px 0 rgba(38, 42, 92, 0.15),
         0 0 4px 0 rgba(38, 42, 92, 0.06);
       background: rgba(0, 0, 0, 0.5);
       border-radius: 8px;
@@ -1187,6 +1240,7 @@ img.clients__mess.clients__mess-anim {
   font-weight: 500;
   font-size: 10px;
   line-height: 160%;
+  cursor: grab;
   &__info {
     margin-top: 18px;
     border-radius: 22px;
@@ -1493,9 +1547,7 @@ img.clients__mess.clients__mess-anim {
     display: flex;
     border-radius: 20px;
     border: 2px dashed $white;
-    background:
-      linear-gradient(#fff, #fff) padding-box,
-      $gradient border-box;
+    background: linear-gradient(#fff, #fff) padding-box, $gradient border-box;
     font-size: 10px;
     line-height: 140%;
     color: $purple;
@@ -1702,7 +1754,11 @@ img.clients__mess.clients__mess-anim {
       display: block;
       width: 100%;
       height: 252px;
-      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 100%);
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        #fff 100%
+      );
     }
   }
   &__top {
@@ -2027,7 +2083,11 @@ img.clients__mess.clients__mess-anim {
     width: 100%;
     height: 120px;
     position: fixed;
-    background: linear-gradient(180deg, rgb(7, 9, 32, 1) 0%, rgba(7, 9, 32, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgb(7, 9, 32, 1) 0%,
+      rgba(7, 9, 32, 0) 100%
+    );
     z-index: -1;
     left: 0;
   }
@@ -2099,6 +2159,9 @@ img.clients__mess.clients__mess-anim {
     top: 130px;
   }
   .website__cards {
+    overflow: hidden;
+  }
+  .socials__list {
     overflow: hidden;
   }
   .join {

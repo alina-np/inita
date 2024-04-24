@@ -3,12 +3,18 @@ const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   line = document.querySelector(".line"),
   hand = document.querySelector(".hand"),
   cardBg = document.querySelector(".website__cards"),
+  btnPag = document.querySelectorAll(
+    ".website__pagination .swiper-pagination-bullet"
+  ),
+  btnPrev = document.querySelector(".swiperWebsite-button-prev"),
+  btnNext = document.querySelector(".swiperWebsite-button-next"),
   tlClientsList = gsap.timeline({}),
   tlClientsTimeline = gsap.timeline({}),
-  tlClientsChat = gsap.timeline({ repeat: -1, repeatDelay: 4 }),
+  tlClientsChat = gsap.timeline({}),
   tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.2 }),
   tlSocials = gsap.timeline({ repeat: -1, repeatDelay: 2 });
 
+// Инициализация и настройка слайдеров
 const swiper = new Swiper(".swiperMain", {
   effect: "creative",
   grabCursor: false,
@@ -38,38 +44,59 @@ const swiper = new Swiper(".swiperMain", {
 });
 
 swiper.on("slideChange", function (e) {
-  if (swiper.realIndex === 1) starWebsiteSlider();
-  if (swiper.realIndex === 2) startAnimationAppointments();
+  if (swiper.realIndex !== 0) {
+    tlClientsList.pause();
+    tlClientsTimeline.pause();
+    tlClientsChat.pause();
+  }
+  if (swiper.realIndex === 0) {
+    tlClientsList.play();
+    tlClientsTimeline.play();
+    tlClientsChat.play();
+  }
+  swiper.realIndex === 1 ? swiper2.autoplay.start() : swiper2.autoplay.pause();
   swiper.realIndex === 3 ? tlAction.play() : tlAction.pause();
   swiper.realIndex === 4 ? tlSocials.play() : tlSocials.pause();
   changeStyleSwiper(swiper.realIndex);
 });
 
-function starWebsiteSlider() {
-  const swiper2 = new Swiper(".swiperWebsite", {
-    pagination: {
-      el: ".website__pagination",
-      clickable: true,
+const swiper2 = new Swiper(".swiperWebsite", {
+  pagination: {
+    el: ".website__pagination",
+    clickable: true,
+  },
+  loop: true,
+  autoplay: {
+    delay: 3000,
+    // disableOnInteraction: false,
+  },
+  navigation: {
+    nextEl: ".swiperWebsite-button-next",
+    prevEl: ".swiperWebsite-button-prev",
+  },
+  on: {
+    init: function () {
+      cardBg.classList.remove("website__cards-bg");
     },
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    navigation: {
-      nextEl: ".swiperWebsite-button-next",
-      prevEl: ".swiperWebsite-button-prev",
-    },
-    on: {
-      init: function () {
-        cardBg.classList.remove("website__cards-bg");
-      },
-    },
-  });
-  swiper2.on("slideChange", function (e) {
-    if (swiper2.realIndex !== 0) cardBg.classList.add("website__cards-bg");
-    else cardBg.classList.remove("website__cards-bg");
-  });
+  },
+  touchStartPreventDefault: false,
+});
+
+swiper2.autoplay.pause();
+
+swiper2.on("slideChange", function (e) {
+  swiper2.realIndex !== 0
+    ? cardBg.classList.add("website__cards-bg")
+    : cardBg.classList.remove("website__cards-bg");
+});
+
+btnPag.forEach((item) => item.addEventListener("click", stopAutoplay));
+btnPrev.addEventListener("click", stopAutoplay);
+btnNext.addEventListener("click", stopAutoplay);
+
+function stopAutoplay() {
+  swiper2.autoplay.stop();
+  setTimeout(() => swiper2.autoplay.start(), 10000);
 }
 
 // Изменения цвета вокруг телефона и движение селектора под кнопками
@@ -110,9 +137,9 @@ function showTab() {
 }
 
 function startAnimationClients() {
-  startAnimationClientsChat();
   startAnimationClientsList();
   startAnimationClientsTimeline();
+  startAnimationClientsChat();
 
   function startAnimationClientsList() {
     tlClientsList
@@ -129,7 +156,85 @@ function startAnimationClients() {
   }
 
   function startAnimationClientsTimeline() {
-    
+    tlClientsTimeline
+      .to(".timeline", {
+        opacity: 1,
+        y: -45,
+        delay: 4,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -93,
+        delay: 0.7,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -130,
+        delay: 0.7,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -192,
+        delay: 0.7,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -280,
+        delay: 0.7,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -325,
+        delay: 0.7,
+      })
+      .to(".clientsTimelineHistory-one", {
+        height: "auto",
+        opacity: 1,
+        y: 0,
+        delay: -0.5,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -371,
+        delay: 0.7,
+      })
+      .to(".clientsTimelineHistory-two", {
+        height: "auto",
+        opacity: 1,
+        y: 0,
+        delay: -0.5,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -415,
+        delay: 0.7,
+      })
+      .to(".clientsTimelineHistory-three", {
+        height: "auto",
+        opacity: 1,
+        y: 0,
+        delay: -0.5,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -515,
+        delay: 0.7,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -550,
+        delay: 0.7,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -640,
+        delay: 0.7,
+      })
+      .to(".timeline", {
+        opacity: 1,
+        y: -670,
+        delay: 0.7,
+      });
   }
 
   function startAnimationClientsChat() {
@@ -645,11 +750,10 @@ function changePosition(block, value) {
 
   function dragBlock(e) {
     currentY = e.clientY - startY;
-    console.log(currentY);
     if (currentY < value) currentY = value;
     if (currentY > 0) currentY = 0;
 
-    pagBlock.style.top = currentY + "px";
+    pagBlock.style.transform = `translateY(${currentY}px)`;
   }
 
   function stopDragBlock() {
