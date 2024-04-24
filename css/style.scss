@@ -1,6 +1,7 @@
 $light: #b0b2c2;
 $white: #fff;
 $dark: #070920;
+$moredark: #070711;
 $green: #30c085;
 $purple: #262a5c;
 $light-purple: #646685;
@@ -13,7 +14,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-Regular"),
+  src:
+    local("VelaSans-Regular"),
     url("./fonts/VelaSans-Regular.woff") format("woff2"),
     url("./fonts/VelaSans-Regular.woff") format("woff");
   font-weight: normal;
@@ -22,7 +24,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-SemiBold"),
+  src:
+    local("VelaSans-SemiBold"),
     url("./fonts/VelaSans-SemiBold.woff2") format("woff2"),
     url("./fonts/VelaSans-SemiBold.woff") format("woff");
   font-weight: 600;
@@ -31,7 +34,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-Medium"),
+  src:
+    local("VelaSans-Medium"),
     url("./fonts/VelaSans-Medium.woff2") format("woff2"),
     url("./fonts/VelaSans-Medium.woff") format("woff");
   font-weight: 500;
@@ -40,7 +44,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-Bold"),
+  src:
+    local("VelaSans-Bold"),
     url("./fonts/VelaSans-Bold.woff2") format("woff2"),
     url("./fonts/VelaSans-Bold.woff") format("woff");
   font-weight: bold;
@@ -359,11 +364,7 @@ li {
   width: 100%;
   position: absolute;
   bottom: 3%;
-  fill: radial-gradient(
-    100% 100% at 50.74% 0%,
-    rgb(7, 9, 32) 49.5%,
-    rgb(7, 9, 32) 100%
-  );
+  fill: radial-gradient(100% 100% at 50.74% 0%, rgb(7, 9, 32) 49.5%, rgb(7, 9, 32) 100%);
 }
 
 .input {
@@ -445,12 +446,12 @@ li {
   font-weight: 600;
   font-size: 11px;
   text-align: center;
-  color: #070711;
+  color: $moredark;
   &__darkElem {
     width: 70px;
     height: 17px;
     border-radius: 20px;
-    background-color: #070711;
+    background-color: $moredark;
   }
 }
 
@@ -482,6 +483,234 @@ li {
   }
 }
 
+.clientsList {
+  z-index: 1;
+  background-color: $white;
+  &__top {
+    @include flex(space-between);
+  }
+  &__peoples {
+    margin: 15px 0;
+    padding: 0 8px;
+    @include flex(start);
+    flex-wrap: wrap;
+    gap: 25px 30px;
+    & p {
+      width: 55px;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: normal;
+      color: $purple;
+    }
+  }
+  &__peoples:not(.clientsList__peoples-one) img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+  }
+  & h4 {
+    padding: 0 8px;
+    font-size: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  & .clientsList__title-dark {
+    color: $moredark;
+  }
+  & .clientsList__title-orange {
+    color: #ff7613;
+  }
+}
+
+.clientsPeople {
+  width: 94%;
+  color: $light-purple;
+  &__top {
+    @include flex(space-between);
+  }
+  &__info {
+    @include flex(space-between);
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 15px;
+    &-small {
+      font-size: 8px;
+      line-height: normal;
+    }
+  }
+  &__avatar {
+    margin-top: -10px;
+    border-radius: 50%;
+  }
+}
+
+.clientsTab {
+  &__head {
+    position: relative;
+    @include flex(space-between);
+    border-bottom: 1px solid $light;
+    font-size: 10px;
+    font-weight: 600;
+    & > div {
+      width: 50%;
+      padding: 8px 0;
+      text-align: center;
+      cursor: pointer;
+    }
+    &-chat {
+      @include flex;
+      gap: 5px;
+      & span {
+        width: 16px;
+        height: 16px;
+        @include flex;
+        background: #ff7613;
+        border-radius: 50%;
+        color: $white;
+        font-size: 8px;
+      }
+    }
+    &-line {
+      position: absolute;
+      width: 45%;
+      height: 2px;
+      bottom: -1.4px;
+      background: $light-purple;
+      transition: 0.8s;
+    }
+    & > div:first-of-type.active ~ .clientsTab__head-line {
+      transform: translateX(10%);
+    }
+    & > div:nth-of-type(2).active ~ .clientsTab__head-line {
+      transform: translateX(110%);
+    }
+  }
+  &__content {
+    position: relative;
+    height: 365px;
+    overflow: hidden;
+    & > div {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.7s;
+    }
+    & > div.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.clientsTimeline {
+  margin: 22px 8px 0;
+  &__one {
+    position: relative;
+    margin-bottom: 44px;
+    & svg {
+      background: #3d88ff;
+    }
+    &:after {
+      content: "";
+      height: 100%;
+      width: 1px;
+      position: absolute;
+      left: 20px;
+      bottom: -43px;
+      background: #cacad9;
+    }
+  }
+  &__two {
+    position: relative;
+    & .clientsTimelineDo > svg {
+      background: #30c085;
+    }
+    &:after {
+      content: "";
+      height: 100%;
+      width: 1px;
+      position: absolute;
+      left: 20px;
+      bottom: -43px;
+      background: #cacad9;
+    }
+  }
+  &__three {
+    & svg {
+      background: #ff7613;
+    }
+  }
+  &__four {
+    & svg {
+      background: $white;
+      border: 1px solid #ff7613;
+      & path {
+        fill: #ff7613;
+      }
+    }
+  }
+}
+
+.clientsTimelineDo {
+  @include flex(start);
+  padding: 5px;
+  gap: 12px;
+  &__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: normal;
+    &-flex {
+      @include flex(start);
+    }
+    &-small {
+      font-size: 10px;
+    }
+  }
+  & > svg {
+    padding: 7px;
+    @include flex;
+    border-radius: 50%;
+  }
+}
+
+.clientsTimelineHistory {
+  @include flex(start);
+  gap: 8px;
+  margin: 0 0 2px 37px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 140%;
+  &-ml {
+    margin-left: 61px;
+  }
+  & > div {
+    padding: 8px;
+    border: 1px solid $light;
+    border-radius: 8px;
+  }
+  &__date {
+    font-size: 8px;
+    & span {
+      color: #3D88FF;
+    }
+    &-orange span {
+      color: #FF7613;
+    }
+  }
+  & svg {
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    border: 1px solid $light;
+    border-radius: 50%;
+  }
+}
+
+.clientsChat {
+  position: absolute;
+  bottom: -685%;
+}
+
 .clients {
   & .mobileContent > *:not(.mobuleBar):not(.iconMenu):not(.clients__time) {
     margin-left: 8px;
@@ -499,7 +728,7 @@ li {
     border-radius: 16px;
     border: 1px solid #e6e9f0;
     font-size: 12px;
-    font-weight: 600px;
+    font-weight: 600;
   }
   &__mess {
     max-width: 78%;
@@ -526,13 +755,14 @@ li {
     }
     &-bold {
       color: #a6a7be;
-      font-weight: 600px;
+      font-weight: 600;
     }
     &-line {
       line-height: 130%;
     }
     &-thin {
       width: min-content;
+      min-width: 175px;
       white-space: nowrap;
     }
     &-left {
@@ -617,6 +847,7 @@ li {
     margin: 22px 0;
     & .clients__mess {
       margin-right: 12px;
+      margin-bottom: 5px;
     }
     & img {
       margin: 5px 12px 5px 0;
@@ -667,6 +898,24 @@ li {
       margin: 0 12px 5px 0;
     }
   }
+}
+
+.clients__mess.clients__mess-anim {
+  position: relative;
+  height: 0;
+  opacity: 0;
+  top: 10px;
+  margin-top: -25px;
+}
+
+img.clients__mess.clients__mess-anim {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.clientsList,
+.clientsPeople {
+  position: absolute;
 }
 
 .website {
@@ -817,7 +1066,7 @@ li {
     }
     &-active {
       background: $white;
-      color: #070711;
+      color: $moredark;
       border-radius: 100px;
       padding: 4px 10px;
     }
@@ -911,7 +1160,8 @@ li {
     & > div {
       width: 48%;
       height: min-content;
-      box-shadow: 1px -1px 24px 0 rgba(38, 42, 92, 0.15),
+      box-shadow:
+        1px -1px 24px 0 rgba(38, 42, 92, 0.15),
         0 0 4px 0 rgba(38, 42, 92, 0.06);
       background: rgba(0, 0, 0, 0.5);
       border-radius: 8px;
@@ -1243,7 +1493,9 @@ li {
     display: flex;
     border-radius: 20px;
     border: 2px dashed $white;
-    background: linear-gradient(#fff, #fff) padding-box, $gradient border-box;
+    background:
+      linear-gradient(#fff, #fff) padding-box,
+      $gradient border-box;
     font-size: 10px;
     line-height: 140%;
     color: $purple;
@@ -1450,11 +1702,7 @@ li {
       display: block;
       width: 100%;
       height: 252px;
-      background-image: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0) 0%,
-        #fff 100%
-      );
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 100%);
     }
   }
   &__top {
@@ -1508,7 +1756,7 @@ li {
   &__top {
     @include flex(space-between);
     margin: 10px 0 0;
-    color: #070711;
+    color: $moredark;
     font-size: 10px;
     line-height: normal;
     & img {
@@ -1537,7 +1785,7 @@ li {
     border: 1px solid $light;
   }
   &__text {
-    color: #070711;
+    color: $moredark;
     font-size: 9px;
     line-height: 140%;
     & span {
@@ -1556,8 +1804,8 @@ li {
     font-size: 12px;
     font-weight: 600;
     &-black {
-      border: 1px solid #070711;
-      color: #070711;
+      border: 1px solid $moredark;
+      color: $moredark;
     }
     &-color {
       background: linear-gradient(35deg, #ff8933, #9747ff);
@@ -1779,11 +2027,7 @@ li {
     width: 100%;
     height: 120px;
     position: fixed;
-    background: linear-gradient(
-      180deg,
-      rgb(7, 9, 32, 1) 0%,
-      rgba(7, 9, 32, 0) 100%
-    );
+    background: linear-gradient(180deg, rgb(7, 9, 32, 1) 0%, rgba(7, 9, 32, 0) 100%);
     z-index: -1;
     left: 0;
   }

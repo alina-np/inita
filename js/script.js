@@ -3,6 +3,9 @@ const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   line = document.querySelector(".line"),
   hand = document.querySelector(".hand"),
   cardBg = document.querySelector(".website__cards"),
+  tlClientsList = gsap.timeline({}),
+  tlClientsTimeline = gsap.timeline({}),
+  tlClientsChat = gsap.timeline({ repeat: -1, repeatDelay: 4 }),
   tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.2 }),
   tlSocials = gsap.timeline({ repeat: -1, repeatDelay: 2 });
 
@@ -30,7 +33,7 @@ const swiper = new Swiper(".swiperMain", {
   },
   allowTouchMove: false,
   on: {
-    // init: startAnimationClients(),
+    init: startAnimationClients(),
   },
 });
 
@@ -49,10 +52,10 @@ function starWebsiteSlider() {
       clickable: true,
     },
     loop: true,
-    // autoplay: {
-    //   delay: 3000,
-    //   disableOnInteraction: false,
-    // },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
     navigation: {
       nextEl: ".swiperWebsite-button-next",
       prevEl: ".swiperWebsite-button-prev",
@@ -77,117 +80,182 @@ function changeStyleSwiper(num) {
   hand.classList.add(`hand-${num + 1}`);
 }
 
-// Анимация в слайдере
 // Блок Clients
+showTab();
+function showTab() {
+  let tabNav = document.querySelectorAll(".clientsTab__head > div");
+  let tabContent = document.querySelectorAll(".clientsTab__content > div");
+  let tabName;
+
+  tabNav.forEach((item) => item.addEventListener("click", selectTabNav));
+
+  function selectTabNav() {
+    tabNav.forEach((item) => item.classList.remove("active"));
+    this.classList.add("active");
+    tabName = this.dataset.name;
+    tabContent.forEach((item) => {
+      item.classList.contains(tabName)
+        ? item.classList.add("active")
+        : item.classList.remove("active");
+    });
+    if (document.querySelector(".timeline.active")) {
+      tlClientsChat.pause();
+      tlClientsTimeline.play();
+    }
+    if (document.querySelector(".chat.active")) {
+      tlClientsTimeline.pause();
+      tlClientsChat.play();
+    }
+  }
+}
+
 function startAnimationClients() {
-  const tlClients = gsap.timeline({ repeat: -1, repeatDelay: 4 });
-  tlClients
-    .fromTo(
-      ".clients__oneMess",
-      {
-        y: 320,
-      },
-      {
-        y: 305,
-        opacity: 1,
+  startAnimationClientsChat();
+  startAnimationClientsList();
+  startAnimationClientsTimeline();
+
+  function startAnimationClientsList() {
+    tlClientsList
+      .to(".clientsList__peoples div:not(.clientsList__peoples__km)", {
+        opacity: 0.3,
+        delay: 1,
+      })
+      .to(".clientsList", {
+        y: 500,
+        opacity: 0,
         delay: 0.5,
-      }
-    )
-    .to(".clients__oneMess", {
-      y: 120,
-      delay: 1,
-    })
-    .fromTo(
-      ".clients__twoMess",
-      {
-        y: 125,
-      },
-      {
-        y: 120,
+        duration: 0.8,
+      });
+  }
+
+  function startAnimationClientsTimeline() {
+    
+  }
+
+  function startAnimationClientsChat() {
+    tlClientsChat.pause();
+    tlClientsChat
+      .to(".clientsChat", {
         opacity: 1,
-      }
-    )
-    .to(".clients__oneMess", {
-      y: 20,
-      delay: 1,
-    })
-    .to(".clients__twoMess p", {
-      y: -115,
-      background: "white",
-      delay: -0.5,
-    })
-    .fromTo(
-      ".clients__threeMess",
-      {
         y: -40,
-      },
-      {
-        y: -35,
+      })
+      .to(".clientsChat", {
         opacity: 1,
-      }
-    )
-    .to(".clients__oneMess", {
-      y: 320,
-      opacity: 0,
-      delay: 1,
-    })
-    .to(".clients__threeMess", {
-      y: 100,
-      opacity: 0,
-      delay: -0.5,
-    })
-    .to(".clients__twoMess p", {
-      y: -5,
-      opacity: 0,
-      delay: -0.5,
-    })
-    .fromTo(
-      ".clients__fourMess",
-      {
-        y: -257,
-      },
-      {
-        y: -257,
+        y: -198,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
         opacity: 1,
-      }
-    )
-    .to(".clients__fourMess", {
-      y: -350,
-      background: "white",
-      delay: 1,
-    })
-    .fromTo(
-      ".clients__fiveMess",
-      {
-        y: -350,
-      },
-      {
-        y: -345,
+        y: -390,
+        delay: 0.7,
+      })
+      .to(".clients__twomess .clients__mess-anim", {
+        y: -10,
+        marginTop: 0,
+        height: "auto",
         opacity: 1,
-      }
-    )
-    .to(".clients__fourMess", {
-      y: -480,
-      delay: 1,
-    })
-    .to(".clients__fiveMess", {
-      y: -480,
-      delay: -0.5,
-    })
-    .to(".clients__ai", {
-      y: -140,
-      delay: -0.5,
-    })
-    .fromTo(
-      ".clients__lastMess",
-      {
-        y: -455,
-      },
-      {
-        y: -450,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
         opacity: 1,
-      }
-    );
+        y: -525,
+        delay: 0.7,
+      })
+      .to(".clients__threemess .clients__mess-anim", {
+        y: -10,
+        marginTop: 0,
+        height: "auto",
+        opacity: 1,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -655,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -695,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -925,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -1030,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -1175,
+        delay: 0.7,
+      })
+      .to(".clients__sevenmess .clients__mess-anim", {
+        y: -10,
+        marginTop: 0,
+        marginBottom: 5,
+        height: "auto",
+        opacity: 1,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -1325,
+        delay: 0.7,
+      })
+      .to(".clients__eightmess .clients__mess-anim", {
+        y: -10,
+        marginTop: 5,
+        height: "auto",
+        opacity: 1,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -1645,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -1785,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -1899,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -1990,
+        delay: 0.7,
+      })
+      .to(".clients__twelvemess .clients__mess-anim", {
+        y: -10,
+        marginTop: 5,
+        height: "auto",
+        opacity: 1,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -2040,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -2355,
+        delay: 0.7,
+      })
+      .to(".clientsChat", {
+        opacity: 1,
+        y: -2505,
+        delay: 0.7,
+      });
+  }
 }
 
 // Блок Appointments
@@ -562,6 +630,7 @@ tlSocials
 changePosition(".appointmentsMain", -360);
 changePosition(".websitecard-2", -190);
 changePosition(".websitecard-3", -980);
+changePosition(".websitecard-4", -70);
 
 function changePosition(block, value) {
   const pagBlock = document.querySelector(block);

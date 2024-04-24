@@ -480,6 +480,250 @@ li {
   border-radius: 73px 73px 0 0;
 }
 
+.clientsList {
+  z-index: 1;
+  background-color: #fff;
+}
+.clientsList__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.clientsList__peoples {
+  margin: 15px 0;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 25px 30px;
+}
+.clientsList__peoples p {
+  width: 55px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: normal;
+  color: #262a5c;
+}
+.clientsList__peoples:not(.clientsList__peoples-one) img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+.clientsList h4 {
+  padding: 0 8px;
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.clientsList .clientsList__title-dark {
+  color: #070711;
+}
+.clientsList .clientsList__title-orange {
+  color: #ff7613;
+}
+
+.clientsPeople {
+  width: 94%;
+  color: #646685;
+}
+.clientsPeople__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.clientsPeople__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 15px;
+}
+.clientsPeople__info-small {
+  font-size: 8px;
+  line-height: normal;
+}
+.clientsPeople__avatar {
+  margin-top: -10px;
+  border-radius: 50%;
+}
+
+.clientsTab__head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #b0b2c2;
+  font-size: 10px;
+  font-weight: 600;
+}
+.clientsTab__head > div {
+  width: 50%;
+  padding: 8px 0;
+  text-align: center;
+  cursor: pointer;
+}
+.clientsTab__head-chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.clientsTab__head-chat span {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff7613;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 8px;
+}
+.clientsTab__head-line {
+  position: absolute;
+  width: 45%;
+  height: 2px;
+  bottom: -1.4px;
+  background: #646685;
+  transition: 0.8s;
+}
+.clientsTab__head > div:first-of-type.active ~ .clientsTab__head-line {
+  transform: translateX(10%);
+}
+.clientsTab__head > div:nth-of-type(2).active ~ .clientsTab__head-line {
+  transform: translateX(110%);
+}
+.clientsTab__content {
+  position: relative;
+  height: 365px;
+  overflow: hidden;
+}
+.clientsTab__content > div {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s;
+}
+.clientsTab__content > div.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.clientsTimeline {
+  margin: 22px 8px 0;
+}
+.clientsTimeline__one {
+  position: relative;
+  margin-bottom: 44px;
+}
+.clientsTimeline__one svg {
+  background: #3d88ff;
+}
+.clientsTimeline__one:after {
+  content: "";
+  height: 100%;
+  width: 1px;
+  position: absolute;
+  left: 20px;
+  bottom: -43px;
+  background: #cacad9;
+}
+.clientsTimeline__two {
+  position: relative;
+}
+.clientsTimeline__two .clientsTimelineDo > svg {
+  background: #30c085;
+}
+.clientsTimeline__two:after {
+  content: "";
+  height: 100%;
+  width: 1px;
+  position: absolute;
+  left: 20px;
+  bottom: -43px;
+  background: #cacad9;
+}
+.clientsTimeline__three svg {
+  background: #ff7613;
+}
+.clientsTimeline__four svg {
+  background: #fff;
+  border: 1px solid #ff7613;
+}
+.clientsTimeline__four svg path {
+  fill: #ff7613;
+}
+
+.clientsTimelineDo {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 5px;
+  gap: 12px;
+}
+.clientsTimelineDo__text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: normal;
+}
+.clientsTimelineDo__text-flex {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.clientsTimelineDo__text-small {
+  font-size: 10px;
+}
+.clientsTimelineDo > svg {
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.clientsTimelineHistory {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  margin: 0 0 2px 37px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 140%;
+}
+.clientsTimelineHistory-ml {
+  margin-left: 61px;
+}
+.clientsTimelineHistory > div {
+  padding: 8px;
+  border: 1px solid #b0b2c2;
+  border-radius: 8px;
+}
+.clientsTimelineHistory__date {
+  font-size: 8px;
+}
+.clientsTimelineHistory__date span {
+  color: #3D88FF;
+}
+.clientsTimelineHistory__date-orange span {
+  color: #FF7613;
+}
+.clientsTimelineHistory svg {
+  width: 16px;
+  height: 16px;
+  padding: 2px;
+  border: 1px solid #b0b2c2;
+  border-radius: 50%;
+}
+
+.clientsChat {
+  position: absolute;
+  bottom: -685%;
+}
+
 .clients .mobileContent > *:not(.mobuleBar):not(.iconMenu):not(.clients__time) {
   margin-left: 8px;
   margin-right: 8px;
@@ -498,7 +742,7 @@ li {
   border-radius: 16px;
   border: 1px solid #e6e9f0;
   font-size: 12px;
-  font-weight: 600px;
+  font-weight: 600;
 }
 .clients__mess {
   max-width: 78%;
@@ -526,7 +770,7 @@ li {
 }
 .clients__mess-bold {
   color: #a6a7be;
-  font-weight: 600px;
+  font-weight: 600;
 }
 .clients__mess-line {
   line-height: 130%;
@@ -534,6 +778,7 @@ li {
 .clients__mess-thin {
   width: -moz-min-content;
   width: min-content;
+  min-width: 175px;
   white-space: nowrap;
 }
 .clients__mess-left img {
@@ -624,6 +869,7 @@ li {
 }
 .clients__sevenmess .clients__mess {
   margin-right: 12px;
+  margin-bottom: 5px;
 }
 .clients__sevenmess img {
   margin: 5px 12px 5px 0;
@@ -672,6 +918,24 @@ li {
 }
 .clients__thirteenmess .clients__mess {
   margin: 0 12px 5px 0;
+}
+
+.clients__mess.clients__mess-anim {
+  position: relative;
+  height: 0;
+  opacity: 0;
+  top: 10px;
+  margin-top: -25px;
+}
+
+img.clients__mess.clients__mess-anim {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.clientsList,
+.clientsPeople {
+  position: absolute;
 }
 
 .website .iconMenu {
