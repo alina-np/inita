@@ -2190,8 +2190,10 @@ img.clients__mess.clients__mess-anim {
   }
   .mobileContent-overflow {
     position: relative;
+    z-index: 2;
     height: 575px;
     overflow: hidden;
+    border-radius: 35px;
   }
   .website .iconMenu {
     bottom: -4px;
@@ -2206,15 +2208,19 @@ img.clients__mess.clients__mess-anim {
     justify-content: center;
   }
   .appointments__infografika svg {
-    width: 100%;
-    left: 0;
-    top: 130px;
+    left: -51px;
+    top: 30px;
+    transform: scale(0.71);
   }
-  .website__cards {
-    overflow: hidden;
-  }
+  .website__cards,
   .socials__list {
     overflow: hidden;
+  }
+  .socials__list::after {
+    bottom: 22%;
+  }
+  .post {
+    margin-top: 20px;
   }
   .join {
     margin: 65px 0 -8px;

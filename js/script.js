@@ -118,6 +118,7 @@ function showTab() {
   tabNav.forEach((item) => item.addEventListener("click", selectTabNav));
 
   function selectTabNav() {
+    console.log('click')
     tabNav.forEach((item) => item.classList.remove("active"));
     this.classList.add("active");
     tabName = this.dataset.name;
@@ -717,7 +718,7 @@ tlSocials
       delay: -0.5,
     },
     {
-      y: -600,
+      y: -580,
       opacity: 1,
     }
   )
