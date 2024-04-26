@@ -203,7 +203,7 @@ li {
 .line {
   position: absolute;
   top: 245px;
-  left: 350px;
+  left: 678px;
   transition: 0.4s;
   &-1 {
     left: 350px;
@@ -488,6 +488,7 @@ li {
   background-color: $white;
   &__top {
     @include flex(space-between);
+    padding-right: 8px;
   }
   &__peoples {
     margin: 15px 0;
@@ -1281,6 +1282,9 @@ img.clients__mess.clients__mess-anim {
     margin-bottom: 20px;
     font-size: 12px;
     line-height: 175%;
+    & a {
+      color: $white;
+    }
   }
   &__title {
     font-weight: 600;
@@ -1955,7 +1959,7 @@ img.clients__mess.clients__mess-anim {
     margin: -80px 0 0;
   }
   .line {
-    left: 51px;
+    left:375px;
     top: 250px;
     &-1 {
       left: 51px;

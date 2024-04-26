@@ -190,7 +190,7 @@ li {
 .line {
   position: absolute;
   top: 245px;
-  left: 350px;
+  left: 678px;
   transition: 0.4s;
 }
 .line-1 {
@@ -488,6 +488,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-right: 8px;
 }
 .clientsList__peoples {
   margin: 15px 0;
@@ -1322,6 +1323,9 @@ img.clients__mess.clients__mess-anim {
   font-size: 12px;
   line-height: 175%;
 }
+.websitecard-5__adress a {
+  color: #fff;
+}
 .websitecard-5__title {
   font-weight: 600;
   font-size: 16px;
@@ -2020,7 +2024,7 @@ img.clients__mess.clients__mess-anim {
     margin: -80px 0 0;
   }
   .line {
-    left: 51px;
+    left: 375px;
     top: 250px;
   }
   .line-1 {

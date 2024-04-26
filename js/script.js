@@ -9,7 +9,7 @@ const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   btnPrev = document.querySelector(".swiperWebsite-button-prev"),
   btnNext = document.querySelector(".swiperWebsite-button-next"),
   tlClientsList = gsap.timeline({}),
-  tlClientsTimeline = gsap.timeline({}),
+  tlClientsTimeline = gsap.timeline({ onComplete: endtlClientsTimeline }),
   tlClientsChat = gsap.timeline({}),
   tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.2 }),
   tlSocials = gsap.timeline({ repeat: -1, repeatDelay: 2 });
@@ -37,9 +37,10 @@ const swiper = new Swiper(".swiperMain", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  initialSlide: 2,
   allowTouchMove: false,
   on: {
-    init: startAnimationClients(),
+    init: startAnimationAppointments(),
   },
 });
 
@@ -50,12 +51,9 @@ swiper.on("slideChange", function (e) {
     tlClientsChat.pause();
   }
   if (swiper.realIndex === 0) {
-    tlClientsList.play();
-    tlClientsTimeline.play();
-    tlClientsChat.play();
+    startAnimationClients();
   }
   swiper.realIndex === 1 ? swiper2.autoplay.start() : swiper2.autoplay.pause();
-  swiper.realIndex === 2 && startAnimationAppointments();
   swiper.realIndex === 3 ? tlAction.play() : tlAction.pause();
   swiper.realIndex === 4 ? tlSocials.play() : tlSocials.pause();
   changeStyleSwiper(swiper.realIndex);
@@ -118,7 +116,6 @@ function showTab() {
   tabNav.forEach((item) => item.addEventListener("click", selectTabNav));
 
   function selectTabNav() {
-    console.log('click')
     tabNav.forEach((item) => item.classList.remove("active"));
     this.classList.add("active");
     tabName = this.dataset.name;
@@ -136,6 +133,17 @@ function showTab() {
       tlClientsChat.play();
     }
   }
+}
+
+function endtlClientsTimeline() {
+  console.log('changeTab');
+// changePosition(".timeline", -680, -355);
+  // setTimeout(function () {
+  //   document.querySelector("[data-name='chat']").classList.add("active");
+  //   document.querySelector("[data-name='timeline']").classList.remove("active");
+  //   document.querySelector(".chat").classList.add("active");
+  //   document.querySelector(".timeline").classList.remove("active");
+  // }, 2000);
 }
 
 function startAnimationClients() {
@@ -804,7 +812,7 @@ function stickyPag() {
     if (window.pageYOffset > 260) {
       header.classList.add("swiperMain__pagination-fixed");
       header.style.position = "fixed";
-      header.style.top = "-47px";
+      header.style.top = "-40px";
     } else {
       header.classList.remove("swiperMain__pagination-fixed");
       header.style.position = "absolute";
