@@ -36,6 +36,7 @@ body {
   font-size: 16px;
   line-height: 150%;
   font-weight: 500;
+  overflow-x: hidden;
 }
 
 li {
@@ -726,6 +727,7 @@ li {
 .timeline {
   position: relative;
   top: 345px;
+  cursor: grab;
 }
 
 .clientsTimelineHistory {
@@ -781,6 +783,7 @@ li {
 .clientsChat {
   position: absolute;
   bottom: -685%;
+  cursor: grab;
 }
 
 .clients .mobileContent > *:not(.mobuleBar):not(.iconMenu):not(.clients__time) {
@@ -2139,7 +2142,7 @@ img.clients__mess.clients__mess-anim {
   .swiperMain__pagination.swiper-pagination {
     height: 135px;
     top: 140px;
-    left: 335px;
+    left: 0;
   }
   .swiperMain__pagination-fixed::before {
     content: "";

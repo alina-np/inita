@@ -1,4 +1,3 @@
-// Слайдеры
 const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   line = document.querySelector(".line"),
   hand = document.querySelector(".hand"),
@@ -8,11 +7,10 @@ const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   ),
   btnPrev = document.querySelector(".swiperWebsite-button-prev"),
   btnNext = document.querySelector(".swiperWebsite-button-next"),
-  tlClientsList = gsap.timeline({}),
-  tlClientsTimeline = gsap.timeline({ onComplete: endtlClientsTimeline }),
-  tlClientsChat = gsap.timeline({}),
+  tlAppointments = gsap.timeline({ repeat: 0 }),
   tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.2 }),
   tlSocials = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+let tlTimeout;
 
 // Инициализация и настройка слайдеров
 const swiper = new Swiper(".swiperMain", {
@@ -38,24 +36,21 @@ const swiper = new Swiper(".swiperMain", {
     prevEl: ".swiper-button-prev",
   },
   initialSlide: 2,
-  allowTouchMove: false,
-  on: {
-    init: startAnimationAppointments(),
+  allowTouchMove: true,
+  // edgeSwipeThreshold: 30,
+  breakpoints: {
+    768: {
+      allowTouchMove: false,
+    },
   },
 });
 
 swiper.on("slideChange", function (e) {
-  if (swiper.realIndex !== 0) {
-    tlClientsList.pause();
-    tlClientsTimeline.pause();
-    tlClientsChat.pause();
-  }
-  if (swiper.realIndex === 0) {
-    startAnimationClients();
-  }
-  swiper.realIndex === 1 ? swiper2.autoplay.start() : swiper2.autoplay.pause();
-  swiper.realIndex === 3 ? tlAction.play() : tlAction.pause();
-  swiper.realIndex === 4 ? tlSocials.play() : tlSocials.pause();
+  swiper.realIndex === 0 ? animationClients("play") : animationClients("pause");
+  swiper.realIndex === 1 ? swiper2.autoplay.start() : swiper2.autoplay.stop();
+  swiper.realIndex === 2 ? tlAppointments.restart() : tlAppointments.pause();
+  swiper.realIndex === 3 ? tlAction.restart() : tlAction.pause();
+  swiper.realIndex === 4 ? tlSocials.restart() : tlSocials.pause();
   changeStyleSwiper(swiper.realIndex);
 });
 
@@ -81,7 +76,7 @@ const swiper2 = new Swiper(".swiperWebsite", {
   touchStartPreventDefault: false,
 });
 
-swiper2.autoplay.pause();
+swiper2.autoplay.stop();
 
 swiper2.on("slideChange", function (e) {
   swiper2.realIndex !== 0
@@ -107,357 +102,367 @@ function changeStyleSwiper(num) {
 }
 
 // Блок Clients
-showTab();
-function showTab() {
-  let tabNav = document.querySelectorAll(".clientsTab__head > div");
-  let tabContent = document.querySelectorAll(".clientsTab__content > div");
-  let tabName;
 
-  tabNav.forEach((item) => item.addEventListener("click", selectTabNav));
-
-  function selectTabNav() {
-    tabNav.forEach((item) => item.classList.remove("active"));
-    this.classList.add("active");
-    tabName = this.dataset.name;
-    tabContent.forEach((item) => {
-      item.classList.contains(tabName)
-        ? item.classList.add("active")
-        : item.classList.remove("active");
+function animationClients(action) {
+  const tlClientsList = gsap.timeline({}),
+    tlClientsTimeline = gsap.timeline({}),
+    tlClientsChat = gsap.timeline({
+      onComplete: changePosition,
+      onCompleteParams: [".chat", "minus", "-2510", "220"],
     });
-    if (document.querySelector(".timeline.active")) {
-      tlClientsChat.pause();
-      tlClientsTimeline.play();
-    }
-    if (document.querySelector(".chat.active")) {
-      tlClientsTimeline.pause();
-      tlClientsChat.play();
-    }
-  }
-}
 
-function endtlClientsTimeline() {
-  console.log('changeTab');
-// changePosition(".timeline", -680, -355);
-  // setTimeout(function () {
-  //   document.querySelector("[data-name='chat']").classList.add("active");
-  //   document.querySelector("[data-name='timeline']").classList.remove("active");
-  //   document.querySelector(".chat").classList.add("active");
-  //   document.querySelector(".timeline").classList.remove("active");
-  // }, 2000);
-}
-
-function startAnimationClients() {
-  startAnimationClientsList();
-  startAnimationClientsTimeline();
-  startAnimationClientsChat();
-
-  function startAnimationClientsList() {
-    tlClientsList
-      .to(".clientsList__peoples div:not(.clientsList__peoples__km)", {
-        opacity: 0.3,
-        delay: 1,
-      })
-      .to(".clientsList", {
-        y: 500,
-        opacity: 0,
-        delay: 0.5,
-        duration: 0.8,
-      });
-  }
-
-  function startAnimationClientsTimeline() {
-    tlClientsTimeline
-      .to(".timeline", {
-        opacity: 1,
-        y: -45,
-        delay: 4,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -93,
-        delay: 0.7,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -130,
-        delay: 0.7,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -192,
-        delay: 0.7,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -280,
-        delay: 0.7,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -325,
-        delay: 0.7,
-      })
-      .to(".clientsTimelineHistory-one", {
-        height: "auto",
-        opacity: 1,
-        y: 0,
-        delay: -0.5,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -371,
-        delay: 0.7,
-      })
-      .to(".clientsTimelineHistory-two", {
-        height: "auto",
-        opacity: 1,
-        y: 0,
-        delay: -0.5,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -415,
-        delay: 0.7,
-      })
-      .to(".clientsTimelineHistory-three", {
-        height: "auto",
-        opacity: 1,
-        y: 0,
-        delay: -0.5,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -515,
-        delay: 0.7,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -550,
-        delay: 0.7,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -640,
-        delay: 0.7,
-      })
-      .to(".timeline", {
-        opacity: 1,
-        y: -670,
-        delay: 0.7,
-      });
-  }
-
-  function startAnimationClientsChat() {
+  if (action === "pause") {
+    tlClientsList.pause();
+    tlClientsTimeline.pause();
     tlClientsChat.pause();
-    tlClientsChat
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -40,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -198,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -390,
-        delay: 0.7,
-      })
-      .to(".clients__twomess .clients__mess-anim", {
-        y: -10,
-        marginTop: 0,
-        height: "auto",
-        opacity: 1,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -525,
-        delay: 0.7,
-      })
-      .to(".clients__threemess .clients__mess-anim", {
-        y: -10,
-        marginTop: 0,
-        height: "auto",
-        opacity: 1,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -655,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -695,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -925,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -1030,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -1175,
-        delay: 0.7,
-      })
-      .to(".clients__sevenmess .clients__mess-anim", {
-        y: -10,
-        marginTop: 0,
-        marginBottom: 5,
-        height: "auto",
-        opacity: 1,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -1325,
-        delay: 0.7,
-      })
-      .to(".clients__eightmess .clients__mess-anim", {
-        y: -10,
-        marginTop: 5,
-        height: "auto",
-        opacity: 1,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -1645,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -1785,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -1899,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -1990,
-        delay: 0.7,
-      })
-      .to(".clients__twelvemess .clients__mess-anim", {
-        y: -10,
-        marginTop: 5,
-        height: "auto",
-        opacity: 1,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -2040,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -2355,
-        delay: 0.7,
-      })
-      .to(".clientsChat", {
-        opacity: 1,
-        y: -2505,
-        delay: 0.7,
+    document.querySelector("[data-name='chat']").classList.remove("active");
+    document.querySelector("[data-name='timeline']").classList.add("active");
+    document.querySelector(".chat").classList.remove("active");
+    document.querySelector(".timeline").classList.add("active");
+    document.querySelector('.clientsList').style.transform = 'translateY(0)';
+    document.querySelector('.clientsList').style.opacity = '1';
+  }
+
+  if (action === "play") {
+    tlClientsList.restart().eventCallback("onComplete", () => {
+      tlClientsTimeline.restart().eventCallback("onComplete", () => {
+        document.querySelector("[data-name='chat']").classList.add("active");
+        document
+          .querySelector("[data-name='timeline']")
+          .classList.remove("active");
+        document.querySelector(".chat").classList.add("active");
+        document.querySelector(".timeline").classList.remove("active");
+        tlClientsChat.restart();
+        changePosition(".timeline", "minus", "-680", "-355");
       });
+    });
+  }
+
+  tlClientsList
+    .to(".clientsList__peoples div:not(.clientsList__peoples__km)", {
+      opacity: 0.3,
+      delay: 1,
+    })
+    .to(".clientsList", {
+      y: 500,
+      opacity: 0,
+      delay: 0.5,
+      duration: 0.8,
+    });
+  tlClientsTimeline
+    .to(".timeline", {
+      opacity: 1,
+      y: -45,
+      delay: 3,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -93,
+      delay: 0.7,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -130,
+      delay: 0.7,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -192,
+      delay: 0.7,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -280,
+      delay: 0.7,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -325,
+      delay: 0.7,
+    })
+    .to(".clientsTimelineHistory-one", {
+      height: "auto",
+      opacity: 1,
+      y: 0,
+      delay: -0.5,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -371,
+      delay: 0.7,
+    })
+    .to(".clientsTimelineHistory-two", {
+      height: "auto",
+      opacity: 1,
+      y: 0,
+      delay: -0.5,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -415,
+      delay: 0.7,
+    })
+    .to(".clientsTimelineHistory-three", {
+      height: "auto",
+      opacity: 1,
+      y: 0,
+      delay: -0.5,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -515,
+      delay: 0.7,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -550,
+      delay: 0.7,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -640,
+      delay: 0.7,
+    })
+    .to(".timeline", {
+      opacity: 1,
+      y: -670,
+      delay: 0.7,
+    });
+  tlClientsChat.pause();
+  tlClientsChat
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -40,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -198,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -390,
+      delay: 0.7,
+    })
+    .to(".clients__twomess .clients__mess-anim", {
+      y: -10,
+      marginTop: 0,
+      height: "auto",
+      opacity: 1,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -525,
+      delay: 0.7,
+    })
+    .to(".clients__threemess .clients__mess-anim", {
+      y: -10,
+      marginTop: 0,
+      height: "auto",
+      opacity: 1,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -655,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -695,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -925,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -1030,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -1175,
+      delay: 0.7,
+    })
+    .to(".clients__sevenmess .clients__mess-anim", {
+      y: -10,
+      marginTop: 0,
+      marginBottom: 5,
+      height: "auto",
+      opacity: 1,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -1325,
+      delay: 0.7,
+    })
+    .to(".clients__eightmess .clients__mess-anim", {
+      y: -10,
+      marginTop: 5,
+      height: "auto",
+      opacity: 1,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -1645,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -1785,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -1899,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -1990,
+      delay: 0.7,
+    })
+    .to(".clients__twelvemess .clients__mess-anim", {
+      y: -10,
+      marginTop: 5,
+      height: "auto",
+      opacity: 1,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -2040,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -2355,
+      delay: 0.7,
+    })
+    .to(".clientsChat", {
+      opacity: 1,
+      y: -2505,
+      delay: 0.7,
+    });
+
+  showTab();
+
+  function showTab() {
+    let tabNav = document.querySelectorAll(".clientsTab__head > div"),
+      tabContent = document.querySelectorAll(".clientsTab__content > div"),
+      tabName;
+
+    tabNav.forEach((item) => item.addEventListener("click", selectTabNav));
+
+    function selectTabNav() {
+      tabNav.forEach((item) => item.classList.remove("active"));
+      this.classList.add("active");
+      tabName = this.dataset.name;
+      tabContent.forEach((item) => {
+        item.classList.contains(tabName)
+          ? item.classList.add("active")
+          : item.classList.remove("active");
+      });
+      if (document.querySelector(".timeline.active")) {
+        tlClientsChat.pause();
+        setTimeout(() => tlClientsTimeline.play(), 500);
+      }
+      if (document.querySelector(".chat.active")) {
+        tlClientsTimeline.pause();
+        setTimeout(() => tlClientsChat.play(), 500);
+      }
+    }
   }
 }
 
 // Блок Appointments
-function startAnimationAppointments() {
-  const tlAppointments = gsap.timeline({ repeat: 0 });
-  tlAppointments
-    .fromTo(
-      ".appointments__icons div",
-      {
-        y: 30,
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.2,
-      }
-    )
-    .fromTo(
-      ".appointments__cliensList",
-      {
-        opacity: 0,
-        y: -30,
-      },
-      {
-        opacity: 1,
-        y: 0,
-      }
-    )
-    .fromTo(
-      ".appointments__infografika-border",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        delay: -0.2,
-      }
-    )
-    .fromTo(
-      ".appointments__infografika svg",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        delay: -0.2,
-      }
-    )
-    .fromTo(
-      ".appointments__infografika-big",
-      {
-        opacity: 0,
-        x: 30,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        delay: -0.2,
-      }
-    )
-    .fromTo(
-      ".appointments__infografika-small",
-      {
-        opacity: 0,
-        x: -30,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        delay: -0.2,
-      }
-    )
-    .fromTo(
-      ".appointments__bookings",
-      {
-        opacity: 0,
-        y: 30,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        delay: -0.2,
-      }
-    );
-}
+tlAppointments
+  .fromTo(
+    ".appointments__icons div",
+    {
+      y: 30,
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.2,
+    }
+  )
+  .fromTo(
+    ".appointments__cliensList",
+    {
+      opacity: 0,
+      y: -30,
+    },
+    {
+      opacity: 1,
+      y: 0,
+    }
+  )
+  .fromTo(
+    ".appointments__infografika-border",
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      delay: -0.2,
+    }
+  )
+  .fromTo(
+    ".appointments__infografika svg",
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      delay: -0.2,
+    }
+  )
+  .fromTo(
+    ".appointments__infografika-big",
+    {
+      opacity: 0,
+      x: 30,
+    },
+    {
+      opacity: 1,
+      x: 0,
+      delay: -0.2,
+    }
+  )
+  .fromTo(
+    ".appointments__infografika-small",
+    {
+      opacity: 0,
+      x: -30,
+    },
+    {
+      opacity: 1,
+      x: 0,
+      delay: -0.2,
+    }
+  )
+  .fromTo(
+    ".appointments__bookings",
+    {
+      opacity: 0,
+      y: 30,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.1,
+      delay: -0.2,
+    }
+  );
 
 // Блок Action
 tlAction.pause();
@@ -742,12 +747,12 @@ tlSocials
   });
 
 // Движение контента в телефоне
-changePosition(".appointmentsMain", -360);
-changePosition(".websitecard-2", -190);
-changePosition(".websitecard-3", -980);
-changePosition(".websitecard-4", -70);
+changePosition(".appointmentsMain", "plus", -360);
+changePosition(".websitecard-2", "plus", -190);
+changePosition(".websitecard-3", "plus", -980);
+changePosition(".websitecard-4", "plus", -70);
 
-function changePosition(block, value) {
+function changePosition(block, dir, value, value2 = "0") {
   const pagBlock = document.querySelector(block);
   let startY = 0,
     currentY = 0;
@@ -761,8 +766,12 @@ function changePosition(block, value) {
   function dragBlock(e) {
     currentY = e.clientY - startY;
     if (currentY < value) currentY = value;
-    if (currentY > 0) currentY = 0;
-
+    if (dir == "minus") {
+      if (currentY > value2) currentY = value2;
+    }
+    if (dir == "plus") {
+      if (currentY > 0) currentY = 0;
+    }
     pagBlock.style.transform = `translateY(${currentY}px)`;
   }
 
@@ -776,11 +785,18 @@ function changePosition(block, value) {
 if (innerWidth < 768) {
   stickyPag();
   changePositionBtns();
+  const pagBlock = document.querySelector(".swiperMain__pagination");
+  swiper.on("slideChange", function (e) {
+    if (swiper.realIndex === 0) pagBlock.style.left = "325px";
+    if (swiper.realIndex === 1) pagBlock.style.left = "165px";
+    if (swiper.realIndex === 2) pagBlock.style.left = "0px";
+    if (swiper.realIndex === 3) pagBlock.style.left = "-165px";
+    if (swiper.realIndex === 4) pagBlock.style.left = "-325px";
+  });
 }
 
 function changePositionBtns() {
-  const pagBlock = document.querySelector(".swiperMain__pagination"),
-    btns = document.querySelectorAll(".swiper-pagination-bullet");
+  const pagBlock = document.querySelector(".swiperMain__pagination");
   let startX = 0,
     currentX = 0;
 
@@ -792,15 +808,6 @@ function changePositionBtns() {
     currentX = e.touches[0].clientX - startX;
     if (currentX > 325) currentX = 325;
     if (currentX < -325) currentX = -325;
-    pagBlock.style.left = currentX + "px";
-  });
-  pagBlock.addEventListener("click", function (e) {
-    let btn = e.target.closest("button");
-    if (btn == btns[0]) currentX = 325;
-    if (btn == btns[1]) currentX = 165;
-    if (btn == btns[2]) currentX = 0;
-    if (btn == btns[3]) currentX = -165;
-    if (btn == btns[4]) currentX = -325;
     pagBlock.style.left = currentX + "px";
   });
 }
