@@ -53,7 +53,7 @@ const swiper = new Swiper(".swiperMain", {
 
 swiper.on("slideChange", function (e) {
   swiper.realIndex === 0 ? animationClients("play") : animationClients("pause");
-  swiper.realIndex === 1 ? swiper2.autoplay.start() : swiper2.autoplay.stop();
+  swiper.realIndex === 1 ? (swiper2.autoplay.start(), swiper2.slideTo(0)) : swiper2.autoplay.stop();
   swiper.realIndex === 2 ? tlAppointments.restart() : tlAppointments.pause();
   swiper.realIndex === 3 ? tlAction.restart() : tlAction.pause();
   swiper.realIndex === 4 ? tlSocials.restart() : tlSocials.pause();
@@ -132,15 +132,6 @@ function animationClients(action) {
       tlClientsChat.restart();
       changePosition(".timeline", "minus", "-680", "-355");
     });
-  }
-
-  function starttlClientsChat() {
-    document.querySelector("[data-name='chat']").classList.add("active");
-    document.querySelector("[data-name='timeline']").classList.remove("active");
-    document.querySelector(".chat").classList.add("active");
-    document.querySelector(".timeline").classList.remove("active");
-    tlClientsChat.restart();
-    changePosition(".timeline", "minus", "-680", "-355");
   }
 
   tlClientsList
@@ -768,6 +759,10 @@ function changePosition(block, dir, value, value2 = "0") {
     document.addEventListener("mouseup", stopDragBlock);
   });
 
+  pagBlock.addEventListener("touchstart", function (e) {
+    startY = e.touches[0].clientY - currentY;
+  });
+
   function dragBlock(e) {
     currentY = e.clientY - startY;
     if (currentY < value) currentY = value;
@@ -784,6 +779,18 @@ function changePosition(block, dir, value, value2 = "0") {
     document.removeEventListener("mousemove", dragBlock);
     document.removeEventListener("mouseup", stopDragBlock);
   }
+
+  pagBlock.addEventListener("touchmove", function (e) {
+    currentY = e.touches[0] - startY;
+    if (currentY < value) currentY = value;
+    if (dir == "minus") {
+      if (currentY > value2) currentY = value2;
+    }
+    if (dir == "plus") {
+      if (currentY > 0) currentY = 0;
+    }
+    pagBlock.style.transform = `translateY(${currentY}px)`;
+  });
 }
 
 // Перетаскивание кнопок

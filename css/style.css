@@ -393,11 +393,14 @@ li {
 }
 
 .mobuleBar {
+  position: relative;
+  z-index: 1;
   padding: 6px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   align-items: baseline;
+  background: transparent;
   font-weight: 600;
   font-size: 11px;
   text-align: center;
