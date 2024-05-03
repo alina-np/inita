@@ -2,9 +2,7 @@ const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   line = document.querySelector(".line"),
   hand = document.querySelector(".hand"),
   cardBg = document.querySelector(".website__cards"),
-  btnPag = document.querySelectorAll(
-    ".website__pagination .swiper-pagination-bullet"
-  ),
+  btnsPag = document.querySelector(".website__pagination"),
   btnPrev = document.querySelector(".swiperWebsite-button-prev"),
   btnNext = document.querySelector(".swiperWebsite-button-next"),
   tlAppointments = gsap.timeline({ repeat: 0 }),
@@ -43,7 +41,6 @@ const swiper = new Swiper(".swiperMain", {
   },
   initialSlide: 2,
   allowTouchMove: true,
-  // edgeSwipeThreshold: 30,
   breakpoints: {
     768: {
       allowTouchMove: false,
@@ -53,7 +50,9 @@ const swiper = new Swiper(".swiperMain", {
 
 swiper.on("slideChange", function (e) {
   swiper.realIndex === 0 ? animationClients("play") : animationClients("pause");
-  swiper.realIndex === 1 ? (swiper2.autoplay.start(), swiper2.slideTo(0)) : swiper2.autoplay.stop();
+  swiper.realIndex === 1
+    ? (swiper2.autoplay.start(), swiper2.slideTo(0, 0))
+    : swiper2.autoplay.stop();
   swiper.realIndex === 2 ? tlAppointments.restart() : tlAppointments.pause();
   swiper.realIndex === 3 ? tlAction.restart() : tlAction.pause();
   swiper.realIndex === 4 ? tlSocials.restart() : tlSocials.pause();
@@ -90,7 +89,7 @@ swiper2.on("slideChange", function (e) {
     : cardBg.classList.remove("website__cards-bg");
 });
 
-btnPag.forEach((item) => item.addEventListener("click", stopAutoplay));
+btnsPag.addEventListener("click", stopAutoplay);
 btnPrev.addEventListener("click", stopAutoplay);
 btnNext.addEventListener("click", stopAutoplay);
 
@@ -108,7 +107,6 @@ function changeStyleSwiper(num) {
 }
 
 // Блок Clients
-
 function animationClients(action) {
   if (action === "pause") {
     tlClientsList.pause();
@@ -753,26 +751,28 @@ function changePosition(block, dir, value, value2 = "0") {
   let startY = 0,
     currentY = 0;
 
-  pagBlock.addEventListener("mousedown", function (e) {
+  function startMouseDrag(e) {
     startY = e.clientY - currentY;
     document.addEventListener("mousemove", dragBlock);
     document.addEventListener("mouseup", stopDragBlock);
-  });
+  }
 
-  pagBlock.addEventListener("touchstart", function (e) {
+  function startDrag(e) {
     startY = e.touches[0].clientY - currentY;
-  });
+    document.addEventListener("mousemove", dragBlock);
+    document.addEventListener("mouseup", stopDragBlock);
+  }
 
   function dragBlock(e) {
-    currentY = e.clientY - startY;
+    e.preventDefault();
+    currentY = (e.clientY || e.touches[0].clientY) - startY;
     if (currentY < value) currentY = value;
-    if (dir == "minus") {
-      if (currentY > value2) currentY = value2;
+    if (dir === "plus" && currentY > 0) currentY = 0;
+    pagBlock.style.transform = `translateY(${Math.max(value, currentY)}px)`;
+    if (dir === "minus" && currentY > value2) {
+      currentY = value2;
+      pagBlock.style.transform = `translateY(${Math.max(value2, currentY)}px)`;
     }
-    if (dir == "plus") {
-      if (currentY > 0) currentY = 0;
-    }
-    pagBlock.style.transform = `translateY(${currentY}px)`;
   }
 
   function stopDragBlock() {
@@ -780,17 +780,9 @@ function changePosition(block, dir, value, value2 = "0") {
     document.removeEventListener("mouseup", stopDragBlock);
   }
 
-  pagBlock.addEventListener("touchmove", function (e) {
-    currentY = e.touches[0] - startY;
-    if (currentY < value) currentY = value;
-    if (dir == "minus") {
-      if (currentY > value2) currentY = value2;
-    }
-    if (dir == "plus") {
-      if (currentY > 0) currentY = 0;
-    }
-    pagBlock.style.transform = `translateY(${currentY}px)`;
-  });
+  pagBlock.addEventListener("mousedown", startMouseDrag);
+  pagBlock.addEventListener("touchstart", startDrag);
+  pagBlock.addEventListener("touchmove", dragBlock);
 }
 
 // Перетаскивание кнопок
