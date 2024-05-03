@@ -297,49 +297,6 @@ li {
   background: #2f1950;
 }
 
-.join {
-  bottom: 72px;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 13px;
-}
-.join form {
-  position: relative;
-}
-.join__input {
-  width: 303px;
-  height: 56px;
-  border: 1px solid #383a52;
-  border-radius: 40px;
-  padding: 12px 14px 12px 20px;
-  -webkit-backdrop-filter: blur(12px);
-          backdrop-filter: blur(12px);
-  box-shadow: 0 0 40px 0 rgba(255, 255, 255, 0.25);
-  background: rgba(7, 9, 33, 0.56);
-}
-.join__btn {
-  position: absolute;
-  right: 14px;
-  bottom: 12px;
-  width: 126px;
-  height: 32px;
-  padding: 4px 16px;
-  border-radius: 100px;
-  border: 0;
-  background: rgba(48, 192, 133, 0.2);
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 125%;
-  text-align: center;
-  color: #30c085;
-  cursor: pointer;
-}
-.join__btn-greyText {
-  color: #b0b2c2;
-}
-
 .noise {
   width: 100%;
   position: absolute;
@@ -2228,42 +2185,6 @@ img.clients__mess.clients__mess-anim {
   }
   .post {
     margin-top: 20px;
-  }
-  .join {
-    margin: 65px 0 -8px;
-    flex-direction: column;
-  }
-  .join > span {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 117%;
-    text-align: center;
-    color: #fff;
-  }
-  .join__input {
-    width: 335px;
-    height: 48px;
-  }
-  .join__btn {
-    position: static;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 30px auto;
-  }
-  .join__btn-green {
-    display: inline-block;
-    height: 40px;
-    padding: 9px 32px;
-    border-radius: 100px;
-    background: rgba(48, 192, 133, 0.2);
-    font-size: 14px;
-    line-height: 157%;
-  }
-  .join__btn-greyText {
-    text-wrap: nowrap;
   }
   .footer {
     margin-bottom: 100px;

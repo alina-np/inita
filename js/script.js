@@ -8,6 +8,12 @@ const tabName = ["Clients", "Website", "Appointments", "Actions", "Socials"],
   btnPrev = document.querySelector(".swiperWebsite-button-prev"),
   btnNext = document.querySelector(".swiperWebsite-button-next"),
   tlAppointments = gsap.timeline({ repeat: 0 }),
+  tlClientsList = gsap.timeline({}),
+  tlClientsTimeline = gsap.timeline({}),
+  tlClientsChat = gsap.timeline({
+    onComplete: changePosition,
+    onCompleteParams: [".chat", "minus", "-2510", "220"],
+  }),
   tlAction = gsap.timeline({ repeat: -1, repeatDelay: 0.2 }),
   tlSocials = gsap.timeline({ repeat: -1, repeatDelay: 2 });
 let tlTimeout;
@@ -104,13 +110,6 @@ function changeStyleSwiper(num) {
 // Блок Clients
 
 function animationClients(action) {
-  const tlClientsList = gsap.timeline({}),
-    tlClientsTimeline = gsap.timeline({}),
-    tlClientsChat = gsap.timeline({
-      onComplete: changePosition,
-      onCompleteParams: [".chat", "minus", "-2510", "220"],
-    });
-
   if (action === "pause") {
     tlClientsList.pause();
     tlClientsTimeline.pause();
@@ -119,23 +118,29 @@ function animationClients(action) {
     document.querySelector("[data-name='timeline']").classList.add("active");
     document.querySelector(".chat").classList.remove("active");
     document.querySelector(".timeline").classList.add("active");
-    document.querySelector('.clientsList').style.transform = 'translateY(0)';
-    document.querySelector('.clientsList').style.opacity = '1';
   }
 
   if (action === "play") {
-    tlClientsList.restart().eventCallback("onComplete", () => {
-      tlClientsTimeline.restart().eventCallback("onComplete", () => {
-        document.querySelector("[data-name='chat']").classList.add("active");
-        document
-          .querySelector("[data-name='timeline']")
-          .classList.remove("active");
-        document.querySelector(".chat").classList.add("active");
-        document.querySelector(".timeline").classList.remove("active");
-        tlClientsChat.restart();
-        changePosition(".timeline", "minus", "-680", "-355");
-      });
+    tlClientsList.restart();
+    tlClientsTimeline.restart().eventCallback("onComplete", () => {
+      document.querySelector("[data-name='chat']").classList.add("active");
+      document
+        .querySelector("[data-name='timeline']")
+        .classList.remove("active");
+      document.querySelector(".chat").classList.add("active");
+      document.querySelector(".timeline").classList.remove("active");
+      tlClientsChat.restart();
+      changePosition(".timeline", "minus", "-680", "-355");
     });
+  }
+
+  function starttlClientsChat() {
+    document.querySelector("[data-name='chat']").classList.add("active");
+    document.querySelector("[data-name='timeline']").classList.remove("active");
+    document.querySelector(".chat").classList.add("active");
+    document.querySelector(".timeline").classList.remove("active");
+    tlClientsChat.restart();
+    changePosition(".timeline", "minus", "-680", "-355");
   }
 
   tlClientsList

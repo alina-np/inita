@@ -308,46 +308,6 @@ li {
   }
 }
 
-.join {
-  bottom: 72px;
-  z-index: 1;
-  @include flex;
-  gap: 13px;
-  & form {
-    position: relative;
-  }
-  &__input {
-    width: 303px;
-    height: 56px;
-    border: 1px solid #383a52;
-    border-radius: 40px;
-    padding: 12px 14px 12px 20px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 40px 0 rgba(255, 255, 255, 0.25);
-    background: rgba(7, 9, 33, 0.56);
-  }
-  &__btn {
-    position: absolute;
-    right: 14px;
-    bottom: 12px;
-    width: 126px;
-    height: 32px;
-    padding: 4px 16px;
-    border-radius: 100px;
-    border: 0;
-    background: rgba(48, 192, 133, 0.2);
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 125%;
-    text-align: center;
-    color: $green;
-    cursor: pointer;
-    &-greyText {
-      color: $light;
-    }
-  }
-}
-
 .noise {
   width: 100%;
   position: absolute;
@@ -2176,40 +2136,6 @@ img.clients__mess.clients__mess-anim {
   }
   .post {
     margin-top: 20px;
-  }
-  .join {
-    margin: 65px 0 -8px;
-    flex-direction: column;
-    & > span {
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 117%;
-      text-align: center;
-      color: $white;
-    }
-    &__input {
-      width: 335px;
-      height: 48px;
-    }
-    &__btn {
-      position: static;
-      background: transparent;
-      @include flex;
-      gap: 10px;
-      margin: 30px auto;
-      &-green {
-        display: inline-block;
-        height: 40px;
-        padding: 9px 32px;
-        border-radius: 100px;
-        background: rgba(48, 192, 133, 0.2);
-        font-size: 14px;
-        line-height: 157%;
-      }
-      &-greyText {
-        text-wrap: nowrap;
-      }
-    }
   }
   .footer {
     margin-bottom: 100px;
