@@ -14,7 +14,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-Regular"),
+  src:
+    local("VelaSans-Regular"),
     url("./fonts/VelaSans-Regular.woff") format("woff2"),
     url("./fonts/VelaSans-Regular.woff") format("woff");
   font-weight: normal;
@@ -23,7 +24,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-SemiBold"),
+  src:
+    local("VelaSans-SemiBold"),
     url("./fonts/VelaSans-SemiBold.woff2") format("woff2"),
     url("./fonts/VelaSans-SemiBold.woff") format("woff");
   font-weight: 600;
@@ -32,7 +34,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-Medium"),
+  src:
+    local("VelaSans-Medium"),
     url("./fonts/VelaSans-Medium.woff2") format("woff2"),
     url("./fonts/VelaSans-Medium.woff") format("woff");
   font-weight: 500;
@@ -41,7 +44,8 @@ $gradient: linear-gradient(35deg, #ff8933, #9747ff);
 
 @font-face {
   font-family: "Vela Sans";
-  src: local("VelaSans-Bold"),
+  src:
+    local("VelaSans-Bold"),
     url("./fonts/VelaSans-Bold.woff2") format("woff2"),
     url("./fonts/VelaSans-Bold.woff") format("woff");
   font-weight: bold;
@@ -321,11 +325,7 @@ li {
   width: 100%;
   position: absolute;
   bottom: 3%;
-  fill: radial-gradient(
-    100% 100% at 50.74% 0%,
-    rgb(7, 9, 32) 49.5%,
-    rgb(7, 9, 32) 100%
-  );
+  fill: radial-gradient(100% 100% at 50.74% 0%, rgb(7, 9, 32) 49.5%, rgb(7, 9, 32) 100%);
 }
 
 .input {
@@ -1181,7 +1181,8 @@ img.clients__mess.clients__mess-anim {
     & > div {
       width: 48%;
       height: min-content;
-      box-shadow: 1px -1px 24px 0 rgba(38, 42, 92, 0.15),
+      box-shadow:
+        1px -1px 24px 0 rgba(38, 42, 92, 0.15),
         0 0 4px 0 rgba(38, 42, 92, 0.06);
       background: rgba(0, 0, 0, 0.5);
       border-radius: 8px;
@@ -1517,7 +1518,9 @@ img.clients__mess.clients__mess-anim {
     display: flex;
     border-radius: 20px;
     border: 2px dashed $white;
-    background: linear-gradient(#fff, #fff) padding-box, $gradient border-box;
+    background:
+      linear-gradient(#fff, #fff) padding-box,
+      $gradient border-box;
     font-size: 10px;
     line-height: 140%;
     color: $purple;
@@ -1724,11 +1727,7 @@ img.clients__mess.clients__mess-anim {
       display: block;
       width: 100%;
       height: 252px;
-      background-image: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0) 0%,
-        #fff 100%
-      );
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 100%);
     }
   }
   &__top {
@@ -1834,7 +1833,7 @@ img.clients__mess.clients__mess-anim {
       color: $moredark;
     }
     &-color {
-      background: linear-gradient(35deg, #ff8933, #9747ff);
+      background: $gradient;
       border: 0px solid transparent;
       & p {
         width: 100%;
@@ -1846,7 +1845,7 @@ img.clients__mess.clients__mess-anim {
       & span {
         height: 100%;
         @include flex;
-        background-image: linear-gradient(35deg, #ff8933, #9747ff);
+        background-image: $gradient;
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -1925,7 +1924,7 @@ img.clients__mess.clients__mess-anim {
     margin: -80px 0 0;
   }
   .line {
-    left:375px;
+    left: 375px;
     top: 250px;
     &-1 {
       left: 51px;
@@ -2053,11 +2052,7 @@ img.clients__mess.clients__mess-anim {
     width: 100%;
     height: 120px;
     position: fixed;
-    background: linear-gradient(
-      180deg,
-      rgb(7, 9, 32, 1) 0%,
-      rgba(7, 9, 32, 0) 100%
-    );
+    background: linear-gradient(180deg, rgb(7, 9, 32, 1) 0%, rgba(7, 9, 32, 0) 100%);
     z-index: -1;
     left: 0;
   }
@@ -2128,7 +2123,9 @@ img.clients__mess.clients__mess-anim {
   .appointments__infografika svg {
     left: -51px;
     top: 30px;
-    transform: scale(0.71);
+  }
+  .appointments__infografika path {
+    fill: $white;
   }
   .website__cards,
   .socials__list {

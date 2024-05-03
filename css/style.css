@@ -2177,7 +2177,9 @@ img.clients__mess.clients__mess-anim {
   .appointments__infografika svg {
     left: -51px;
     top: 30px;
-    transform: scale(0.71);
+  }
+  .appointments__infografika path {
+    fill: #fff;
   }
   .website__cards,
   .socials__list {
