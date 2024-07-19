@@ -50,9 +50,7 @@ const swiper = new Swiper(".swiperMain", {
 
 swiper.on("slideChange", function (e) {
   swiper.realIndex === 0 ? animationClients("play") : animationClients("pause");
-  swiper.realIndex === 1
-    ? (swiper2.autoplay.start(), swiper2.slideTo(0, 0))
-    : swiper2.autoplay.stop();
+  swiper.realIndex === 1 ? (swiper2.autoplay.start(), swiper2.slideTo(0, 0)) : swiper2.autoplay.stop();
   swiper.realIndex === 2 ? tlAppointments.restart() : tlAppointments.pause();
   swiper.realIndex === 3 ? tlAction.restart() : tlAction.pause();
   swiper.realIndex === 4 ? tlSocials.restart() : tlSocials.pause();
@@ -84,9 +82,9 @@ const swiper2 = new Swiper(".swiperWebsite", {
 swiper2.autoplay.stop();
 
 swiper2.on("slideChange", function (e) {
-  swiper2.realIndex !== 0
-    ? cardBg.classList.add("website__cards-bg")
-    : cardBg.classList.remove("website__cards-bg");
+  swiper2.realIndex !== 0 ? cardBg.classList.add("website__cards-bg") : cardBg.classList.remove("website__cards-bg");
+  const active = swiper2.el.querySelector('.swiper-slide-active');
+  active.style.transform = `translateY(0)`;
 });
 
 btnsPag.addEventListener("click", stopAutoplay);
@@ -122,9 +120,7 @@ function animationClients(action) {
     tlClientsList.restart();
     tlClientsTimeline.restart().eventCallback("onComplete", () => {
       document.querySelector("[data-name='chat']").classList.add("active");
-      document
-        .querySelector("[data-name='timeline']")
-        .classList.remove("active");
+      document.querySelector("[data-name='timeline']").classList.remove("active");
       document.querySelector(".chat").classList.add("active");
       document.querySelector(".timeline").classList.remove("active");
       tlClientsChat.restart();
@@ -138,7 +134,6 @@ function animationClients(action) {
     let tabNav = document.querySelectorAll(".clientsTab__head > div"),
       tabContent = document.querySelectorAll(".clientsTab__content > div"),
       tabName;
-
     tabNav.forEach((item) => item.addEventListener("click", selectTabNav));
 
     function selectTabNav() {
@@ -146,9 +141,7 @@ function animationClients(action) {
       this.classList.add("active");
       tabName = this.dataset.name;
       tabContent.forEach((item) => {
-        item.classList.contains(tabName)
-          ? item.classList.add("active")
-          : item.classList.remove("active");
+        item.classList.contains(tabName) ? item.classList.add("active") : item.classList.remove("active");
       });
       if (document.querySelector(".timeline.active")) {
         tlClientsChat.pause();

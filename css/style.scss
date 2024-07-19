@@ -406,7 +406,7 @@ li {
   padding: 6px 30px;
   @include flex(space-between);
   align-items: baseline;
-  background: transparent;
+  background: $white;
   font-weight: 600;
   font-size: 11px;
   text-align: center;
@@ -417,6 +417,10 @@ li {
     border-radius: 20px;
     background-color: $moredark;
   }
+}
+
+.actions .mobuleBar, .website .mobuleBar {
+  background: transparent;
 }
 
 .iconMenu {
@@ -1990,7 +1994,7 @@ img.clients__mess.clients__mess-anim {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .swiper.container {
     padding-bottom: 0;
   }
@@ -2107,6 +2111,9 @@ img.clients__mess.clients__mess-anim {
       overflow: hidden;
       border-radius: 35px;
     }
+  }
+  .mobuleBar {
+    border-radius: 30px 30px 0 0;
   }
   .website .iconMenu {
     bottom: -4px;
